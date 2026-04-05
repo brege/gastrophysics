@@ -5,6 +5,7 @@
 {{- if eq (len $pages) 0 }}
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- end }}
+{{- $pages = where $pages "Params.excludeFromNav" "!=" true }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
 <nav class="paginav">
   {{- with $pages.Next . }}

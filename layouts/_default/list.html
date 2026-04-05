@@ -38,7 +38,11 @@
 {{- end }}
 {{- end }}
 
-{{- $paginator := .Paginate $pages }}
+{{- $pageSize := site.Params.postPageSize | default 10 }}
+{{- if .IsHome }}
+  {{- $pageSize = site.Params.homePageSize | default $pageSize }}
+{{- end }}
+{{- $paginator := .Paginate $pages $pageSize }}
 {{- $categories := "categories" }}
 {{- $tags := "tags" }}
 {{- $heroCards := site.Params.heroCards | default dict }}
@@ -293,7 +297,7 @@
   <nav class="pagination">
     {{- if $paginator.HasPrev }}
     <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      «&nbsp;{{ i18n "prev_page" | default "Prev" }}&nbsp;
       {{- if (.Param "ShowPageNums") }}
       {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
       {{- end }}
@@ -301,7 +305,7 @@
     {{- end }}
     {{- if $paginator.HasNext }}
     <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-      {{- i18n "next_page" }}&nbsp;
+      {{- i18n "next_page" | default "Next" }}&nbsp;
       {{- if (.Param "ShowPageNums") }}
       {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
       {{- end }}&nbsp;»

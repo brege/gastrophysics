@@ -1,18 +1,1 @@
-{{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
-
-{{ if .Params.jquery }}{{ partial "helpers/jquery.html" . }}{{ end }}
-
-{{- $palette := site.Params.color | default "linen" -}}
-{{- $lightPalette := site.Params.colorLight | default $palette -}}
-{{- $darkPalette := site.Params.colorDark | default $palette -}}
-<script>
-  (function() {
-    var root = document.documentElement;
-    var palette = "{{ $palette }}";
-    var lightPalette = "{{ $lightPalette }}";
-    var darkPalette = "{{ $darkPalette }}";
-    root.dataset.themePalette = palette;
-    root.dataset.themePaletteLight = lightPalette;
-    root.dataset.themePaletteDark = darkPalette;
-  })();
-</script>
+{{- /* Override this partial in your site's layouts/partials/ to inject custom <head> content. */ -}}
