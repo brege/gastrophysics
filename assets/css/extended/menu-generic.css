@@ -1,0 +1,33 @@
+.menu-list-shortcode {
+    margin: 0.75rem 0 1.6rem;
+}
+
+.menu-index-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-index-item {
+    border-bottom: 1px solid var(--border);
+}
+
+.post-content .menu-index-title {
+    display: block;
+    margin: 0;
+    padding: 0.22rem 0 0.28rem;
+    font-family: var(--font-serif-main);
+    font-size: 1.28rem;
+    font-weight: 400;
+    line-height: 1.08;
+}
+
+.menu-index-title a {
+    color: var(--primary);
+}
+
+@media (max-width: 700px) {
+    .post-content .menu-index-title {
+        font-size: 1.18rem;
+    }
+}
