@@ -9,7 +9,7 @@
 {{- end -}}
 <article class="first-entry home-info home-signal">
     <header class="entry-header">
-        {{- partial "balanced_sequence.html" (dict
+        {{- partial "util/balanced_sequence.html" (dict
           "class" "home-signal-note"
           "tag" "p"
           "align" "center"
@@ -20,7 +20,7 @@
     <div class="entry-content">
         {{ .Content | markdownify }}
     </div>
-    {{ partial "home_markers.html" . }}
+    {{ partial "home/markers.html" . }}
     <footer class="entry-footer home-info-footer">
         {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
     </footer>

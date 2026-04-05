@@ -66,7 +66,7 @@
 
 {{- if not .IsHome | and .Title }}
 <header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
+  {{- partial "nav/breadcrumbs.html" . }}
   <div class="page-header-main">
     <h1>
       {{ .Title }}
@@ -106,13 +106,13 @@
 {{- if .Content }}
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
+  {{- partial "post/anchored_headings.html" .Content -}}
   {{- else }}{{ .Content }}{{ end }}
 </div>
 {{- end }}
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
-{{- partial "home_info.html" . }}
+{{- partial "home/info.html" . }}
 {{- with site.Params.homeInfoParams.FeedTitle }}
 {{- if gt (len $paginator.Pages) 0 }}
 <header class="home-feed-header">

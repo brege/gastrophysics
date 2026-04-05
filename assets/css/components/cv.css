@@ -1,0 +1,480 @@
+.post-single.type-cv {
+    max-width: 72rem;
+}
+
+.post-single.type-cv .post-header {
+    margin-bottom: 1.25rem;
+}
+
+.post-single.type-cv .cv-hero {
+    display: block;
+    padding-top: 0.9rem;
+}
+
+.post-single.type-cv .cv-hero h1 {
+    margin: 0;
+    font-weight: 400;
+    font-synthesis-weight: none;
+    font-size: clamp(3.84rem, 9.6vw, 6.96rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+}
+
+.post-single.type-cv .home-signal-note {
+    margin: 0 0 0.75rem;
+    text-align: left;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+}
+
+.post-single.type-cv .post-content {
+    margin-top: 0;
+}
+
+.post-single.type-cv .cv-sheet > h2 {
+    padding-bottom: 0.14rem;
+}
+
+.post-single.type-cv .cv-sheet > h2:first-child {
+    margin-top: 0;
+}
+
+.post-single.type-cv .post-content p,
+.post-single.type-cv .post-content li {
+    color: var(--secondary);
+    line-height: 1.66;
+}
+
+.post-single.type-cv .post-content strong {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.post-single.type-cv .post-content a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.post-single.type-cv .post-content a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.post-single.type-cv .cv-pair,
+.post-single.type-cv .cv-row {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: first baseline;
+}
+
+.post-single.type-cv .cv-pair {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+}
+
+.post-single.type-cv .cv-pair + .cv-pair,
+.post-single.type-cv .cv-row + .cv-row {
+    margin-top: 0.55rem;
+}
+
+.post-single.type-cv .cv-row.project + .cv-row.project,
+.post-single.type-cv .cv-row.research + .cv-row.research,
+.post-single.type-cv .cv-row.award + .cv-row.award,
+.post-single.type-cv .cv-row.teaching + .cv-row.teaching {
+    margin-top: 0.75rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+}
+
+.post-single.type-cv .cv-label,
+.post-single.type-cv .cv-years {
+    color: var(--secondary);
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: .93rem;
+    letter-spacing: 0.04em;
+    line-height: 1.32;
+}
+
+.post-single.type-cv .cv-label {
+    text-align: right;
+    text-transform: none;
+}
+
+.post-single.type-cv .cv-years {
+    font-family: "IBM Plex Mono", monospace;
+}
+
+.post-single.type-cv .cv-years {
+    text-align: right;
+}
+
+.post-single.type-cv .cv-years span {
+    display: block;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.post-single.type-cv .cv-main {
+    min-width: 0;
+    max-width: 60ch;
+    color: var(--secondary);
+}
+
+.post-single.type-cv .post-content,
+.post-single.type-cv .cv-main,
+.post-single.type-cv .cv-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.post-single.type-cv .cv-main p {
+    margin: 0;
+}
+
+.post-single.type-cv .cv-main p + p,
+.post-single.type-cv .cv-main ul {
+    margin-top: 0.18rem;
+}
+
+.post-single.type-cv .cv-main ul {
+    padding-left: 0.95rem;
+}
+
+.post-single.type-cv .cv-main li + li {
+    margin-top: 0.16rem;
+}
+
+.post-single.type-cv .cv-row.compact .cv-main,
+.post-single.type-cv .cv-row.award .cv-main {
+    max-width: 68ch;
+}
+
+.post-single.type-cv .cv-row.compact .cv-main p,
+.post-single.type-cv .cv-row.award .cv-main p {
+    margin: 0;
+}
+
+.post-single.type-cv .cv-row.research .cv-main,
+.post-single.type-cv .cv-row.teaching .cv-main,
+.post-single.type-cv .cv-row.detail .cv-main {
+    max-width: 62ch;
+}
+
+.post-single.type-cv .cv-main p.cv-research-title,
+.post-single.type-cv .cv-teaching-title {
+    margin: 0;
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-main p.cv-research-title {
+    font-size: 1.06rem;
+    font-weight: 500;
+    line-height: 1.66;
+}
+
+.post-single.type-cv .cv-main p.cv-research-meta {
+    margin: 0.18rem 0 0;
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.015em;
+    line-height: 1.38;
+}
+
+.post-single.type-cv .cv-research-meta a {
+    color: inherit;
+}
+
+.post-single.type-cv .cv-research-abstract {
+    margin-top: 0.52rem;
+    color: var(--primary);
+    font-size: 1rem;
+    line-height: 1.66;
+}
+
+.post-single.type-cv .cv-research-abstract p,
+.post-single.type-cv .cv-research-abstract li {
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-teaching-code,
+.post-single.type-cv .cv-teaching-name {
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-teaching-kind,
+.post-single.type-cv .cv-teaching-tag {
+    color: var(--secondary);
+}
+
+.post-single.type-cv .cv-main p.cv-teaching-detail {
+    margin: 0.2rem 0 0;
+    color: var(--secondary);
+    font-size: 0.96rem;
+    line-height: 1.66;
+}
+
+.post-single.type-cv .cv-row.detail .cv-main > p:first-child {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-project-list {
+    display: grid;
+    gap: 0;
+}
+
+.post-single.type-cv .cv-row.project {
+    display: grid;
+    grid-template-columns: 6.8rem minmax(0, 1fr);
+    gap: 0 0.95rem;
+    align-items: first baseline;
+}
+
+.post-single.type-cv .cv-row.project .cv-main {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: 40.5rem;
+}
+
+.post-single.type-cv .cv-project-note {
+    margin: 0.9rem 0 0;
+    width: 100%;
+    max-width: none;
+    padding-left: 0;
+    color: var(--secondary);
+}
+
+.post-single.type-cv .cv-project-summary {
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-project-summary p {
+    color: var(--primary);
+    line-height: 1.45;
+}
+
+.post-single.type-cv .cv-project-links,
+.post-single.type-cv .cv-project-summary p,
+.post-single.type-cv .cv-project-stack {
+    margin: 0;
+}
+
+.post-single.type-cv .cv-project-links {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+}
+
+.post-single.type-cv .cv-project-links span {
+    display: block;
+    white-space: nowrap;
+}
+
+.post-single.type-cv .cv-project-links a {
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.015em;
+    line-height: 1.38;
+    text-transform: none;
+}
+
+.post-single.type-cv .cv-project-links a:hover {
+    color: var(--accent);
+}
+
+.post-single.type-cv .cv-project-summary strong {
+    font-weight: 500;
+}
+
+.post-single.type-cv .cv-project-summary a {
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-project-summary strong a {
+    color: var(--primary);
+}
+
+.post-single.type-cv .cv-project-stack {
+    margin-top: 0.2rem;
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.015em;
+    line-height: 1.5;
+    text-transform: lowercase;
+}
+
+.post-single.type-cv .cv-sheet > p,
+.post-single.type-cv .cv-sheet > ul {
+    max-width: 62ch;
+}
+
+.post-single.type-cv .cv-sheet > p + p,
+.post-single.type-cv .cv-sheet > p + ul,
+.post-single.type-cv .cv-sheet > ul + p {
+    margin-top: 0.55rem;
+}
+
+.post-single.type-cv .post-footer {
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+}
+
+.post-single.type-cv .post-footer .paginav {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.post-single.type-cv .cv-reader-shadow {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.post-single.type-cv .cv-sheet[hidden] {
+    display: block;
+}
+
+.post-single.type-cv .cv-preamble {
+    margin-bottom: var(--content-gap);
+    color: var(--secondary);
+    font-size: 0.88rem;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-label {
+    display: inline-flex;
+    align-items: center;
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    color: var(--secondary);
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--primary);
+    flex: 0 0 auto;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-body {
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+    font-size: 0.84rem;
+    line-height: 1;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-body p {
+    display: inline;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .post-single.type-cv .cv-hero h1 {
+        font-size: clamp(2.9rem, 11vw, 4.2rem);
+        line-height: 1;
+    }
+
+    .post-single.type-cv .cv-pair,
+    .post-single.type-cv .cv-row {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+
+    .post-single.type-cv .cv-project-list {
+        padding-left: 0;
+    }
+
+    .post-single.type-cv .cv-project-note {
+        padding-left: 0;
+    }
+
+    .post-single.type-cv .cv-row.project {
+        grid-template-columns: 1fr;
+    }
+
+    .post-single.type-cv .cv-row.project .cv-main {
+        max-width: none;
+    }
+
+    .post-single.type-cv .cv-years {
+        text-align: left;
+    }
+
+    .post-single.type-cv .cv-label {
+        text-align: left;
+    }
+
+    .post-single.type-cv .cv-project-links {
+        text-align: left;
+    }
+
+    .post-single.type-cv .cv-row.project + .cv-row.project {
+        margin-top: 0.8rem;
+    }
+
+    .post-single.type-cv .cv-preamble {
+        display: none;
+    }
+}
+
+@media print {
+    .post-single.type-cv .cv-row.project {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .post-single.type-cv .cv-row.project .cv-main {
+        max-width: none;
+    }
+
+    .post-single.type-cv .cv-project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.15rem 0.7rem;
+        text-align: left;
+    }
+
+    .post-single.type-cv .cv-project-links span {
+        display: inline;
+        white-space: normal;
+    }
+
+    .post-single.type-cv .cv-project-links span + span::before {
+        content: "/";
+        margin-right: 0.45rem;
+        color: var(--secondary);
+    }
+}

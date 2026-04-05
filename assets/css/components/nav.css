@@ -1,0 +1,155 @@
+.paginav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    background: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    line-height: 1.4;
+}
+.paginav a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    max-width: 45%;
+    width: auto;
+    color: var(--secondary);
+    font-size: 0.85em;
+    transition: color 0.15s;
+    border: none;
+    border-radius: 0;
+    background: none;
+    padding: 0;
+}
+.paginav a:hover {
+    color: var(--accent);
+    background: none;
+}
+.paginav a span:hover {
+    box-shadow: none;
+}
+.paginav .title {
+    font-variant: small-caps;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    color: var(--secondary);
+}
+.paginav a span:not(.title) {
+    font-family: var(--font-serif-main);
+    font-size: 1.3em;
+    font-weight: 400;
+    color: var(--primary);
+    line-height: 1.2;
+}
+.paginav a:hover span:not(.title) { color: var(--accent); }
+.paginav .prev { text-align: left; }
+.paginav .next {
+    text-align: right;
+    margin-inline-start: auto;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    list-style: none;
+}
+.share-buttons li,
+.share-buttons a {
+    display: inline-flex;
+}
+.share-buttons a {
+    color: var(--secondary);
+}
+.share-buttons a:hover {
+    color: var(--accent);
+    background: none;
+}
+.share-buttons a:not(:last-of-type) {
+    margin-inline-end: 0;
+}
+.post-share-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-share-bar {
+    display: inline-flex;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78em;
+    letter-spacing: 0.08em;
+}
+.post-share-footer .post-share-toggle {
+    display: block;
+    line-height: 1;
+    padding: 0 0 0.45rem;
+    border-bottom: 3px solid var(--border);
+}
+.post-share-footer .post-share-toggle[aria-expanded="true"] {
+    border-bottom-color: transparent;
+}
+.post-share-footer .post-share-panel {
+    width: fit-content;
+    max-width: 100%;
+    padding-top: 0.55rem;
+}
+.post-share-footer .post-share-panel:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-share-footer .post-share-panel:not([hidden])::before {
+    content: "";
+    width: 100%;
+    border-top: 3px solid var(--border);
+    margin-bottom: 0.7rem;
+}
+.post-share-footer .share-buttons {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.page-footer {
+    margin-top: 2rem;
+}
+.pagination {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0;
+    border-top: none;
+}
+.pagination a {
+    color: var(--secondary);
+    font-size: 0.78em;
+    line-height: 1.4;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.pagination a:hover {
+    color: var(--accent);
+}
+.pagination .next {
+    margin-inline-start: auto;
+}

@@ -1,0 +1,34 @@
+.site-footer {
+    line-height: 1.35;
+    text-align: center;
+}
+
+.site-footer-content {
+    display: grid;
+    justify-items: center;
+    gap: 0.2rem;
+}
+
+.site-footer-copyright {
+    color: var(--primary);
+    white-space: nowrap;
+    font-size: 0.96rem;
+}
+
+.site-footer-copyright p {
+    margin: 0;
+}
+
+.site-footer-tools {
+    --balanced-sep-color: var(--border);
+    --balanced-col-gap: 0;
+    --balanced-row-gap: 0.15rem;
+    --balanced-sep-gap: 0.32rem;
+    font-size: 0.88rem;
+}
+
+@media (max-width: 700px) {
+    .site-footer-content {
+        gap: 0.35rem;
+    }
+}

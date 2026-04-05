@@ -1,0 +1,99 @@
+.post-single.type-contact {
+    max-width: 46rem;
+}
+
+.post-single.type-contact .post-header {
+    margin-bottom: 1.1rem;
+}
+
+.post-single.type-contact .post-content {
+    margin-top: 0;
+}
+
+.post-single.type-contact .post-content hr {
+    display: none;
+}
+
+.post-single.type-contact .post-content h3 {
+    margin-top: 1.4rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.post-single.type-contact .post-content > h3:first-child {
+    margin-top: 0;
+}
+
+.post-single.type-contact .post-content h3 strong {
+    font-weight: inherit;
+}
+
+.post-single.type-contact .post-content p,
+.post-single.type-contact .post-content li {
+    color: var(--secondary);
+    font-size: 1rem;
+    line-height: 1.68;
+}
+
+.post-single.type-contact .post-content ul {
+    margin-top: 0.55rem;
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.post-single.type-contact .post-content table {
+    width: 100%;
+    margin-top: 0.55rem;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.post-single.type-contact .post-content thead {
+    display: none;
+}
+
+.post-single.type-contact .post-content table td {
+    padding: 0.28rem 0;
+    border: none;
+    vertical-align: baseline;
+}
+
+.post-single.type-contact .post-content table td:first-child {
+    width: 8.5rem;
+    padding-right: 1rem;
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    white-space: nowrap;
+}
+
+.post-single.type-contact .post-content table td:last-child {
+    color: var(--secondary);
+}
+
+.post-single.type-contact .post-content li {
+    margin: 0;
+}
+
+.post-single.type-contact .post-content a,
+.post-single.type-contact .post-content strong {
+    color: var(--primary);
+}
+
+.post-single.type-contact .post-content a:hover {
+    color: var(--accent);
+}
+
+.post-single.type-contact .post-content strong {
+    font-weight: 500;
+}

@@ -1,0 +1,20 @@
+.breadcrumbs {
+    font-variant: small-caps;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    display: block;
+}
+.breadcrumbs a {
+    color: var(--secondary);
+    font-size: inherit;
+}
+.breadcrumbs a:hover { color: var(--accent); }
+.breadcrumbs .crumb-sep {
+    margin: 0 0.3em;
+    font-variant: normal;
+    font-size: 0.7em;
+    opacity: 0.3;
+}
+.breadcrumbs .crumb-current { color: var(--primary); }

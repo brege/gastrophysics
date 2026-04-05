@@ -1,0 +1,62 @@
+.first-entry {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+}
+
+.home-signal.first-entry {
+    border-bottom: none;
+}
+
+.home-signal {
+    padding: 2.8rem 0 0;
+}
+.home-signal .entry-header {
+    display: block;
+    overflow: visible;
+    text-align: center;
+}
+.home-signal .entry-content {
+    max-width: 46rem;
+    margin: 1.35rem auto 0;
+    text-align: center;
+    font-size: 1.04rem;
+    line-height: 1.82;
+}
+.home-signal .entry-content p {
+    margin: 0;
+}
+.home-signal-note {
+    --balanced-col-gap: 0;
+    --balanced-row-gap: 0;
+    --balanced-sep-gap: 0.45rem;
+    --balanced-sep-color: var(--secondary);
+    --balanced-item-align: center;
+    margin: 0 0 0.85rem;
+    color: var(--secondary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+.home-signal-note span {
+    color: inherit;
+}
+.home-markers {
+    --balanced-sep-color: var(--secondary);
+    --balanced-col-gap: 0;
+    --balanced-row-gap: 0.45rem;
+    --balanced-sep-gap: 0.3rem;
+    margin: 1.25rem auto 0;
+    padding: 0;
+    list-style: none;
+    color: var(--secondary);
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+.home-markers a {
+    color: var(--primary);
+    font-weight: 500;
+}
+.home-markers a:hover {
+    color: var(--accent);
+}

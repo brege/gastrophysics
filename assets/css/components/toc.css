@@ -1,0 +1,153 @@
+.toc-anchor,
+.toc-margin-wrap {
+    display: none;
+}
+
+.toc-preamble .toc {
+    margin-bottom: 0.22rem;
+}
+
+.post-single .toc {
+    border: none;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+}
+.post-single .toc details {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+.post-single .toc summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+    list-style: none;
+    margin-inline-start: 0;
+}
+.post-single .toc summary::-webkit-details-marker { display: none; }
+.post-single .toc .toc-mark {
+    display: inline-block;
+    position: relative;
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--primary);
+    flex: 0 0 auto;
+    overflow: visible;
+}
+.post-single .toc .toc-mark svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+}
+.post-single .toc .toc-mark-open {
+    display: none;
+}
+.post-single .toc details[open] .toc-mark-closed {
+    display: none;
+}
+.post-single .toc details[open] .toc-mark-open {
+    display: block;
+}
+.post-single .toc summary .details {
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: 1;
+    text-transform: inherit;
+}
+.post-single .toc .inner {
+    border-left: 2px solid var(--border);
+    padding-left: 1rem;
+    margin: 0;
+    padding-right: 0;
+    opacity: 1;
+}
+.post-single .toc .inner ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.85em;
+    line-height: 1.4;
+    margin-inline-start: 0;
+}
+.post-single .toc .inner ul ul {
+    padding-left: 1rem;
+    margin-top: 0.3rem;
+    margin-inline-start: 0;
+}
+.post-single .toc .inner li {
+    margin-bottom: 0.5rem;
+}
+.post-single .toc .inner a {
+    color: var(--secondary);
+    transition: color 0.15s;
+    display: block;
+    padding: 0.1em 0;
+    box-shadow: none;
+    position: relative;
+}
+.post-single .toc .inner a:hover,
+.post-single .toc .inner a.active {
+    color: var(--accent);
+    box-shadow: none;
+}
+
+@media (min-width: 1200px) {
+    .toc-anchor {
+        display: block;
+        position: relative;
+        height: 0;
+    }
+
+    .toc-margin-wrap {
+        display: block;
+        position: fixed;
+        top: calc(var(--header-height) + 1.5rem);
+        left: calc(50% + (var(--main-width) / 2) + 2rem);
+        width: 200px;
+        max-height: calc(100vh - var(--header-height) - 3rem);
+        overflow-y: auto;
+    }
+
+    .toc-margin-wrap .toc .inner a.active::before {
+        content: "";
+        position: absolute;
+        top: 0.22em;
+        bottom: 0.22em;
+        left: -1.15rem;
+        width: 3px;
+        background: var(--accent);
+        border-radius: 999px;
+    }
+
+    .toc-preamble {
+        display: none;
+    }
+
+    .toc-margin-wrap .toc {
+        width: 200px;
+        margin: 0;
+    }
+
+    :root[data-theme="dark"] .toc-margin-wrap .toc {
+        background: none;
+    }
+}

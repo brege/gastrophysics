@@ -1,0 +1,107 @@
+.post-list.tags-expanded .entry-tags-preview {
+    max-height: none;
+    flex-wrap: wrap;
+    overflow: visible;
+}
+
+.list-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex: 0 0 auto;
+}
+.view-toggle,
+.tags-toggle,
+.recipe-view-toggle {
+    display: flex;
+    flex: 0 0 auto;
+}
+.view-toggle button,
+.tags-toggle button,
+.recipe-view-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+}
+.view-toggle button:hover,
+.tags-toggle button:hover,
+.recipe-view-toggle button:hover {
+    color: var(--primary);
+}
+.view-toggle svg,
+.tags-toggle svg,
+.recipe-view-toggle svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+.view-toggle svg {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+.tags-toggle svg,
+.recipe-view-toggle .icon-browse {
+    fill: currentColor;
+}
+.recipe-view-toggle .icon-compact {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+.view-toggle[data-current-view="expanded"] .icon-horizontal,
+.view-toggle[data-current-view="compact"] .icon-minimal {
+    display: none;
+}
+.recipe-view-toggle[data-recipe-view="compact"] .icon-compact,
+.recipe-view-toggle[data-recipe-view="browse"] .icon-browse,
+.tags-toggle[data-tag-mode="clamped"] .icon-clamped,
+.tags-toggle[data-tag-mode="expanded"] .icon-expanded {
+    display: none;
+}
+
+.home-info-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.8rem;
+}
+.home-info-footer .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    min-width: 0;
+    width: 100%;
+}
+.home-info-footer .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+}
+.home-info-footer .social-icons a svg {
+    width: 26px;
+    height: 26px;
+}
+.home-signal-rule {
+    width: var(--home-signal-rule-width, 0px);
+    max-width: 100%;
+    margin: 1.2rem auto 0;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+    .home-info-footer {
+        gap: 0.75rem;
+    }
+}

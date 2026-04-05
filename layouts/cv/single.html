@@ -12,9 +12,9 @@
 
 <article class="post-single type-cv section-{{ default "root" .Section }}">
   <header class="post-header">
-    {{ partial "breadcrumbs.html" . }}
+    {{ partial "nav/breadcrumbs.html" . }}
     <div class="cv-hero entry-header">
-      {{- partial "balanced_sequence.html" (dict
+      {{- partial "util/balanced_sequence.html" (dict
         "class" "home-signal-note"
         "tag" "p"
         "align" "left"
@@ -28,7 +28,7 @@
     </div>
     {{- end }}
     {{- if not (.Param "hideMeta") }}
-    {{- partial "single_meta.html" . -}}
+    {{- partial "post/single_meta.html" . -}}
     {{- end }}
   </header>
 
@@ -36,11 +36,11 @@
   {{- if $showToc }}
   <div class="toc-anchor">
     <div class="toc-margin-wrap">
-      {{- partial "toc.html" . }}
+      {{- partial "nav/toc.html" . }}
     </div>
   </div>
   <div class="toc-preamble">
-    {{- partial "toc.html" . }}
+    {{- partial "nav/toc.html" . }}
   </div>
   {{- end }}
 
@@ -52,7 +52,7 @@
       <div class="cv-preamble">{{ .Content }}</div>
     {{- end -}}
     {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" (partial "cv.html" .) -}}
+    {{- partial "post/anchored_headings.html" (partial "cv.html" .) -}}
     {{- else -}}
     {{ partial "cv.html" . }}
     {{- end }}
@@ -60,7 +60,7 @@
 
   <footer class="post-footer">
     {{- if (.Param "ShowPostNavLinks") }}
-    {{- partial "post_nav_links.html" . }}
+    {{- partial "post/nav_links.html" . }}
     {{- end }}
     {{- if $showShare }}
     <div class="post-share-footer post-share-wrap">
@@ -74,7 +74,7 @@
         </button>
       </div>
       <div id="share-links-footer" class="post-share-panel" hidden>
-        {{- partial "share_icons.html" . -}}
+        {{- partial "post/share.html" . -}}
       </div>
     </div>
     {{- end }}
@@ -128,7 +128,7 @@
 {{- end }}
 
 {{- if .Param "headerNav" }}
-{{- partial "header_nav.html" . -}}
+{{- partial "nav/sections.html" . -}}
 {{- end }}
 
 {{- end }}

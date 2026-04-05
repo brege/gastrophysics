@@ -1,0 +1,512 @@
+.post-entry,
+.post-card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+    transition: none;
+}
+.post-entry:active {
+    transform: none;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card .entry-media {
+    min-width: 0;
+}
+.post-card .entry-cover {
+    margin-bottom: 0;
+    text-align: left;
+}
+.post-card .entry-cover figcaption,
+.post-single .entry-cover figcaption {
+    margin-top: 0.45rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7em;
+    color: var(--secondary);
+    opacity: 0.75;
+}
+.post-card .entry-body {
+    min-width: 0;
+}
+.post-card .entry-summary {
+    margin: 0.45rem 0 0;
+    color: var(--secondary);
+    font-size: 0.92em;
+    line-height: 1.55;
+}
+.post-card .entry-summary p {
+    margin: 0;
+}
+.post-card .entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    margin-top: 0.75rem;
+    color: var(--secondary);
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.post-card .entry-tags {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 0.75rem;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+}
+.post-card .entry-tags .tag-line {
+    flex: 1;
+    min-width: 2rem;
+    position: relative;
+    height: 1.6em;
+}
+.post-card .entry-tags .tag-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid var(--border);
+    transform: translateY(-50%);
+}
+.post-card .entry-tags-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.8rem;
+    margin: 0 0 0 0.6rem;
+    padding: 0;
+    list-style: none;
+    max-height: 2.9rem;
+    overflow: hidden;
+    min-width: 0;
+    line-height: 1.6;
+}
+.post-card .entry-tags-preview li {
+    flex: 0 0 auto;
+}
+.post-card .entry-tags-preview a {
+    font-variant: small-caps;
+    font-size: 0.82em;
+    color: var(--secondary);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    display: inline-block;
+    position: relative;
+}
+.post-card .entry-tags-preview a:hover {
+    color: var(--accent);
+}
+.post-card .entry-tags-preview a::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    margin-right: 0.3em;
+    vertical-align: middle;
+}
+.post-card .entry-date-col {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78em;
+    color: var(--secondary);
+    white-space: nowrap;
+}
+.post-card .entry-date-col time {
+    display: inline-block;
+}
+
+.view-horizontal .post-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+.view-horizontal .post-card .entry-media {
+    grid-row: 1 / -1;
+}
+.view-horizontal .post-card .entry-cover {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.view-horizontal .post-card .entry-cover img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+.view-horizontal .post-card .entry-date-col {
+    display: none;
+}
+.view-horizontal .post-card.no-cover {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.2rem 0;
+}
+.view-horizontal .post-card.no-cover .entry-meta {
+    display: none;
+}
+.view-horizontal .post-card.no-cover .entry-summary {
+    margin-top: 0.35rem;
+    max-width: 48ch;
+}
+.view-horizontal .post-card.no-cover .entry-header h2 {
+    font-size: 1.3em;
+    margin-top: 0;
+}
+.view-horizontal .post-card.no-cover .entry-body {
+    display: block;
+    min-width: 0;
+}
+.view-horizontal .post-card.no-cover .entry-category {
+    margin: 0 0 0.15rem;
+    font-size: 0.7em;
+    line-height: 1.4;
+}
+.view-horizontal .post-card.no-cover .entry-tags {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0.4rem;
+    max-width: 100%;
+}
+.view-horizontal .post-card.no-cover .entry-tags .tag-line {
+    min-width: 1.25rem;
+    flex: 0 0 1.25rem;
+}
+.post-list:not(.tags-expanded).view-horizontal .post-card.no-cover .entry-tags-preview,
+.post-list:not(.tags-expanded).view-minimal .post-card .entry-tags-preview,
+.hero-list-compact .post-card.home-lead .entry-tags-preview {
+    flex-wrap: nowrap;
+    max-height: none;
+    margin-left: 0.45rem;
+}
+.view-horizontal .post-card.no-cover .entry-tags-preview a {
+    font-size: 0.76em;
+}
+.view-horizontal .post-card.no-cover .entry-date-col {
+    display: flex;
+    align-self: start;
+}
+.view-horizontal .post-card.home-lead,
+.view-minimal .post-card.home-lead,
+.hero-list-expanded .post-card.home-lead {
+    grid-template-columns: minmax(260px, 320px) 1fr;
+    gap: 1.35rem;
+    padding: 1rem;
+    margin: 0.25rem 0 1.1rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.view-horizontal .post-card.home-lead .entry-body,
+.view-minimal .post-card.home-lead .entry-body,
+.hero-list-expanded .post-card.home-lead .entry-body {
+    min-width: 0;
+    padding-right: 0.15rem;
+}
+.view-horizontal .post-card.home-lead .entry-header h2,
+.view-minimal .post-card.home-lead .entry-header h2,
+.hero-list-expanded .post-card.home-lead .entry-header h2 {
+    margin-top: 0;
+    font-size: 1.6em;
+}
+.view-horizontal .post-card.home-lead .entry-summary,
+.view-minimal .post-card.home-lead .entry-summary,
+.hero-list-expanded .post-card.home-lead .entry-summary {
+    font-size: 0.98em;
+}
+.view-horizontal .post-card.home-lead .entry-summary p,
+.view-minimal .post-card.home-lead .entry-summary p,
+.hero-list-expanded .post-card.home-lead .entry-summary p {
+    max-width: 42ch;
+}
+.view-horizontal .post-card.home-lead .entry-meta,
+.view-minimal .post-card.home-lead .entry-meta,
+.hero-list-expanded .post-card.home-lead .entry-meta {
+    margin-top: 0.8rem;
+}
+.view-horizontal .post-card.home-lead .entry-tags,
+.view-minimal .post-card.home-lead .entry-tags,
+.hero-list-expanded .post-card.home-lead .entry-tags {
+    margin-top: 0.85rem;
+}
+.view-horizontal .post-card.home-lead .entry-cover,
+.view-minimal .post-card.home-lead .entry-cover,
+.hero-list-expanded .post-card.home-lead .entry-cover {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.view-horizontal .post-card.home-lead .entry-cover img,
+.view-minimal .post-card.home-lead .entry-cover img,
+.hero-list-expanded .post-card.home-lead .entry-cover img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+.view-minimal .post-card.home-lead .entry-media,
+.view-minimal .post-card.home-lead .entry-summary,
+.hero-list-expanded .post-card.home-lead .entry-media,
+.hero-list-expanded .post-card.home-lead .entry-summary {
+    display: block;
+}
+.view-minimal .post-card.home-lead .entry-meta,
+.hero-list-expanded .post-card.home-lead .entry-meta {
+    display: flex;
+}
+.view-minimal .post-card.home-lead .entry-date-col,
+.hero-list-expanded .post-card.home-lead .entry-date-col {
+    display: none;
+}
+.home-feed-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.35rem 0 0.8rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+}
+.home-feed-header h2 {
+    margin: 0;
+    font-family: var(--font-serif-main);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+}
+.home-feed-header a {
+    color: inherit;
+}
+.home-feed-header a:hover {
+    color: var(--accent);
+}
+
+.view-minimal .post-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.2rem 0;
+}
+.view-minimal .post-card .entry-media,
+.view-minimal .post-card .entry-meta {
+    display: none;
+}
+.view-minimal .post-card .entry-summary {
+    display: block;
+    margin-top: 0.35rem;
+    max-width: 48ch;
+}
+.view-minimal .post-card .entry-header h2 {
+    font-size: 1.3em;
+}
+.view-minimal .post-card .entry-body {
+    display: block;
+    min-width: 0;
+}
+.view-minimal .post-card .entry-category {
+    margin: 0 0 0.15rem;
+    font-size: 0.7em;
+    line-height: 1.4;
+}
+.view-minimal .post-card .entry-header h2 {
+    margin-top: 0;
+}
+.view-minimal .post-card .entry-tags {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0.4rem;
+    max-width: 100%;
+}
+.view-minimal .post-card .entry-tags .tag-line {
+    min-width: 1.25rem;
+    flex: 0 0 1.25rem;
+}
+.view-minimal .post-card .entry-tags-preview a {
+    font-size: 0.76em;
+}
+.view-minimal .post-card .entry-date-col {
+    align-self: start;
+}
+.view-horizontal .post-card:not(.home-lead)[data-summary-expanded="false"] .entry-summary,
+.view-minimal .post-card:not(.home-lead)[data-summary-compact="false"] .entry-summary {
+    display: none;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact,
+.view-minimal .post-card.home-lead.hero-view-compact,
+.hero-list-compact .post-card.home-lead.hero-view-compact {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-media,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-media,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-media,
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-meta,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-meta,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-meta {
+    display: none;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-body,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-body,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-body {
+    display: block;
+    min-width: 0;
+    padding-right: 0;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-header h2,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-header h2,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-header h2 {
+    margin-top: 0;
+    font-size: 1.3em;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-summary,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-summary,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-summary {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.92em;
+    max-width: 48ch;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-category,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-category,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-category {
+    margin: 0 0 0.15rem;
+    font-size: 0.7em;
+    line-height: 1.4;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-tags,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0.4rem;
+    max-width: 100%;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags .tag-line,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-tags .tag-line,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags .tag-line {
+    min-width: 1.25rem;
+    flex: 0 0 1.25rem;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags-preview a,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-tags-preview a,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags-preview a {
+    font-size: 0.76em;
+}
+.view-horizontal .post-card.home-lead.hero-view-compact .entry-date-col,
+.view-minimal .post-card.home-lead.hero-view-compact .entry-date-col,
+.hero-list-compact .post-card.home-lead.hero-view-compact .entry-date-col {
+    display: flex;
+    align-self: start;
+}
+.hero-list-expanded .post-card.home-lead.hero-view-expanded.summary-expanded-false .entry-summary,
+.hero-list-compact .post-card.home-lead.hero-view-compact.summary-compact-false .entry-summary,
+.view-horizontal .post-card.home-lead.hero-view-expanded[data-summary-expanded="false"] .entry-summary,
+.view-minimal .post-card.home-lead.hero-view-expanded[data-summary-expanded="false"] .entry-summary,
+.view-horizontal .post-card.home-lead.hero-view-compact[data-summary-compact="false"] .entry-summary,
+.view-minimal .post-card.home-lead.hero-view-compact[data-summary-compact="false"] .entry-summary {
+    display: none;
+}
+.post-card.summary-visible .entry-summary {
+    display: block !important;
+}
+.post-card.summary-hidden .entry-summary {
+    display: none !important;
+}
+
+.entry-category {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7em;
+    color: var(--secondary);
+    opacity: 0.75;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.15rem;
+    position: relative;
+    z-index: 1;
+}
+.entry-category a {
+    color: inherit;
+}
+.entry-category a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 700px) {
+    .view-horizontal .post-card .entry-tags-preview,
+    .view-minimal .post-card .entry-tags-preview,
+    .hero-list-expanded .post-card.home-lead .entry-tags-preview,
+    .hero-list-compact .post-card.home-lead .entry-tags-preview {
+        gap: 0.2rem 0.65rem;
+    }
+
+    .view-horizontal .post-card.no-cover,
+    .view-horizontal .post-card.home-lead,
+    .hero-list-expanded .post-card.home-lead,
+    .hero-list-compact .post-card.home-lead {
+        grid-template-columns: 1fr;
+    }
+
+    .view-horizontal .post-card {
+        grid-template-columns: 1fr;
+    }
+
+    .view-horizontal .post-card.no-cover .entry-date-col,
+    .view-horizontal .post-card.home-lead .entry-date-col,
+    .hero-list-expanded .post-card.home-lead .entry-date-col,
+    .hero-list-compact .post-card.home-lead .entry-date-col,
+    .view-horizontal .post-card .entry-date-col {
+        display: none;
+    }
+
+    .view-horizontal .post-card.home-lead,
+    .hero-list-expanded .post-card.home-lead,
+    .hero-list-compact .post-card.home-lead {
+        gap: 0.85rem;
+        padding: 0.8rem;
+    }
+
+    .view-minimal .post-card.home-lead,
+    .hero-list-compact .post-card.home-lead {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        padding: 0.8rem;
+    }
+
+    .view-minimal .post-card,
+    .view-horizontal .post-card {
+        grid-template-columns: 1fr;
+    }
+
+    .view-minimal .post-card .entry-body {
+        display: block;
+    }
+
+    .view-minimal .post-card .entry-category {
+        margin-bottom: 0.2rem;
+    }
+
+    .view-minimal .post-card .entry-date-col {
+        display: block;
+        margin-top: 0.6rem;
+    }
+}

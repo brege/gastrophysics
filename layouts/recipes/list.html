@@ -4,7 +4,7 @@
 
 {{- if not .IsHome | and .Title }}
 <header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
+  {{- partial "nav/breadcrumbs.html" . }}
   <div class="page-header-main">
     <h1>
       {{ .Title }}
@@ -18,7 +18,7 @@
     </h1>
     {{- if not $recipeLanding }}
     <div class="list-controls">
-      {{- partial "recipe_view_toggle.html" . }}
+      {{- partial "recipe/view_toggle.html" . }}
     </div>
     {{- end }}
   </div>
@@ -35,12 +35,12 @@
   {{- if $recipeLanding }}
   <div class="recipes-section-toggle-source" hidden>
     <div class="list-controls">
-      {{- partial "recipe_view_toggle.html" . }}
+      {{- partial "recipe/view_toggle.html" . }}
     </div>
   </div>
   {{- end }}
   {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
+  {{- partial "post/anchored_headings.html" .Content -}}
   {{- else }}{{ .Content }}{{ end }}
 </div>
 {{- end }}

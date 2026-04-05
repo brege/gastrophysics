@@ -61,11 +61,12 @@
 
 {{- /* order is important */}}
 {{- $core := (slice $theme_vars $reset $common $chroma_styles $chroma_mod $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
+{{- $palette := (resources.Match "css/palette/*.css") | resources.Concat "assets/css/palette.css" | resources.Minify }}
+{{- $components := (resources.Match "css/components/*.css") | resources.Concat "assets/css/components.css" | resources.Minify }}
 {{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
 
 {{- /* bundle all required css */}}
-{{- /* Add extended css after theme style */ -}}
-{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css"  }}
+{{- $stylesheet := (slice $license_css $core $palette $components $extended) | resources.Concat "assets/css/stylesheet.css" }}
 
 {{- if not site.Params.assets.disableFingerprinting }}
 {{- $stylesheet := $stylesheet | fingerprint }}
@@ -194,8 +195,8 @@
 </script>
 {{- end }}
 
-{{- if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
-{{- if .Params.jquery }}{{ partial "helpers/jquery.html" . }}{{ end }}
+{{- if .Params.math }}{{ partial "vendor/katex.html" . }}{{ end }}
+{{- if .Params.jquery }}{{ partial "vendor/jquery.html" . }}{{ end }}
 
 {{- $palette := site.Params.color | default "linen" -}}
 {{- $lightPalette := site.Params.colorLight | default $palette -}}

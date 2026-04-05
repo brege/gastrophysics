@@ -4,7 +4,7 @@
 
 <article class="post-single type-{{ default "page" .Type }} section-{{ default "root" .Section }}">
   <header class="post-header">
-    {{ partial "breadcrumbs.html" . }}
+    {{ partial "nav/breadcrumbs.html" . }}
     <h1 class="post-title entry-hint-parent">
       {{ .Title }}
       {{- if .Draft }}
@@ -19,7 +19,7 @@
     </div>
     {{- end }}
     {{- if not (.Param "hideMeta") }}
-    {{- partial "single_meta.html" . -}}
+    {{- partial "post/single_meta.html" . -}}
     {{- end }}
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
@@ -29,18 +29,18 @@
   {{- if $showToc }}
   <div class="toc-anchor">
     <div class="toc-margin-wrap">
-      {{- partial "toc.html" . }}
+      {{- partial "nav/toc.html" . }}
     </div>
   </div>
   <div class="toc-preamble">
-    {{- partial "toc.html" . }}
+    {{- partial "nav/toc.html" . }}
   </div>
   {{- end }}
 
   {{- if .Content }}
   <div class="post-content">
     {{- if and (ne .Type "menus") (not (.Param "disableAnchoredHeadings")) }}
-    {{- partial "anchored_headings.html" .Content -}}
+    {{- partial "post/anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
   </div>
   {{- end }}
@@ -118,7 +118,7 @@
     </div>
     {{- end }}
     {{- if (.Param "ShowPostNavLinks") }}
-    {{- partial "post_nav_links.html" . }}
+    {{- partial "post/nav_links.html" . }}
     {{- end }}
     {{- if $showShare }}
     <div class="post-share-footer post-share-wrap">
@@ -132,7 +132,7 @@
         </button>
       </div>
       <div id="share-links-footer" class="post-share-panel" hidden>
-        {{- partial "share_icons.html" . -}}
+        {{- partial "post/share.html" . -}}
       </div>
     </div>
     {{- end }}
@@ -187,7 +187,7 @@
 {{- end }}
 
 {{- if .Param "headerNav" }}
-{{- partial "header_nav.html" . -}}
+{{- partial "nav/sections.html" . -}}
 {{- end }}
 
 {{- end }}{{/* end main */}}
