@@ -1,0 +1,40 @@
+{{- $dateDelim := .date_delim | default " | " -}}
+{{- range .items -}}
+  {{- $item := . -}}
+  {{- $parts := slice -}}
+  {{- range split .date $dateDelim -}}
+    {{- $part := strings.TrimSpace . -}}
+    {{- if ne $part "" -}}
+      {{- $parts = $parts | append $part -}}
+    {{- end -}}
+  {{- end -}}
+  <article class="cv-row teaching">
+    <div class="cv-years{{ if gt (len $parts) 1 }} is-stack{{ end }}">
+      {{- range $parts -}}
+        <span>{{ . }}</span>
+      {{- end -}}
+    </div>
+    <div class="cv-main">
+      <p class="cv-teaching-title">
+        {{- with $item.code -}}
+          <span class="cv-teaching-code">{{ . }}</span>
+          <span class="cv-teaching-kind">{{ $item.kind }}</span>,
+          <span class="cv-teaching-name">{{ $item.name }}</span>
+        {{- else -}}
+          {{ $item.name }}
+        {{- end -}}
+        {{- with $item.tag }} <span class="cv-teaching-tag">{{ . }}</span>{{ end -}}
+      </p>
+      <p class="cv-teaching-detail">
+        {{- range $i, $d := $item.detail -}}
+          {{- if gt $i 0 }}, {{ end -}}
+          {{- with $d.url -}}
+            <a href="{{ . }}">{{ $d.name }}</a>
+          {{- else -}}
+            {{- $d.name -}}
+          {{- end -}}
+        {{- end -}}
+      </p>
+    </div>
+  </article>
+{{- end -}}

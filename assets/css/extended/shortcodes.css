@@ -1,0 +1,501 @@
+/* --- menu card (menu.html shortcode) --- */
+.menu-card {
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: 2.5rem 2rem;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.menu-card h2 {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+}
+.menu-card h3 {
+    display: block;
+    text-align: center;
+    font-family: var(--font-serif-display);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 0.55rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.menu-card h2 a,
+.menu-card h3 a {
+    text-decoration: none;
+}
+.menu-card h2 a:hover,
+.menu-card h3 a:hover,
+.menu-card h2 a:active,
+.menu-card h3 a:active {
+    text-decoration: none;
+}
+.menu-card .menu-items {
+    font-size: 1rem;
+    color: var(--secondary);
+    line-height: 1.8;
+    text-align: center;
+}
+.menu-card .menu-items p {
+    text-align: center;
+    color: var(--secondary);
+    font-size: 0.9em;
+    line-height: 1.75;
+    font-style: italic;
+    max-width: 400px;
+    margin: 0.45rem auto;
+}
+.menu-card .menu-items p em {
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+.menu-card .menu-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82em;
+    color: var(--secondary);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+.menu-card .menu-footer .menu-date {
+    font-style: italic;
+}
+.menu-card .menu-footer .menu-author {
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+}
+
+/* --- recipe sheet (recipe.html shortcode) --- */
+.recipe-list-shortcode {
+    margin: 0.65rem 0 1.6rem;
+}
+
+.menu-archive-shortcode {
+    margin: 0.75rem 0 1.6rem;
+}
+
+.menus-section-head,
+.recipes-section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 32px auto 24px;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-content .menus-section-head h2,
+.post-content .recipes-section-head h2 {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.menu-archive-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-archive-item {
+    border-bottom: 1px solid var(--border);
+}
+
+.menu-archive-compact {
+    display: block;
+    padding: 0.38rem 0 0.5rem;
+    color: inherit;
+    box-shadow: none !important;
+}
+
+.menu-archive-compact:hover,
+.menu-archive-compact:active {
+    box-shadow: none !important;
+}
+
+.menu-archive-title {
+    display: block;
+    font-family: var(--font-serif-main);
+    font-size: 1.28rem;
+    line-height: 1.08;
+    color: var(--primary);
+}
+
+.menu-archive-preview {
+    display: block;
+    margin-top: 0.14rem;
+    color: var(--secondary);
+    font-size: 0.96rem;
+    line-height: 1.45;
+}
+
+.menus-page .menu-archive-expanded {
+    display: none;
+}
+
+.menus-page[data-menu-view="compact"] .menu-archive-compact {
+    display: block;
+}
+
+.menus-page[data-menu-view="expanded"] .menu-archive-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.menus-page[data-menu-view="expanded"] .menu-archive-item {
+    border-bottom: none;
+}
+
+.menus-page[data-menu-view="expanded"] .menu-archive-compact {
+    display: none;
+}
+
+.menus-page[data-menu-view="expanded"] .menu-archive-expanded {
+    display: block;
+}
+
+.recipe-index-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recipe-index-item {
+    padding: 0.22rem 0 0.28rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-content .recipe-index-title {
+    display: block;
+    margin: 0;
+    font-family: var(--font-serif-main);
+    font-size: 1.34rem;
+    font-weight: 400;
+    line-height: 1.06;
+}
+
+.recipe-index-title a {
+    color: var(--primary);
+}
+
+.recipe-index-tags {
+    display: none;
+}
+
+.recipes-page[data-recipe-view="browse"] .recipe-index-item {
+    padding: 0.26rem 0 0.34rem;
+}
+
+.recipes-page[data-recipe-view="browse"] .recipe-index-tags {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 0.18rem;
+}
+
+.recipes-page[data-recipe-view="browse"] .recipe-index-tags .tag-line {
+    display: none;
+}
+
+.recipe-index-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 0;
+}
+
+.recipe-index-tag-list li {
+    flex: 0 0 auto;
+}
+
+.recipe-index-tag-list a {
+    font-variant: small-caps;
+    font-size: 0.72rem;
+    color: var(--secondary);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.recipe-index-tag-list a:hover {
+    color: var(--accent);
+}
+
+.recipe-index-tag-list a::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 0.3em;
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.recipe {
+    margin: 2rem auto 0;
+    max-width: 760px;
+    padding: 0;
+}
+.recipe .content > h2:first-child {
+    display: none;
+}
+.recipe .content > p:has(strong) {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    margin: 0 0 0.45rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+.recipe .content > p:has(strong) strong {
+    flex: 0 0 auto;
+    font-weight: 500;
+    color: var(--primary);
+}
+.recipe .content > p:nth-of-type(3) {
+    margin: 0.8rem 0 1.6rem;
+    max-width: 42rem;
+    color: var(--secondary);
+    font-style: italic;
+}
+.recipe .content h3 {
+    margin: 2rem 0 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+}
+.recipe .content h4 {
+    margin: 1rem 0 0.45rem;
+    font-size: 1em;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+}
+.recipe .content ul,
+.recipe .content ol {
+    margin: 0;
+    padding-left: 1.35rem;
+}
+.recipe .content ul li,
+.recipe .content ol li {
+    margin: 0.45rem 0;
+    line-height: 1.6;
+}
+.recipe .content > h3 + p,
+.recipe .content > h3 + p + p,
+.recipe .content > h3 + p + p + p,
+.recipe .content > h3 + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p + p + p + p + p,
+.recipe .content > h3 + p + p + p + p + p + p + p + p + p + p {
+    max-width: 44rem;
+    margin: 0.9rem 0;
+}
+.recipe .content em {
+    color: var(--secondary);
+}
+@media (max-width: 700px) {
+    .menus-section-head,
+    .recipes-section-head {
+        gap: 0.75rem;
+    }
+
+    .menu-archive-title {
+        font-size: 1.18rem;
+    }
+
+    .menu-archive-preview {
+        font-size: 0.9rem;
+    }
+
+    .recipe-list-shortcode {
+        margin-bottom: 1.35rem;
+    }
+
+    .post-content .recipe-index-title {
+        font-size: 1.25rem;
+    }
+
+    .recipe-index-tag-list {
+        gap: 0.2rem 0.55rem;
+    }
+
+    .recipe {
+        margin-top: 1.5rem;
+    }
+    .recipe .content > p:has(strong) {
+        margin-right: 0;
+    }
+}
+
+/* --- seasonal/weekly menu archive (this-weeks-menu.html shortcode) --- */
+.this-weeks-menus {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.season-menu {
+    display: block;
+    padding: 1rem 0 1.1rem;
+    border-top: 2px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+    box-shadow: none !important;
+}
+.season-menu:hover {
+    border-color: var(--primary);
+    box-shadow: none !important;
+}
+.season-menu-topline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+}
+.season-menu-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    padding-top: 0.2rem;
+}
+.season-menu-stamp {
+    font-family: var(--font-serif-display);
+    font-size: 2.15rem;
+    line-height: 0.9;
+    color: var(--primary);
+    flex: 0 0 auto;
+    justify-self: end;
+}
+.season-menu-title {
+    margin-bottom: 0.35rem;
+    font-family: var(--font-serif-display);
+    font-size: 1.66rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--primary);
+}
+.season-menu-items {
+    color: var(--secondary);
+    font-size: 1.13rem;
+    line-height: 1.65;
+}
+.season-menu-items span {
+    display: block;
+}
+.this-weeks-menus .season-menu.hidden-by-js {
+    display: none;
+}
+.post-content .season-menu,
+.post-content .season-menu:hover,
+.post-content .season-menu:active {
+    box-shadow: none !important;
+}
+
+/* --- keyboard tip (kbd-tip.html shortcode) --- */
+.post-single.type-cv .cv-preamble {
+    margin-bottom: var(--content-gap);
+    color: var(--secondary);
+    font-size: 0.88rem;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-label {
+    display: inline-flex;
+    align-items: center;
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    color: var(--secondary);
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--primary);
+    flex: 0 0 auto;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-body {
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+    font-size: 0.84rem;
+    line-height: 1;
+}
+
+.post-single.type-cv .cv-preamble .kbd-tip-body p {
+    display: inline;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .season-menu-topline {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.5rem;
+    }
+    .season-menu-stamp {
+        font-size: 1.9rem;
+    }
+
+    .post-single.type-cv .cv-preamble {
+        display: none;
+    }
+}

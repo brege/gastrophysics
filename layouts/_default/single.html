@@ -1,0 +1,193 @@
+{{- define "main" }}
+
+{{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) }}
+
+<article class="post-single type-{{ default "page" .Type }} section-{{ default "root" .Section }}">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title entry-hint-parent">
+      {{ .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        {{- partial "svg.html" (dict "name" "draft") -}}
+      </span>
+      {{- end }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    {{- partial "single_meta.html" . -}}
+    {{- end }}
+  </header>
+  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+
+  {{- $showToc := .Param "ShowToc" }}
+  {{- if $showToc }}
+  <div class="toc-anchor">
+    <div class="toc-margin-wrap">
+      {{- partial "toc.html" . }}
+    </div>
+  </div>
+  <div class="toc-preamble">
+    {{- partial "toc.html" . }}
+  </div>
+  {{- end }}
+
+  {{- if .Content }}
+  <div class="post-content">
+    {{- if and (ne .Type "menus") (not (.Param "disableAnchoredHeadings")) }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+  {{- end }}
+
+  {{- if $showToc }}
+  <script>
+    (function() {
+      var tocLinks = Array.from(document.querySelectorAll('.post-single .toc .inner a[href^="#"]'));
+      if (!tocLinks.length) return;
+
+      var groups = new Map();
+      var headings = [];
+
+      tocLinks.forEach(function(link) {
+        var id = decodeURIComponent(link.getAttribute('href').slice(1));
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        if (!groups.has(id)) {
+          groups.set(id, []);
+          headings.push(target);
+        }
+        groups.get(id).push(link);
+      });
+
+      if (!headings.length) return;
+
+      var activeId = "";
+
+      function setActive(id) {
+        if (id === activeId) return;
+        activeId = id;
+        groups.forEach(function(links, key) {
+          var isActive = key === id;
+          links.forEach(function(link) {
+            link.classList.toggle('active', isActive);
+          });
+        });
+      }
+
+      function syncActive() {
+        var offset = 120;
+        var current = headings[0];
+
+        headings.forEach(function(heading) {
+          if (heading.getBoundingClientRect().top - offset <= 0) {
+            current = heading;
+          }
+        });
+
+        if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 4)) {
+          current = headings[headings.length - 1];
+        }
+
+        setActive(current.id);
+      }
+
+      window.addEventListener('scroll', syncActive, { passive: true });
+      window.addEventListener('resize', syncActive);
+      syncActive();
+    })();
+  </script>
+  {{- end }}
+
+  <footer class="post-footer">
+    {{- $tags := "tags" }}
+    {{- with ($.GetTerms $tags) }}
+    <div class="post-tags">
+      <span class="tag-line" aria-hidden="true"></span>
+      <ul class="tag-list">
+        {{- range . }}
+        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if $showShare }}
+    <div class="post-share-footer post-share-wrap">
+      <div class="post-share-bar">
+        <button
+          class="post-share-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="share-links-footer">
+          share
+        </button>
+      </div>
+      <div id="share-links-footer" class="post-share-panel" hidden>
+        {{- partial "share_icons.html" . -}}
+      </div>
+    </div>
+    {{- end }}
+  </footer>
+
+</article>
+
+{{- if $showShare }}
+<script>
+  (function() {
+    var toggles = Array.prototype.slice.call(document.querySelectorAll(".post-share-toggle"));
+    if (!toggles.length) return;
+
+    function setOpen(toggle, open) {
+      var panelId = toggle.getAttribute("aria-controls");
+      var panel = panelId ? document.getElementById(panelId) : null;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (panel) {
+        panel.hidden = !open;
+      }
+    }
+
+    function closeAll() {
+      toggles.forEach(function(toggle) {
+        setOpen(toggle, false);
+      });
+    }
+
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener("click", function() {
+        var next = toggle.getAttribute("aria-expanded") !== "true";
+        closeAll();
+        setOpen(toggle, next);
+      });
+    });
+
+    document.addEventListener("click", function(event) {
+      var target = event.target;
+      if (target instanceof Element && target.closest(".post-share-wrap")) {
+        return;
+      }
+      closeAll();
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeAll();
+      }
+    });
+  })();
+</script>
+{{- end }}
+
+{{- if .Param "headerNav" }}
+{{- partial "header_nav.html" . -}}
+{{- end }}
+
+{{- end }}{{/* end main */}}

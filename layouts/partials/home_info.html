@@ -1,0 +1,46 @@
+{{- with site.Params.homeInfoParams }}
+{{- $note := .Note | default "data scientist / chef / astrophysicist" -}}
+{{- $noteItems := slice -}}
+{{- range split $note "/" }}
+  {{- $part := strings.TrimSpace . -}}
+  {{- if ne $part "" -}}
+    {{- $noteItems = $noteItems | append (dict "name" $part) -}}
+  {{- end -}}
+{{- end -}}
+<article class="first-entry home-info home-signal">
+    <header class="entry-header">
+        {{- partial "balanced_sequence.html" (dict
+          "class" "home-signal-note"
+          "tag" "p"
+          "align" "center"
+          "items" $noteItems
+        ) }}
+        <h1 class="home-signal-title">{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    {{ partial "home_markers.html" . }}
+    <footer class="entry-footer home-info-footer">
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+    </footer>
+    <div class="home-signal-rule" aria-hidden="true"></div>
+</article>
+<script>
+    (function () {
+        function syncHomeSignalRule() {
+            var signal = document.querySelector(".home-signal");
+            var title = signal && signal.querySelector(".home-signal-title");
+            if (!signal || !title) return;
+            signal.style.setProperty("--home-signal-rule-width", title.getBoundingClientRect().width + "px");
+        }
+
+        syncHomeSignalRule();
+        window.addEventListener("load", syncHomeSignalRule);
+        window.addEventListener("resize", syncHomeSignalRule);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(syncHomeSignalRule);
+        }
+    })();
+</script>
+{{- end -}}

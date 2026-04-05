@@ -1,0 +1,15 @@
+{{- range .items -}}
+  <div class="cv-pair">
+    <div class="cv-label">{{ .label }}</div>
+    <div class="cv-main">
+      {{- range $i, $e := .entries -}}
+        {{- if gt $i 0 }}, {{ end -}}
+        {{- if .primary }}<strong>{{ end -}}
+        {{- with .url }}<a href="{{ . }}">{{ end -}}
+        {{- .name -}}
+        {{- with .url }}</a>{{ end -}}
+        {{- if .primary }}</strong>{{ end -}}
+      {{- end -}}
+    </div>
+  </div>
+{{- end -}}

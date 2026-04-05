@@ -1,0 +1,4 @@
+{{- printf "## %s" .title | markdownify -}}
+{{- with .handler -}}
+  {{- partial (printf "cv/%s.html" .) $ -}}
+{{- end -}}

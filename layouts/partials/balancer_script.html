@@ -1,0 +1,156 @@
+<script>
+    (function () {
+        var nav = document.querySelector(".header .nav");
+        var toggle = document.getElementById("menu-toggle");
+        var menu = document.getElementById("menu");
+        var storageKey = "mobile-menu-open";
+
+        function isMobile() {
+            return window.matchMedia("(max-width: 700px)").matches;
+        }
+
+        function resetBalancedWrap(container) {
+            Array.prototype.forEach.call(container.querySelectorAll(".balanced-row"), function (row) {
+                while (row.firstChild) {
+                    container.appendChild(row.firstChild);
+                }
+                row.remove();
+            });
+            container.removeAttribute("data-layout");
+            Array.prototype.forEach.call(container.querySelectorAll(".sep"), function (sep) {
+                sep.hidden = false;
+            });
+        }
+
+        function syncSeparators(items) {
+            Array.prototype.forEach.call(items, function (item, index) {
+                var sep = Array.prototype.find.call(item.children, function (child) {
+                    return child.classList && child.classList.contains("sep");
+                });
+                if (!sep) return;
+                var prev = items[index - 1];
+                sep.hidden = !prev || item.offsetTop !== prev.offsetTop;
+            });
+        }
+
+        function getVisibleItems(container) {
+            return Array.prototype.filter.call(container.children, function (item) {
+                return window.getComputedStyle(item).display !== "none";
+            });
+        }
+
+        function syncContainerSeparators(container) {
+            syncSeparators(getVisibleItems(container));
+        }
+
+        function balanceWrap(container) {
+            resetBalancedWrap(container);
+            if (container.getClientRects().length === 0 || container.clientWidth === 0) {
+                syncContainerSeparators(container);
+                return;
+            }
+
+            var items = getVisibleItems(container);
+            if (items.length < 2) {
+                syncSeparators(items);
+                return;
+            }
+
+            var style = window.getComputedStyle(container);
+            var colGap = parseFloat(style.columnGap || style.gap || "0");
+            var available = container.clientWidth;
+            var total = items.reduce(function (sum, item) {
+                return sum + item.getBoundingClientRect().width;
+            }, 0) + colGap * (items.length - 1);
+
+            if (total <= available) {
+                syncSeparators(items);
+                return;
+            }
+
+            for (var rows = Math.max(2, Math.ceil(total / available)); rows <= items.length; rows++) {
+                var cols = Math.ceil(items.length / rows);
+                var fits = true;
+
+                for (var rowIndex = 0; rowIndex < rows; rowIndex++) {
+                    var start = rowIndex * cols;
+                    var end = Math.min(start + cols, items.length);
+                    if (start >= end) break;
+
+                    var rowWidth = 0;
+                    for (var i = start; i < end; i++) {
+                        rowWidth += items[i].getBoundingClientRect().width;
+                    }
+                    rowWidth += colGap * (end - start - 1);
+                    if (rowWidth > available + 1) {
+                        fits = false;
+                        break;
+                    }
+                }
+
+                if (!fits) continue;
+
+                container.dataset.layout = "balanced";
+
+                for (var j = 0; j < rows; j++) {
+                    var row = document.createElement("div");
+                    row.className = "balanced-row";
+                    var rowStart = j * cols;
+                    var rowEnd = Math.min(rowStart + cols, items.length);
+                    if (rowStart >= rowEnd) break;
+
+                    for (var k = rowStart; k < rowEnd; k++) {
+                        row.appendChild(items[k]);
+                    }
+
+                    container.appendChild(row);
+                }
+                Array.prototype.forEach.call(container.querySelectorAll(".balanced-row"), function (row) {
+                    syncSeparators(row.children);
+                });
+                return;
+            }
+
+            syncSeparators(items);
+        }
+
+        function balanceAll() {
+            var menuOpen = menu && nav && isMobile() && nav.classList.contains("menu-open");
+            Array.prototype.forEach.call(document.querySelectorAll(".balanced-wrap, .balanced-sequence"), function (container) {
+                if (container.classList.contains("balanced-wrap")) {
+                    if (container.id === "menu" && !menuOpen) {
+                        resetBalancedWrap(container);
+                        syncContainerSeparators(container);
+                        return;
+                    }
+                    balanceWrap(container);
+                    return;
+                }
+                syncContainerSeparators(container);
+            });
+        }
+
+        function setMenuOpen(open) {
+            if (!nav || !toggle || !menu) return;
+            nav.classList.toggle("menu-open", open);
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            localStorage.setItem(storageKey, open ? "true" : "false");
+            window.requestAnimationFrame(balanceAll);
+        }
+
+        if (toggle) {
+            toggle.addEventListener("click", function () {
+                setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+            });
+            setMenuOpen(localStorage.getItem(storageKey) === "true");
+        } else {
+            balanceAll();
+        }
+
+        window.addEventListener("resize", balanceAll);
+        window.addEventListener("load", balanceAll);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(balanceAll);
+        }
+    })();
+</script>

@@ -1,0 +1,4 @@
+{{ $path := .Get "src" }}
+{{ $code := readFile (printf "static/%s" $path) }}
+<pre><code class="language-bash">{{ $code | safeHTML }}</code></pre>
+

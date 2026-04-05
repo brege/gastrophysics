@@ -1,0 +1,126 @@
+{{- define "main" }}
+
+{{- $recipeLanding := and .IsSection (eq .RelPermalink "/recipes/") -}}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <div class="page-header-main">
+    <h1>
+      {{ .Title }}
+      {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+      {{- with .OutputFormats.Get "rss" }}
+      <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+        {{- partial "svg.html" (dict "name" "rss-feed") -}}
+      </a>
+      {{- end }}
+      {{- end }}
+    </h1>
+    {{- if not $recipeLanding }}
+    <div class="list-controls">
+      {{- partial "recipe_view_toggle.html" . }}
+    </div>
+    {{- end }}
+  </div>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content recipes-page" data-recipe-view="compact">
+  {{- if $recipeLanding }}
+  <div class="recipes-section-toggle-source" hidden>
+    <div class="list-controls">
+      {{- partial "recipe_view_toggle.html" . }}
+    </div>
+  </div>
+  {{- end }}
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+<script>
+(function() {
+    var page = document.querySelector(".recipes-page");
+    if (!page) return;
+
+    var source = page.querySelector(".recipes-section-toggle-source .list-controls");
+    var heading = page.querySelector("h2#recipes");
+    if (source && heading) {
+        var head = document.createElement("div");
+        head.className = "recipes-section-head";
+        heading.parentNode.insertBefore(head, heading);
+        head.appendChild(heading);
+        head.appendChild(source);
+        var sourceWrap = page.querySelector(".recipes-section-toggle-source");
+        if (sourceWrap) {
+            sourceWrap.remove();
+        }
+    }
+
+    var toggles = Array.prototype.slice.call(document.querySelectorAll(".recipe-view-toggle"));
+    if (!toggles.length) return;
+
+    function sync(mode) {
+        var nextLabel = mode === "browse" ? "Switch to compact view" : "Switch to browse view";
+        page.dataset.recipeView = mode;
+
+        toggles.forEach(function(toggle) {
+            var button = toggle.querySelector("button");
+            toggle.dataset.recipeView = mode;
+
+            if (!button) {
+                return;
+            }
+
+            button.title = nextLabel;
+            button.setAttribute("aria-label", nextLabel);
+        });
+    }
+
+    function syncUrl(mode) {
+        if (!window.history || !window.history.replaceState) {
+            return;
+        }
+
+        var url = window.location.pathname + window.location.search;
+        if (mode === "browse") {
+            url += "#browse";
+        }
+
+        window.history.replaceState(null, "", url);
+    }
+
+    var stored = localStorage.getItem("recipe-view");
+    sync(stored === "browse" ? "browse" : "compact");
+
+    toggles.forEach(function(toggle) {
+        var button = toggle.querySelector("button");
+
+        if (!button) {
+            return;
+        }
+
+        button.addEventListener("click", function() {
+            var nextView = toggle.dataset.recipeView === "browse" ? "compact" : "browse";
+            sync(nextView);
+            localStorage.setItem("recipe-view", nextView);
+            syncUrl(nextView);
+        });
+    });
+
+    if (window.location.hash === "#browse") {
+        sync("browse");
+        localStorage.setItem("recipe-view", "browse");
+        syncUrl("browse");
+    }
+})();
+</script>
+
+{{- end }}

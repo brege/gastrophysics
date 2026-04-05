@@ -1,0 +1,30 @@
+{{- $section := .Get "section" -}}
+{{- $preview := .Get "preview" | default "h3" -}}
+
+<div class="menu-archive-shortcode">
+<ul class="menu-archive-list">
+  {{- with site.GetPage $section }}
+    {{- range .Pages.ByDate.Reverse }}
+      <li class="menu-archive-item" data-menu-date="{{ .Date | time.Format "2006-01-02" }}">
+        {{- $cleaned := slice }}
+        {{- if eq $preview "h3" }}
+          {{- $headers := findRE `(?m)^###\s+(.+)` .RawContent }}
+          {{- range $headers }}
+            {{- $line := trim (replace (replace . "###" "") "\\" "") " " -}}
+            {{- if ne $line "" }}
+              {{- $cleaned = $cleaned | append $line -}}
+            {{- end }}
+          {{- end }}
+        {{- end }}
+        <a href="{{ .RelPermalink }}" class="menu-archive-compact">
+          <span class="menu-archive-title">{{ .Title }}</span>
+          {{- if gt (len $cleaned) 0 }}
+            <span class="menu-archive-preview">{{ delimit $cleaned ", " }}</span>
+          {{- end }}
+        </a>
+        {{- partial "season_menu_link.html" (dict "Page" . "Class" "season-menu menu-archive-expanded") }}
+      </li>
+    {{- end }}
+  {{- end }}
+</ul>
+</div>

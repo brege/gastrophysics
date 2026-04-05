@@ -1,0 +1,20 @@
+<div class="cv-project-list">
+  {{- range .items -}}
+    <article class="cv-row project">
+      <div class="cv-main">
+        <div class="cv-project-summary"><p><a href="{{ .url }}"><strong>{{ .name }}</strong></a> {{ .summary }}</p></div>
+        {{- with .stack -}}
+          <div class="cv-project-stack">{{ . }}</div>
+        {{- end -}}
+      </div>
+      <div class="cv-project-links">
+        {{- range .links -}}
+          <span><a href="{{ .url }}">{{ .label }}</a></span>
+        {{- end -}}
+      </div>
+    </article>
+  {{- end -}}
+  {{- with .note -}}
+    <p class="cv-project-note">{{ . | markdownify }}</p>
+  {{- end -}}
+</div>

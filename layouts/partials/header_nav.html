@@ -1,0 +1,57 @@
+{{- $depth := .Params.navDepth | default 2 -}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var depth = {{ $depth }};
+  var selector = Array.from({length: depth}, function(_, i) {
+    return 'h' + (i + 2) + '[id]';
+  }).join(', ');
+  var sections = null;
+
+  function getSections() {
+    if (!sections) {
+      var headings = Array.from(document.querySelectorAll(selector)).filter(function(el) {
+        return !el.closest('.cv-reader-shadow');
+      });
+      sections = [{ offsetTop: 0 }].concat(headings);
+    }
+    return sections;
+  }
+
+  function nearest() {
+    var s = getSections();
+    var y = window.scrollY + 80;
+    var best = 0;
+    for (var i = 0; i < s.length; i++) {
+      if (s[i].offsetTop <= y) best = i;
+    }
+    return best;
+  }
+
+  function jump(idx) {
+    var s = getSections();
+    if (!s.length) return;
+    idx = Math.max(0, Math.min(idx, s.length - 1));
+    if (idx === 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      s[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  window.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    var forward = (e.key === 'Enter' && !e.shiftKey) || e.key === ' ';
+    var backward = e.key === 'Backspace' || (e.key === 'Enter' && e.shiftKey);
+
+    if (!forward && !backward) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    jump(nearest() + (forward ? 1 : -1));
+
+    return false;
+  }, true);
+});
+</script>

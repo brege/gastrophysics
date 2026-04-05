@@ -1,0 +1,32 @@
+{{- $items := .items | default (slice) -}}
+{{- if gt (len $items) 0 -}}
+{{- $tag := .tag | default "div" -}}
+{{- $itemTag := cond (eq $tag "ul") "li" "span" -}}
+{{- $align := .align | default "center" -}}
+{{- $balanced := ne .balanced false -}}
+{{- $class := .class | default "" -}}
+{{- $sep := .separator | default "/" -}}
+{{- $baseClass := printf "balanced-sequence balance-%s" $align -}}
+{{- if $balanced }}{{- $baseClass = printf "%s balanced-wrap" $baseClass -}}{{- end -}}
+{{- $attrs := printf "class=\"%s%s\"" $baseClass (cond (ne $class "") (printf " %s" $class) "") -}}
+{{- with .id }}{{- $attrs = printf "%s id=\"%s\"" $attrs . -}}{{- end -}}
+{{- with .aria_label }}{{- $attrs = printf "%s aria-label=\"%s\"" $attrs . -}}{{- end -}}
+{{- printf "<%s %s>" $tag $attrs | safeHTML -}}
+{{- range $i, $item := $items }}
+  {{- printf "<%s>" $itemTag | safeHTML -}}
+  {{- if gt $i 0 -}}
+  <span class="sep" aria-hidden="true">{{ $sep }}</span>
+  {{- end -}}
+  {{- with $item.url -}}
+  <a href="{{ . }}"
+    {{- with $item.rel }} rel="{{ . }}"{{ end -}}
+    {{- with $item.target }} target="{{ . }}"{{ end -}}>
+    {{- $item.name -}}
+  </a>
+  {{- else -}}
+  <span>{{ $item.name }}</span>
+  {{- end -}}
+  {{- printf "</%s>" $itemTag | safeHTML -}}
+{{- end }}
+{{- printf "</%s>" $tag | safeHTML -}}
+{{- end -}}

@@ -1,0 +1,134 @@
+{{- define "main" }}
+
+{{- $note := site.Params.homeInfoParams.Note | default "data scientist / chef / astrophysicist" -}}
+{{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) -}}
+{{- $noteItems := slice -}}
+{{- range split $note "/" }}
+  {{- $part := strings.TrimSpace . -}}
+  {{- if ne $part "" -}}
+    {{- $noteItems = $noteItems | append (dict "name" $part) -}}
+  {{- end -}}
+{{- end -}}
+
+<article class="post-single type-cv section-{{ default "root" .Section }}">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <div class="cv-hero entry-header">
+      {{- partial "balanced_sequence.html" (dict
+        "class" "home-signal-note"
+        "tag" "p"
+        "align" "left"
+        "items" $noteItems
+      ) }}
+      <h1>{{ .Title }}</h1>
+    </div>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    {{- partial "single_meta.html" . -}}
+    {{- end }}
+  </header>
+
+  {{- $showToc := .Param "ShowToc" }}
+  {{- if $showToc }}
+  <div class="toc-anchor">
+    <div class="toc-margin-wrap">
+      {{- partial "toc.html" . }}
+    </div>
+  </div>
+  <div class="toc-preamble">
+    {{- partial "toc.html" . }}
+  </div>
+  {{- end }}
+
+  <div class="post-content cv-content">
+    <div class="cv-reader-shadow">
+      {{- .RawContent | markdownify -}}
+    </div>
+    {{- with .Resources.GetMatch "preamble.md" -}}
+      <div class="cv-preamble">{{ .Content }}</div>
+    {{- end -}}
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" (partial "cv.html" .) -}}
+    {{- else -}}
+    {{ partial "cv.html" . }}
+    {{- end }}
+  </div>
+
+  <footer class="post-footer">
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if $showShare }}
+    <div class="post-share-footer post-share-wrap">
+      <div class="post-share-bar">
+        <button
+          class="post-share-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="share-links-footer">
+          share
+        </button>
+      </div>
+      <div id="share-links-footer" class="post-share-panel" hidden>
+        {{- partial "share_icons.html" . -}}
+      </div>
+    </div>
+    {{- end }}
+  </footer>
+</article>
+
+{{- if $showShare }}
+<script>
+  (function() {
+    var toggles = Array.prototype.slice.call(document.querySelectorAll(".post-share-toggle"));
+    if (!toggles.length) return;
+
+    function setOpen(toggle, open) {
+      var panelId = toggle.getAttribute("aria-controls");
+      var panel = panelId ? document.getElementById(panelId) : null;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (panel) {
+        panel.hidden = !open;
+      }
+    }
+
+    function closeAll() {
+      toggles.forEach(function(toggle) {
+        setOpen(toggle, false);
+      });
+    }
+
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener("click", function() {
+        var next = toggle.getAttribute("aria-expanded") !== "true";
+        closeAll();
+        setOpen(toggle, next);
+      });
+    });
+
+    document.addEventListener("click", function(event) {
+      var target = event.target;
+      if (target instanceof Element && target.closest(".post-share-wrap")) {
+        return;
+      }
+      closeAll();
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeAll();
+      }
+    });
+  })();
+</script>
+{{- end }}
+
+{{- if .Param "headerNav" }}
+{{- partial "header_nav.html" . -}}
+{{- end }}
+
+{{- end }}

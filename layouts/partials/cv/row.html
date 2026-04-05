@@ -1,0 +1,17 @@
+{{- $date := .date | default "" -}}
+{{- $delim := .date_delim | default " | " -}}
+{{- $parts := slice -}}
+{{- range split $date $delim -}}
+  {{- $part := strings.TrimSpace . -}}
+  {{- if ne $part "" -}}
+    {{- $parts = $parts | append $part -}}
+  {{- end -}}
+{{- end -}}
+<article class="cv-row{{ with .class }} {{ . }}{{ end }}">
+  <div class="cv-years{{ if gt (len $parts) 1 }} is-stack{{ end }}">
+    {{- range $parts -}}
+      <span>{{ . }}</span>
+    {{- end -}}
+  </div>
+  <div class="cv-main">{{ .content | safeHTML }}</div>
+</article>

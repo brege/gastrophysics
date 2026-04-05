@@ -1,0 +1,12 @@
+{{- $label := .Get "label" | default "TIP" -}}
+<div class="kbd-tip">
+  <div class="kbd-tip-head">
+    <span class="kbd-tip-icon" aria-hidden="true">
+      {{- partial "svg.html" (dict "name" "keyboard") -}}
+    </span>
+    <span class="kbd-tip-label">{{ $label }}</span>
+  </div>
+  <div class="kbd-tip-body">
+    {{- .Inner | markdownify -}}
+  </div>
+</div>

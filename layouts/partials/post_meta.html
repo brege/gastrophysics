@@ -1,0 +1,17 @@
+{{- $parts := slice -}}
+
+{{- if not .Date.IsZero -}}
+{{- $parts = $parts | append (printf "<span title='%s'>%s</span>" .Date (.Date | time.Format (default ":date_long" site.Params.DateFormat))) -}}
+{{- end -}}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $parts = $parts | append (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) -}}
+{{- end -}}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $parts = $parts | append (printf "<span>%s</span>" (i18n "words" .WordCount | default (printf "%d words" .WordCount))) -}}
+{{- end -}}
+
+{{- with $parts -}}
+{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}

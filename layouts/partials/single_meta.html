@@ -1,0 +1,41 @@
+{{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) -}}
+{{- $sourceUrl := "" -}}
+{{- if and (or .Params.editPost.URL site.Params.editPost.URL) .File -}}
+{{- $sourceUrl = .Params.editPost.URL | default site.Params.editPost.URL -}}
+{{- if .Params.editPost.appendFilePath | default (site.Params.editPost.appendFilePath | default false) -}}
+{{- $sourceUrl = printf "%s/%s" $sourceUrl (path.Join .File.Path) -}}
+{{- end -}}
+{{- end -}}
+
+<div class="post-meta-stack post-share-wrap">
+  <div class="post-meta post-meta-editorial">
+    <div class="post-meta-date">
+      {{- $displayDate := cond (eq .Type "cv") .Lastmod .Date -}}
+      {{- if not $displayDate.IsZero -}}
+      <time datetime="{{ $displayDate.Format "2006-01-02" }}">{{ $displayDate | time.Format (default ":date_long" site.Params.DateFormat) }}</time>
+      {{- end -}}
+    </div>
+    <div class="post-meta-tools">
+      {{- if (.Param "ShowWordCount") -}}
+      <span>{{ .WordCount }} words</span>
+      {{- end -}}
+      {{- if $showShare -}}
+      <button
+        class="post-share-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="share-links-top">
+        share
+      </button>
+      {{- end -}}
+      {{- if $sourceUrl -}}
+      <a href="{{ $sourceUrl }}" rel="noopener noreferrer edit" target="_blank">source</a>
+      {{- end -}}
+    </div>
+  </div>
+  {{- if $showShare -}}
+  <div id="share-links-top" class="post-share-panel" hidden>
+    {{- partial "share_icons.html" . -}}
+  </div>
+  {{- end -}}
+</div>

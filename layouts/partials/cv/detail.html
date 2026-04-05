@@ -1,0 +1,10 @@
+{{- $class := .class | default "" -}}
+{{- $dateDelim := .date_delim | default " | " -}}
+{{- range .items -}}
+  {{- partial "cv/row.html" (dict
+    "class" $class
+    "date" .date
+    "date_delim" $dateDelim
+    "content" (.content | markdownify)
+  ) -}}
+{{- end -}}

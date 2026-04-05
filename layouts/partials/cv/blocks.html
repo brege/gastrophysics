@@ -1,0 +1,19 @@
+{{- $class := "" -}}
+{{- $dateDelim := " | " -}}
+{{- with .cfg -}}
+  {{- $class = .class | default "" -}}
+  {{- $dateDelim = .date_delim | default " | " -}}
+{{- end -}}
+{{- $blocks := split (replaceRE `\n{2,}` "\f" .body) "\f" -}}
+{{- range $blocks -}}
+  {{- $block := trim . "\r\n\t " -}}
+  {{- with findRESubmatch `(?s)^([^\n]+)\n+(.*)$` $block 1 -}}
+    {{- $content := trim (index (index . 0) 2) "\r\n\t " -}}
+    {{- partial "cv/row.html" (dict
+      "class" $class
+      "date" (index (index . 0) 1)
+      "date_delim" $dateDelim
+      "content" ($content | markdownify)
+    ) -}}
+  {{- end -}}
+{{- end -}}

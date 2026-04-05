@@ -1,0 +1,1 @@
+{{ . | replaceRE `(<h[1-6] id="([^"]+)"[^>]*>)([\s\S]+?)(</h[1-6]+>)` `${1}<span class="heading-text">${3}</span><a hidden class="anchor" aria-hidden="true" href="#${2}">#</a>${4}` | safeHTML }}

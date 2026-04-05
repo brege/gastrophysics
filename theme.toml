@@ -1,0 +1,47 @@
+name = "Gastrophysics"
+license = "MIT"
+description = "For people of multiple careers"
+homepage = "https://brege.org"
+tags = [
+  "responsive",
+  "clean",
+  "light",
+  "dark",
+  "blog",
+  "minimalist",
+  "search",
+  "cv",
+  "recipes",
+  "culinary",
+  "menu",
+  "chef"
+]
+features = [
+  "responsive",
+  "single-column",
+  "blog",
+  "cover-image",
+  "table-of-contents",
+  "opengraph",
+  "favicon",
+  "share-icons",
+  "social-icons",
+  "minified-assets",
+  "theme-toggle",
+  "scroll-to-top",
+  "search",
+  "cv-module",
+  "recipe-module",
+  "menu-module"
+]
+min_version = "0.146.0"
+
+[author]
+  name = "Wyatt Brege"
+  homepage = "https://brege.org"
+
+[original]
+  name = "PaperMod"
+  author = "Aditya Telange"
+  homepage = "https://github.com/adityatelange/"
+  repo = "https://github.com/adityatelange/hugo-PaperMod/"

@@ -1,0 +1,25 @@
+<div class="menu-card">
+  <div class="menu-items">
+    {{ .Inner }}
+  </div>
+
+  {{- $dateFormatted := .Page.Date | time | dateFormat "January 2, 2006" -}}
+  {{- $title := .Page.Title -}}
+  {{- $rawDate := .Page.Date | time.Format "2006-01-02" -}}
+  {{- $displayTitle := replace $title (print $rawDate " ") "" -}}
+  {{- if eq $displayTitle $title }}
+    {{- $displayTitle = $title }}
+  {{- end -}}
+  {{- $author := .Page.Params.author | default site.Params.author -}}
+
+  <div class="menu-footer">
+    <div class="menu-date">
+      <span>{{ $dateFormatted }} &mdash; {{ $displayTitle }}</span>
+    </div>
+    {{- with $author }}
+    <div class="menu-author">
+      <span>Chef {{ . }}</span>
+    </div>
+    {{- end }}
+  </div>
+</div>

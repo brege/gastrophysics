@@ -1,0 +1,61 @@
+{{- $dateDelim := .date_delim | default " | " -}}
+{{- range .items -}}
+  {{- $parts := slice -}}
+  {{- range split .date $dateDelim -}}
+    {{- $part := strings.TrimSpace . -}}
+    {{- if ne $part "" -}}
+      {{- $parts = $parts | append $part -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $titleHtml := .title -}}
+  {{- with .note -}}
+    {{- $titleHtml = printf "%s (%s)" $titleHtml . -}}
+  {{- end -}}
+  {{- $metaHtml := .meta | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1` -}}
+  {{- $abstractParts := slice -}}
+  {{- with .cite -}}
+    {{- $abstractParts = $abstractParts | append (. | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1`) -}}
+  {{- end -}}
+  {{- with .preprint -}}
+    {{- $line := printf "*preprint*: %s" . -}}
+    {{- $abstractParts = $abstractParts | append ($line | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1`) -}}
+  {{- end -}}
+  {{- $abstractHtml := "" -}}
+  {{- if gt (len $abstractParts) 0 -}}
+    {{- $buf := "" -}}
+    {{- range $abstractParts -}}
+      {{- $buf = printf "%s<p>%s</p>" $buf . -}}
+    {{- end -}}
+    {{- $abstractHtml = $buf -}}
+  {{- end -}}
+  {{- with .content -}}
+    {{- if and (reflect.IsSlice .) (gt (len .) 1) -}}
+      {{- $ol := "<ol>" -}}
+      {{- range . -}}
+        {{- $ol = printf "%s<li>%s</li>" $ol (. | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1`) -}}
+      {{- end -}}
+      {{- $abstractHtml = printf "%s</ol>" $ol -}}
+    {{- else if reflect.IsSlice . -}}
+      {{- $abstractHtml = index . 0 | markdownify -}}
+    {{- else -}}
+      {{- $abstractHtml = . | markdownify -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if and (ne $abstractHtml "") (not (findRE `^\s*<(p|ol|ul|div|blockquote)\b` $abstractHtml)) -}}
+    {{- $abstractHtml = printf "<p>%s</p>" $abstractHtml -}}
+  {{- end -}}
+  <article class="cv-row research">
+    <div class="cv-years{{ if gt (len $parts) 1 }} is-stack{{ end }}">
+      {{- range $parts -}}
+        <span>{{ . }}</span>
+      {{- end -}}
+    </div>
+    <div class="cv-main">
+      <p class="cv-research-title"><strong>{{ $titleHtml }}</strong></p>
+      <p class="cv-research-meta">{{ $metaHtml | safeHTML }}</p>
+      {{- if ne $abstractHtml "" -}}
+        <div class="cv-research-abstract">{{ $abstractHtml | safeHTML }}</div>
+      {{- end -}}
+    </div>
+  </article>
+{{- end -}}

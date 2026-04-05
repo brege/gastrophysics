@@ -1,0 +1,221 @@
+@font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("/fonts/cormorant-garamond-300.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/cormorant-garamond-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "IBM Plex Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "IBM Plex Mono";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+}
+
+:root {
+    --font-serif-main: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    --font-serif-display: "Cormorant Garamond", Georgia, serif;
+}
+
+body {
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.type-post .post-content,
+.type-card .post-content {
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+}
+
+.post-title,
+.page-header h1,
+.logo,
+.logo a,
+.entry-header,
+.entry-header h2,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-family: var(--font-serif-main);
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.post-content h1 {
+    font-size: 2em;
+}
+.post-content h2 {
+    font-size: 1.6em;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+}
+.post-content h3 {
+    font-size: 1.4em;
+}
+
+.recipe .content h2,
+.menu-card h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.post-content .menu-card h1,
+.post-content .menu-card h2,
+.post-content .menu-card h3,
+.post-content .menu-card h4,
+.post-content .menu-card h5,
+.post-content .menu-card h6 {
+    display: block;
+    text-align: center;
+}
+.post-content h4 {
+    font-size: 1.2em;
+}
+
+.post-content h5 {
+  /* all caps */
+    text-transform: uppercase;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+}
+
+.post-content h1 .heading-text,
+.post-content h2 .heading-text,
+.post-content h3 .heading-text,
+.post-content h4 .heading-text,
+.post-content h5 .heading-text,
+.post-content h6 .heading-text {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.post-content h1 .anchor,
+.post-content h2 .anchor,
+.post-content h3 .anchor,
+.post-content h4 .anchor,
+.post-content h5 .anchor,
+.post-content h6 .anchor {
+    display: inline-flex !important;
+    flex: 0 0 auto;
+    margin-inline-start: 0;
+    color: var(--secondary);
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.15s ease, color 0.15s ease, visibility 0.15s ease;
+}
+
+.post-content h1:hover .anchor,
+.post-content h2:hover .anchor,
+.post-content h3:hover .anchor,
+.post-content h4:hover .anchor,
+.post-content h5:hover .anchor,
+.post-content h6:hover .anchor,
+.post-content h1 .anchor:focus-visible,
+.post-content h2 .anchor:focus-visible,
+.post-content h3 .anchor:focus-visible,
+.post-content h4 .anchor:focus-visible,
+.post-content h5 .anchor:focus-visible,
+.post-content h6 .anchor:focus-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.home-info .entry-header h1 {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    font-weight: 400 !important;
+    font-synthesis-weight: none;
+    font-size: clamp(3.84rem, 9.6vw, 6.96rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+}
+
+@media (max-width: 700px) {
+    .home-info .entry-header h1 {
+        font-size: clamp(2.9rem, 11vw, 4.2rem);
+        line-height: 1;
+    }
+}
+
+.post-content .footnotes,
+.post-content .footnote-ref,
+.post-content .footnote-backref,
+.post-content cite,
+.post-content .citation {
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.post-content .katex {
+    font-family: var(--font-serif-main);
+}
+
+.recipe .content {
+    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.recipe .content h1,
+.recipe .content h2,
+.recipe .content h3,
+.recipe .content h4,
+.recipe .content h5,
+.recipe .content h6 {
+    font-family: var(--font-serif-main);
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+code,
+pre,
+kbd,
+samp {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-weight: 400;
+}
+
+kbd {
+    display: inline-block;
+    padding: 0.15em 0.4em;
+    font-size: 0.82em;
+    line-height: 1;
+    color: var(--primary);
+    background-color: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 var(--border);
+    vertical-align: baseline;
+}
