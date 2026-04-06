@@ -1,20 +1,12 @@
 @media screen and (max-width: 768px) {
-    /* theme-vars */
     :root {
         --gap: 14px;
     }
 
-    /* profile-mode */
-    .profile img {
-        transform: scale(0.85);
-    }
-
-    /* post-entry */
     .first-entry {
         min-height: 260px;
     }
 
-    /* archive */
     .archive-month {
         flex-direction: column;
     }
@@ -23,13 +15,11 @@
         margin-top: 20px;
     }
 
-    /* footer */
     .footer {
         padding: calc((var(--footer-height) - var(--gap) - 10px) / 2) var(--gap);
     }
 }
 
-/* footer */
 @media screen and (max-width: 900px) {
     .list .top-link {
         transform: translateY(-5rem);
@@ -43,9 +33,7 @@
 }
 
 @media (prefers-reduced-motion) {
-    /* terms; profile-mode; post-single; post-entry; post-entry; search; search */
     .terms-tags a:active,
-    .button:active,
     .post-entry:active,
     .top-link,
     #searchResults .focus,

@@ -25,15 +25,6 @@
     align-items: center;
 }
 
-.i18n_list {
-    display: inline-flex;
-}
-
-.post-meta .i18n_list li {
-    list-style: none;
-    margin: auto 3px;
-}
-
 .breadcrumbs a {
     font-size: 16px;
 }
@@ -52,33 +43,13 @@
 
 .post-content h1 {
     margin: 40px auto 32px;
-    font-size: 40px;
 }
 
 .post-content h2 {
     margin: 32px auto 24px;
-    font-size: 32px;
 }
 
-.post-content h3 {
-    font-size: 24px;
-}
-
-.post-content h4 {
-    font-size: 16px;
-}
-
-.post-content h5 {
-    font-size: 14px;
-}
-
-.post-content h6 {
-    font-size: 12px;
-}
-
-.post-content a,
-.post-meta .i18n_list li a,
-.toc a:hover {
+.post-content a {
     box-shadow: 0 1px 0 var(--secondary);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
@@ -309,103 +280,6 @@
     margin-bottom: 10px;
 }
 
-.post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.post-tags li {
-    display: inline-block;
-}
-
-.post-tags a,
-.share-buttons,
-.paginav {
-    border-radius: var(--radius);
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-}
-
-.post-tags a {
-    display: block;
-    padding: 0 14px;
-    color: var(--secondary);
-    font-size: 14px;
-    line-height: 34px;
-    background: var(--code-bg);
-}
-
-.post-tags a:hover,
-.paginav a:hover {
-    background: var(--border);
-}
-
-.share-buttons {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    overflow-x: auto;
-    gap: 10px;
-}
-
-.share-buttons li,
-.share-buttons a {
-    display: inline-flex;
-}
-
-.share-buttons a:not(:last-of-type) {
-    margin-inline-end: 12px;
-}
-
-h1:hover .anchor,
-h2:hover .anchor,
-h3:hover .anchor,
-h4:hover .anchor,
-h5:hover .anchor,
-h6:hover .anchor {
-    display: inline-flex;
-    color: var(--secondary);
-    margin-inline-start: 8px;
-    font-weight: 500;
-    user-select: none;
-}
-
-.paginav {
-    display: flex;
-    line-height: 30px;
-}
-
-.paginav a {
-    padding-inline-start: 14px;
-    padding-inline-end: 14px;
-    border-radius: var(--radius);
-}
-
-.paginav .title {
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: small;
-    color: var(--secondary);
-}
-
-.paginav .prev,
-.paginav .next {
-    width: 50%;
-}
-
-.paginav span:hover:not(.title) {
-    box-shadow: 0 1px 0;
-}
-
-.paginav .next {
-    margin-inline-start: auto;
-    text-align: right;
-}
-
-[dir="rtl"] .paginav .next {
-    text-align: left;
-}
 
 h1>a>svg {
     display: inline;

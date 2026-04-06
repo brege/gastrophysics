@@ -113,7 +113,7 @@
     align-items: baseline;
     gap: 0.45rem;
     margin: 0 0 0.45rem;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.78em;
     letter-spacing: 0.08em;
     text-transform: uppercase;

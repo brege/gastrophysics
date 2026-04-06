@@ -23,7 +23,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.8em;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -35,9 +35,6 @@
     margin-inline-start: 0;
 }
 
-.post-single .toc summary.secondary-action:hover,
-.post-single .toc summary.secondary-action:active,
-.post-single .toc summary.secondary-action:focus-visible,
 .post-single .toc details[open] > summary.secondary-action {
     color: var(--primary);
 }
@@ -155,7 +152,4 @@
         margin: 0;
     }
 
-    :root[data-theme="dark"] .toc-margin-wrap .toc {
-        background: none;
-    }
 }

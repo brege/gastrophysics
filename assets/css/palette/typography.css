@@ -31,17 +31,19 @@
 }
 
 :root {
+    --font-sans: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
     --font-serif-main: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
     --font-serif-display: "Cormorant Garamond", Georgia, serif;
 }
 
 body {
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
 }
 
 .type-post .post-content,
 .type-card .post-content {
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     letter-spacing: 0.1px;
 }
@@ -94,7 +96,6 @@ body {
 }
 
 .post-content h5 {
-  /* all caps */
     text-transform: uppercase;
 }
 
@@ -177,7 +178,7 @@ body {
 .post-content .footnote-backref,
 .post-content cite,
 .post-content .citation {
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
 }
 
 .post-content .katex {
@@ -185,7 +186,7 @@ body {
 }
 
 .recipe .content {
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
 }
 
 .recipe .content h1,
@@ -203,7 +204,7 @@ code,
 pre,
 kbd,
 samp {
-    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-family: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono";
     font-weight: 400;
 }
 

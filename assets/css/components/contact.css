@@ -19,7 +19,7 @@
     padding-top: 0.95rem;
     border-top: 1px solid var(--border);
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -70,7 +70,7 @@
     width: 8.5rem;
     padding-right: 1rem;
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     letter-spacing: 0.04em;
     text-transform: lowercase;

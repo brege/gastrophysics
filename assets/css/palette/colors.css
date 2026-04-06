@@ -371,8 +371,6 @@ a:active,
 .post-content a:active,
 .home-info .entry-content a:hover,
 .home-info .entry-content a:active,
-.post-meta .i18n_list li a:hover,
-.post-meta .i18n_list li a:active,
 .toc a:hover,
 .toc a:active {
     color: var(--accent);

@@ -47,10 +47,6 @@
     transform: scale(0.96);
 }
 
-.tag-entry .entry-cover {
-    display: none;
-}
-
 .entry-header h2 {
     font-size: 24px;
     line-height: 1.3;

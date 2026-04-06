@@ -90,7 +90,7 @@
 .post-single.type-cv .cv-label,
 .post-single.type-cv .cv-years {
     color: var(--secondary);
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
     font-size: .93rem;
     letter-spacing: 0.04em;
     line-height: 1.32;
@@ -102,10 +102,7 @@
 }
 
 .post-single.type-cv .cv-years {
-    font-family: "IBM Plex Mono", monospace;
-}
-
-.post-single.type-cv .cv-years {
+    font-family: var(--font-mono);
     text-align: right;
 }
 
@@ -175,7 +172,7 @@
 .post-single.type-cv .cv-main p.cv-research-meta {
     margin: 0.18rem 0 0;
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.82rem;
     letter-spacing: 0.015em;
     line-height: 1.38;
@@ -281,17 +278,14 @@
 
 .post-single.type-cv .cv-project-links a {
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.82rem;
     letter-spacing: 0.015em;
     line-height: 1.38;
     text-transform: none;
 }
 
-.post-single.type-cv .cv-project-links a:hover,
-.post-single.type-cv .cv-project-links a.secondary-action:hover,
-.post-single.type-cv .cv-project-links a.secondary-action:active,
-.post-single.type-cv .cv-project-links a.secondary-action:focus-visible {
+.post-single.type-cv .cv-project-links a:hover {
     box-shadow: 0 1px 0 var(--primary);
     text-decoration: none;
 }
@@ -316,7 +310,7 @@
 .post-single.type-cv .cv-project-stack {
     margin-top: 0.2rem;
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     letter-spacing: 0.015em;
     line-height: 1.5;
@@ -381,7 +375,7 @@
 .post-single.type-cv .cv-preamble .kbd-tip-label {
     display: inline-flex;
     align-items: center;
-    font-family: "GraphikWeb", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: var(--font-sans);
     color: var(--secondary);
     font-size: 0.8em;
     font-weight: 500;

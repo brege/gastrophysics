@@ -16,7 +16,7 @@
     margin-top: 1rem;
     padding-bottom: 0.85rem;
     border-bottom: 2px solid var(--border);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.78em;
     letter-spacing: 0.08em;
 }

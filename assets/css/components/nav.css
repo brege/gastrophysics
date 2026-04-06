@@ -29,10 +29,7 @@
     color: var(--secondary);
     background: none;
 }
-.paginav a:hover .title,
-.paginav .title.secondary-action:hover,
-.paginav .title.secondary-action:active,
-.paginav .title.secondary-action:focus-visible {
+.paginav a:hover .title {
     color: var(--primary);
 }
 .paginav a span:hover,
@@ -101,7 +98,7 @@
 }
 .post-share-bar {
     display: inline-flex;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.78em;
     letter-spacing: 0.08em;
 }
