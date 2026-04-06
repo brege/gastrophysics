@@ -427,10 +427,10 @@
     display: none;
 }
 .post-card.summary-visible .entry-summary {
-    display: block !important;
+    display: block;
 }
 .post-card.summary-hidden .entry-summary {
-    display: none !important;
+    display: none;
 }
 
 .entry-category {

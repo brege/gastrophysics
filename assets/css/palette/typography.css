@@ -125,7 +125,7 @@ body {
 .post-content h4 .anchor,
 .post-content h5 .anchor,
 .post-content h6 .anchor {
-    display: inline-flex !important;
+    display: inline-flex;
     flex: 0 0 auto;
     margin-inline-start: 0;
     color: var(--secondary);

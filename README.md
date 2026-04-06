@@ -1,6 +1,6 @@
 # Gastrophysics
 
-A Hugo theme for people of multiple careers. Print-friendly, reader-focused, with modules for CV/resume, recipes, and tasting menus.
+A Hugo theme for people of polarized careers that's print- and e-Reader-friendly with modules for sectional CVs, and culinary zones for recipes and tasting menus.
 
 Demo: [brege.org](https://brege.org)
 
@@ -12,7 +12,7 @@ Forked from [PaperMod](https://github.com/adityatelange/hugo-PaperMod/).
 - 10 [color palettes](#color-palettes)
 - Palette-aware syntax highlighting
 - CV module with YAML data and multiple section handlers
-- Recipe and tasting menu module with view toggles and archive
+- Recipe and tasting menu module with view toggles and sorting
 - Balanced text wrapping for navigation and footer
 - Anchored headings with configurable depth
 - Compact and expanded post card views with tag clamping
@@ -22,7 +22,7 @@ Forked from [PaperMod](https://github.com/adityatelange/hugo-PaperMod/).
 
 ## Color Palettes
 
-Set in `hugo.toml`:
+You can mix and match palettes in `hugo.toml`:
 
 ```toml
 [params]
