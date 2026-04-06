@@ -1,24 +1,23 @@
 # Gastrophysics
 
-A Hugo theme for people of polarized careers that's print- and e-Reader-friendly with modules for sectional CVs, and culinary zones for recipes and tasting menus.
+A Hugo theme for people with split careers. It is print- and e-reader-friendly, with first-class support for sectional CVs, recipes, and tasting menus.
 
 Demo: [brege.org](https://brege.org)
 
-Forked from [PaperMod](https://github.com/adityatelange/hugo-PaperMod/).
+Started as a fork of [PaperMod](https://github.com/adityatelange/hugo-PaperMod/).
 
 ## Features
 
 - Light/dark mode with automatic system detection
-- 10 [color palettes](#color-palettes)
+- 11 [color palettes](#color-palettes)
 - Palette-aware syntax highlighting
-- CV module with YAML data and multiple section handlers
-- Recipe and tasting menu module with view toggles and sorting
-- Balanced text wrapping for navigation and footer
+- Sectional CV layout driven by `cv.yaml`
+- Recipe and tasting menu shortcodes with archive views
+- Balanced text wrapping for navigation and footer sequences
 - Anchored headings with configurable depth
-- Compact and expanded post card views with tag clamping
-- Section-scoped post navigation
-- Consolidated SVG icon registry
-- Search, RSS, OpenGraph, Twitter Cards, JSON-LD
+- Compact and expanded post card layouts
+- Centralized SVG icon registry
+- Search, RSS, Open Graph, Twitter Cards, and JSON-LD
 
 ## Color Palettes
 
@@ -39,9 +38,10 @@ You can mix and match palettes in `hugo.toml`:
 - [nord](https://github.com/nordtheme/nord)
 - [gruvbox](https://github.com/morhetz/gruvbox)
 - [everforest](https://github.com/sainnhe/everforest)
+- nordic-linen
 - sepia
 
-Additionally, appropriate code syntax highlighting is available for all of these palettes.
+Syntax highlighting is palette-aware across all palettes.
 
 ## CV Module
 
@@ -49,10 +49,10 @@ See [layouts/cv/README.md](layouts/cv/README.md).
 
 ## Recipe/Menu Module
 
-- `recipe`: structured recipe markup
-- `recipe-list`: lists recipes from a subsection
-- `menu`: tasting menu card, pulls author from page/site params
-- `menu-list`: menu archive with optional H3 preview extraction
+- `recipe`: renders structured recipe markup
+- `recipe-list`: renders recipes from a subsection
+- `menu`: renders a tasting menu card and pulls the author from page or site params
+- `menu-list`: renders a menu archive with optional H3 preview extraction
 
 ## License
 
