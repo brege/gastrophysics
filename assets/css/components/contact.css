@@ -94,6 +94,10 @@
     color: var(--accent);
 }
 
+.post-single.type-contact .post-content a strong {
+    color: inherit;
+}
+
 .post-single.type-contact .post-content strong {
     font-weight: 500;
 }

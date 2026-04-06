@@ -156,7 +156,7 @@
   <div class="entry-body">
     {{- with first 1 (.GetTerms $categories) }}
     {{- range . }}
-    <div class="entry-category"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
+    <div class="entry-category"><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
     {{- end }}
     {{- end }}
     <header class="entry-header">
@@ -189,7 +189,7 @@
       <span class="tag-line" aria-hidden="true"></span>
       <ul class="entry-tags-preview" aria-label="tags">
         {{- range . }}
-        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>
@@ -240,7 +240,7 @@
   <div class="entry-body">
     {{- with first 1 ($page.GetTerms $categories) }}
     {{- range . }}
-    <div class="entry-category"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
+    <div class="entry-category"><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></div>
     {{- end }}
     {{- end }}
     <header class="entry-header">
@@ -273,7 +273,7 @@
       <span class="tag-line" aria-hidden="true"></span>
       <ul class="entry-tags-preview" aria-label="tags">
         {{- range . }}
-        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>
@@ -296,7 +296,7 @@
 <footer class="page-footer">
   <nav class="pagination">
     {{- if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+    <a class="prev secondary-action" href="{{ $paginator.Prev.URL | absURL }}">
       «&nbsp;{{ i18n "prev_page" | default "Prev" }}&nbsp;
       {{- if (.Param "ShowPageNums") }}
       {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
@@ -304,7 +304,7 @@
     </a>
     {{- end }}
     {{- if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+    <a class="next secondary-action" href="{{ $paginator.Next.URL | absURL }}">
       {{- i18n "next_page" | default "Next" }}&nbsp;
       {{- if (.Param "ShowPageNums") }}
       {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}

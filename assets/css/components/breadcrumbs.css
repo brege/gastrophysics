@@ -10,7 +10,7 @@
     color: var(--secondary);
     font-size: inherit;
 }
-.breadcrumbs a:hover { color: var(--accent); }
+.breadcrumbs a:hover { color: var(--primary); }
 .breadcrumbs .crumb-sep {
     margin: 0 0.3em;
     font-variant: normal;

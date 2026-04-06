@@ -19,7 +19,7 @@
 {{- if $has_headers -}}
 <div class="toc">
     <details {{if (.Param "TocOpen") }} open{{ end }}>
-        <summary accesskey="c" title="(Alt + C)">
+        <summary class="secondary-action" accesskey="c" title="(Alt + C)">
             <span class="toc-mark" aria-hidden="true">
                 <svg class="toc-mark-closed" viewBox="0 0 18 18">
                     <path d="M2.75 4.5h12.5"></path>
@@ -93,10 +93,10 @@
                         {{- end -}}
                     {{- end }}
                 <li>
-                    <a href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify | safeHTML -}}">{{- $header | plainify | safeHTML -}}</a>
+                    <a class="secondary-action" href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify | safeHTML -}}">{{- $header | plainify | safeHTML -}}</a>
                 {{- else }}
                 <li>
-                    <a href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify | safeHTML -}}">{{- $header | plainify | safeHTML -}}</a>
+                    <a class="secondary-action" href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify | safeHTML -}}">{{- $header | plainify | safeHTML -}}</a>
                 {{- end -}}
                 {{- end -}}
                 <!-- {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}} -->

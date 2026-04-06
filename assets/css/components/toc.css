@@ -34,6 +34,14 @@
     list-style: none;
     margin-inline-start: 0;
 }
+
+.post-single .toc summary.secondary-action:hover,
+.post-single .toc summary.secondary-action:active,
+.post-single .toc summary.secondary-action:focus-visible,
+.post-single .toc details[open] > summary.secondary-action {
+    color: var(--primary);
+}
+
 .post-single .toc summary::-webkit-details-marker { display: none; }
 .post-single .toc .toc-mark {
     display: inline-block;
@@ -106,7 +114,7 @@
 }
 .post-single .toc .inner a:hover,
 .post-single .toc .inner a.active {
-    color: var(--accent);
+    color: var(--primary);
     box-shadow: none;
 }
 

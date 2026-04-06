@@ -103,14 +103,14 @@
     position: relative;
 }
 .post-card .entry-tags-preview a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 .post-card .entry-tags-preview a::before {
     content: "";
     display: inline-block;
     width: 5px;
     height: 5px;
-    border: 1px solid var(--secondary);
+    border: 1px solid currentColor;
     border-radius: 50%;
     margin-right: 0.3em;
     vertical-align: middle;
@@ -448,7 +448,7 @@
     color: inherit;
 }
 .entry-category a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 
 @media (max-width: 700px) {

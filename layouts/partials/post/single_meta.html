@@ -21,7 +21,7 @@
       {{- end -}}
       {{- if $showShare -}}
       <button
-        class="post-share-toggle"
+        class="post-share-toggle secondary-action"
         type="button"
         aria-expanded="false"
         aria-controls="share-links-top">
@@ -29,7 +29,7 @@
       </button>
       {{- end -}}
       {{- if $sourceUrl -}}
-      <a href="{{ $sourceUrl }}" rel="noopener noreferrer edit" target="_blank">source</a>
+      <a class="secondary-action" href="{{ $sourceUrl }}" rel="noopener noreferrer edit" target="_blank">source</a>
       {{- end -}}
     </div>
   </div>

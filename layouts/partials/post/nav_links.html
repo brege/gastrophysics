@@ -10,13 +10,13 @@
 <nav class="paginav">
   {{- with $pages.Next . }}
   <a class="prev" href="{{ .Permalink }}">
-    <span class="title">&laquo; {{ i18n "prev_page" | default "Previous" }}</span>
+    <span class="title secondary-action">&laquo; {{ i18n "prev_page" | default "Previous" }}</span>
     <span>{{- .Name -}}</span>
   </a>
   {{- end }}
   {{- with $pages.Prev . }}
   <a class="next" href="{{ .Permalink }}">
-    <span class="title">{{ i18n "next_page" | default "Next" }} &raquo;</span>
+    <span class="title secondary-action">{{ i18n "next_page" | default "Next" }} &raquo;</span>
     <span>{{- .Name -}}</span>
   </a>
   {{- end }}

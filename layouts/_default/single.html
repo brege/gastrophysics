@@ -112,7 +112,7 @@
       <span class="tag-line" aria-hidden="true"></span>
       <ul class="tag-list">
         {{- range . }}
-        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>
@@ -124,7 +124,7 @@
     <div class="post-share-footer post-share-wrap">
       <div class="post-share-bar">
         <button
-          class="post-share-toggle"
+          class="post-share-toggle secondary-action"
           type="button"
           aria-expanded="false"
           aria-controls="share-links-footer">

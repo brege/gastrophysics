@@ -38,6 +38,22 @@
     width: 26px;
 }
 
+.secondary-action {
+    color: var(--secondary);
+    transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.secondary-action:hover,
+.secondary-action:active,
+.secondary-action:focus-visible,
+.secondary-action[aria-expanded="true"] {
+    color: var(--primary);
+}
+
+.secondary-action strong {
+    color: inherit;
+}
+
 code {
     direction: ltr;
 }

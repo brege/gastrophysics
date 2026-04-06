@@ -6,7 +6,7 @@
     color: inherit;
 }
 .post-meta a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 .post-meta-editorial {
     display: flex;
@@ -55,11 +55,11 @@
     text-transform: none;
 }
 .post-meta-editorial .post-meta-tools a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 .post-share-toggle:hover,
 .post-share-toggle[aria-expanded="true"] {
-    color: var(--accent);
+    color: var(--primary);
 }
 .post-share-panel {
     padding-top: 0.75rem;

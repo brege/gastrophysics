@@ -11,7 +11,7 @@
   {{- with .note -}}
     {{- $titleHtml = printf "%s (%s)" $titleHtml . -}}
   {{- end -}}
-  {{- $metaHtml := .meta | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1` -}}
+  {{- $metaHtml := .meta | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1` | replaceRE `<a ` `<a class="secondary-action" ` -}}
   {{- $abstractParts := slice -}}
   {{- with .cite -}}
     {{- $abstractParts = $abstractParts | append (. | markdownify | replaceRE `^<p>(.*)</p>\s*$` `$1`) -}}

@@ -26,7 +26,10 @@
     border-bottom: 1px solid var(--secondary);
 }
 
-.footer a:hover {
+.footer a:hover,
+.footer a.secondary-action:hover,
+.footer a.secondary-action:active,
+.footer a.secondary-action:focus-visible {
     border-bottom: 1px solid var(--primary);
 }
 
@@ -50,6 +53,9 @@
 }
 
 .footer a:hover,
+.footer a.secondary-action:hover,
+.footer a.secondary-action:active,
+.footer a.secondary-action:focus-visible,
 .top-link:hover {
     color: var(--primary);
 }

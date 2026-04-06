@@ -5,6 +5,7 @@
 {{- $align := .align | default "center" -}}
 {{- $balanced := ne .balanced false -}}
 {{- $class := .class | default "" -}}
+{{- $linkClass := .link_class | default "" -}}
 {{- $sep := .separator | default "/" -}}
 {{- $baseClass := printf "balanced-sequence balance-%s" $align -}}
 {{- if $balanced }}{{- $baseClass = printf "%s balanced-wrap" $baseClass -}}{{- end -}}
@@ -19,6 +20,7 @@
   {{- end -}}
   {{- with $item.url -}}
   <a href="{{ . }}"
+    {{- with $linkClass }} class="{{ . }}"{{ end -}}
     {{- with $item.rel }} rel="{{ . }}"{{ end -}}
     {{- with $item.target }} target="{{ . }}"{{ end -}}>
     {{- $item.name -}}

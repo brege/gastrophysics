@@ -26,10 +26,17 @@
     padding: 0;
 }
 .paginav a:hover {
-    color: var(--accent);
+    color: var(--secondary);
     background: none;
 }
-.paginav a span:hover {
+.paginav a:hover .title,
+.paginav .title.secondary-action:hover,
+.paginav .title.secondary-action:active,
+.paginav .title.secondary-action:focus-visible {
+    color: var(--primary);
+}
+.paginav a span:hover,
+.paginav a span:hover:not(.title) {
     box-shadow: none;
 }
 .paginav .title {
@@ -47,7 +54,10 @@
     color: var(--primary);
     line-height: 1.2;
 }
-.paginav a:hover span:not(.title) { color: var(--accent); }
+
+.paginav a:hover span:not(.title) {
+    color: var(--accent);
+}
 .paginav .prev { text-align: left; }
 .paginav .next {
     text-align: right;
@@ -77,7 +87,7 @@
     color: var(--secondary);
 }
 .share-buttons a:hover {
-    color: var(--accent);
+    color: var(--primary);
     background: none;
 }
 .share-buttons a:not(:last-of-type) {
@@ -99,7 +109,15 @@
     display: block;
     line-height: 1;
     padding: 0 0 0.45rem;
-    border-bottom: 3px solid var(--border);
+    color: var(--secondary);
+    border-bottom: 3px solid var(--secondary);
+}
+
+.post-share-footer .post-share-toggle:hover,
+.post-share-footer .post-share-toggle:focus-visible,
+.post-share-footer .post-share-toggle[aria-expanded="true"] {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
 }
 .post-share-footer .post-share-toggle[aria-expanded="true"] {
     border-bottom-color: transparent;
@@ -148,7 +166,7 @@
     letter-spacing: 0.08em;
 }
 .pagination a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 .pagination .next {
     margin-inline-start: auto;

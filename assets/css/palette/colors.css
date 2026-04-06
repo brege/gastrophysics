@@ -296,6 +296,36 @@
     --selection: rgba(167, 192, 128, 0.2);
 }
 
+:root[data-theme-palette="nordic-linen"],
+:root[data-theme-palette-light="nordic-linen"] {
+    --theme: #eef0f5;
+    --entry: #e8ebf2;
+    --primary: #1a1c22;
+    --secondary: #5e6878;
+    --tertiary: #d4d9e4;
+    --content: #2a2d36;
+    --code-block-bg: #e2e7f0;
+    --code-bg: #f5f6fa;
+    --border: #d4d9e4;
+    --accent: #2563eb;
+    --selection: rgba(37, 99, 235, 0.15);
+}
+
+:root[data-theme="dark"][data-theme-palette="nordic-linen"],
+:root[data-theme="dark"][data-theme-palette-dark="nordic-linen"] {
+    --theme: #2e3440;
+    --entry: #3b4252;
+    --primary: #e8ecf2;
+    --secondary: #9ca4b4;
+    --tertiary: #4c566a;
+    --content: #edf0f5;
+    --code-block-bg: #3b4252;
+    --code-bg: #3b4252;
+    --border: #434c5e;
+    --accent: #8ab4f8;
+    --selection: rgba(138, 180, 248, 0.2);
+}
+
 :root[data-theme-palette="sepia"],
 :root[data-theme-palette-light="sepia"] {
     --theme: #f5ead6;
