@@ -63,68 +63,13 @@
     {{- partial "post/nav_links.html" . }}
     {{- end }}
     {{- if $showShare }}
-    <div class="post-share-footer post-share-wrap share-divider-before">
-      <div class="post-share-bar">
-        <button
-          class="post-share-toggle secondary-action"
-          type="button"
-          aria-expanded="false"
-          aria-controls="share-links-footer">
-          share
-        </button>
-      </div>
-      <div id="share-links-footer" class="post-share-panel" hidden>
-        {{- partial "post/share.html" . -}}
-      </div>
-    </div>
+    {{- partial "post/share.html" (dict "mode" "footer" "page" .) -}}
     {{- end }}
   </footer>
 </article>
 
 {{- if $showShare }}
-<script>
-  (function() {
-    var toggles = Array.prototype.slice.call(document.querySelectorAll(".post-share-toggle"));
-    if (!toggles.length) return;
-
-    function setOpen(toggle, open) {
-      var panelId = toggle.getAttribute("aria-controls");
-      var panel = panelId ? document.getElementById(panelId) : null;
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      if (panel) {
-        panel.hidden = !open;
-      }
-    }
-
-    function closeAll() {
-      toggles.forEach(function(toggle) {
-        setOpen(toggle, false);
-      });
-    }
-
-    toggles.forEach(function(toggle) {
-      toggle.addEventListener("click", function() {
-        var next = toggle.getAttribute("aria-expanded") !== "true";
-        closeAll();
-        setOpen(toggle, next);
-      });
-    });
-
-    document.addEventListener("click", function(event) {
-      var target = event.target;
-      if (target instanceof Element && target.closest(".post-share-wrap")) {
-        return;
-      }
-      closeAll();
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeAll();
-      }
-    });
-  })();
-</script>
+{{- partial "post/share.html" (dict "mode" "script" "page" .) -}}
 {{- end }}
 
 {{- if .Param "headerNav" }}

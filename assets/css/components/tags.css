@@ -1,3 +1,27 @@
+.tag-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 0;
+}
+
+.tag-rule {
+    flex: 1;
+    min-width: var(--tag-rule-min, 2rem);
+    position: relative;
+    height: var(--tag-rule-height, 1.6em);
+}
+
+.tag-rule::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid var(--border);
+    transform: translateY(-50%);
+}
+
 .tag-links {
     display: flex;
     flex-wrap: wrap;
@@ -42,11 +66,10 @@
     --tag-margin: 0 0 0 0.6rem;
     --tag-letter-spacing: 0.5px;
     --tag-line-height: 1.9;
+    --tag-rule-min: 4rem;
+    --tag-rule-height: 1.9em;
     --tag-bullet-align: 2px;
-    display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 0;
     margin-top: 2rem;
     padding: 0;
 }
@@ -60,8 +83,6 @@
     border-radius: 0;
 }
 
-.post-tags .tag-line {
-    flex: 1;
-    min-width: 4rem;
-    border-top: 1px solid var(--border);
+.post-tags.tag-row {
+    align-items: center;
 }

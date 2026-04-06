@@ -35,7 +35,7 @@
   </div>
   {{- if $showShare -}}
   <div id="share-links-top" class="post-share-panel" hidden>
-    {{- partial "post/share.html" . -}}
+    {{- partial "post/share.html" (dict "mode" "links" "page" .) -}}
   </div>
   {{- end -}}
 </div>

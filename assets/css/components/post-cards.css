@@ -58,28 +58,11 @@
     --tag-gap: 0.2rem 0.8rem;
     --tag-margin: 0 0 0 0.6rem;
     --tag-line-height: 1.6;
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
+    --tag-rule-min: 2rem;
+    --tag-rule-height: 1.6em;
     margin-top: 0.75rem;
-    min-width: 0;
     position: relative;
     z-index: 1;
-}
-.post-card .entry-tags .tag-line {
-    flex: 1;
-    min-width: 2rem;
-    position: relative;
-    height: 1.6em;
-}
-.post-card .entry-tags .tag-line::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    border-top: 1px solid var(--border);
-    transform: translateY(-50%);
 }
 .post-card .entry-tags-preview {
     max-height: 2.9rem;
@@ -119,7 +102,7 @@
 .view-horizontal .post-card .entry-date-col {
     display: none;
 }
-.view-minimal .post-card,
+.post-card.no-cover,
 .post-card.compact-card {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -127,58 +110,56 @@
     gap: 1rem;
     padding: 1.2rem 0;
 }
-.view-minimal .post-card,
+.post-card.no-cover,
 .post-card.compact-card {
     --tag-font-size: 0.76em;
+    --tag-rule-min: 1.25rem;
 }
-.view-minimal .post-card .entry-media,
-.view-minimal .post-card .entry-meta,
+.post-card.no-cover .entry-media,
+.post-card.no-cover .entry-meta,
 .post-card.compact-card .entry-media,
 .post-card.compact-card .entry-meta {
     display: none;
 }
-.view-minimal .post-card .entry-summary,
+.post-card.no-cover .entry-summary,
 .post-card.compact-card .entry-summary {
     display: block;
     margin-top: 0.35rem;
     max-width: 48ch;
 }
-.view-minimal .post-card .entry-header h2,
+.post-card.no-cover .entry-header h2,
 .post-card.compact-card .entry-header h2 {
     font-size: 1.3em;
     margin-top: 0;
 }
-.view-minimal .post-card .entry-body,
+.post-card.no-cover .entry-body,
 .post-card.compact-card .entry-body {
     display: block;
     min-width: 0;
 }
-.view-minimal .post-card .entry-category,
+.post-card.no-cover .entry-category,
 .post-card.compact-card .entry-category {
     margin: 0 0 0.15rem;
     font-size: 0.7em;
     line-height: 1.4;
 }
-.view-minimal .post-card .entry-tags,
+.post-card.no-cover .entry-tags,
 .post-card.compact-card .entry-tags {
-    display: flex;
-    align-items: flex-start;
     margin-top: 0.4rem;
     max-width: 100%;
 }
-.view-minimal .post-card .entry-tags .tag-line,
-.post-card.compact-card .entry-tags .tag-line {
-    min-width: 1.25rem;
-    flex: 0 0 1.25rem;
+.post-card.no-cover .entry-tags,
+.post-card.compact-card .entry-tags {
+    --tag-rule-min: 1.25rem;
 }
 .post-list:not(.tags-expanded) .post-card.compact-card .entry-tags-preview,
-.post-list:not(.tags-expanded).view-minimal .post-card .entry-tags-preview,
+.post-list:not(.tags-expanded).view-horizontal .post-card.no-cover .entry-tags-preview,
 .hero-list-compact .post-card.home-lead .entry-tags-preview {
     flex-wrap: nowrap;
     max-height: none;
     margin-left: 0.45rem;
 }
-.view-minimal .post-card .entry-date-col,
+.post-card.no-cover .entry-date-col,
 .post-card.compact-card .entry-date-col {
     display: flex;
     align-self: start;
@@ -254,8 +235,9 @@
     color: var(--accent);
 }
 
-.view-horizontal .post-card:not(.home-lead)[data-summary-expanded="false"] .entry-summary,
-.view-minimal .post-card:not(.home-lead)[data-summary-compact="false"] .entry-summary {
+.view-horizontal .post-card:not(.home-lead):not(.no-cover)[data-summary-expanded="false"] .entry-summary,
+.post-card.no-cover:not(.home-lead)[data-summary-expanded="false"] .entry-summary,
+.post-card.compact-card:not(.home-lead)[data-summary-compact="false"] .entry-summary {
     display: none;
 }
 .post-card.compact-card.home-lead {
@@ -295,7 +277,7 @@
 
 @media (max-width: 700px) {
     .view-horizontal .post-card .entry-tags-preview,
-    .view-minimal .post-card .entry-tags-preview,
+    .post-card.compact-card .entry-tags-preview,
     .post-card.home-lead .entry-tags-preview {
         gap: 0.2rem 0.65rem;
     }
@@ -324,20 +306,20 @@
         grid-template-columns: 1fr;
     }
 
-    .view-minimal .post-card,
+    .post-card.compact-card,
     .view-horizontal .post-card {
         grid-template-columns: 1fr;
     }
 
-    .view-minimal .post-card .entry-body {
+    .post-card.compact-card .entry-body {
         display: block;
     }
 
-    .view-minimal .post-card .entry-category {
+    .post-card.compact-card .entry-category {
         margin-bottom: 0.2rem;
     }
 
-    .view-minimal .post-card .entry-date-col {
+    .post-card.compact-card .entry-date-col {
         display: block;
         margin-top: 0.6rem;
     }

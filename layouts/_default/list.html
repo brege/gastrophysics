@@ -190,8 +190,8 @@
     </footer>
     {{- end }}
     {{- with (.GetTerms $tags) }}
-    <div class="entry-tags">
-      <span class="tag-line" aria-hidden="true"></span>
+    <div class="entry-tags tag-row">
+      <span class="tag-line tag-rule" aria-hidden="true"></span>
       <ul class="entry-tags-preview tag-links" aria-label="tags">
         {{- range . }}
         <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
@@ -233,7 +233,7 @@
   {{- $renderSummary := and (ne (.Param "hideSummary") true) (or $summaryCompact $summaryExpanded) }}
   {{- $cardClass := "post-entry post-card" }}
   {{- if not $hasCover }}
-    {{- $cardClass = printf "%s no-cover compact-card" $cardClass }}
+    {{- $cardClass = printf "%s no-cover" $cardClass }}
   {{- end }}
   {{- $cardClass = printf "%s summary-compact-%t summary-expanded-%t" $cardClass $summaryCompact $summaryExpanded }}
 <article class="{{ $cardClass }}" data-summary-compact="{{ if $summaryCompact }}true{{ else }}false{{ end }}" data-summary-expanded="{{ if $summaryExpanded }}true{{ else }}false{{ end }}">
@@ -274,8 +274,8 @@
     </footer>
     {{- end }}
     {{- with ($page.GetTerms $tags) }}
-    <div class="entry-tags">
-      <span class="tag-line" aria-hidden="true"></span>
+    <div class="entry-tags tag-row">
+      <span class="tag-line tag-rule" aria-hidden="true"></span>
       <ul class="entry-tags-preview tag-links" aria-label="tags">
         {{- range . }}
         <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
@@ -342,6 +342,12 @@
         var isCompact = view === "compact";
         list.classList.remove("view-horizontal", "view-minimal");
         list.classList.add(isCompact ? "view-minimal" : "view-horizontal");
+        Array.prototype.forEach.call(list.querySelectorAll(".post-card"), function(card) {
+            if (card.classList.contains("no-cover")) {
+                return;
+            }
+            card.classList.toggle("compact-card", isCompact);
+        });
         syncSummaries(view);
         syncViewToggles(view);
         clampMobileTags();
