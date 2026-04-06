@@ -110,9 +110,9 @@
     {{- with ($.GetTerms $tags) }}
     <div class="post-tags">
       <span class="tag-line" aria-hidden="true"></span>
-      <ul class="tag-list">
+      <ul class="tag-list tag-links">
         {{- range . }}
-        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>
@@ -121,7 +121,7 @@
     {{- partial "post/nav_links.html" . }}
     {{- end }}
     {{- if $showShare }}
-    <div class="post-share-footer post-share-wrap">
+    <div class="post-share-footer post-share-wrap share-divider-before">
       <div class="post-share-bar">
         <button
           class="post-share-toggle secondary-action"

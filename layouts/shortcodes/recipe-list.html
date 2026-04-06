@@ -22,9 +22,9 @@
             {{- with (.GetTerms $tags) }}
             <div class="recipe-index-tags">
               <span class="tag-line" aria-hidden="true"></span>
-              <ul class="recipe-index-tag-list" aria-label="recipe tags">
+              <ul class="recipe-index-tag-list tag-links" aria-label="recipe tags">
                 {{- range . }}
-                <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+                <li><a class="tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
                 {{- end }}
               </ul>
             </div>

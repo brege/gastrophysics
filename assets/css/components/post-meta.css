@@ -61,27 +61,30 @@
 .post-share-toggle[aria-expanded="true"] {
     color: var(--primary);
 }
-.post-share-panel {
-    padding-top: 0.75rem;
-}
-.post-meta-stack .post-share-panel {
+.post-share-wrap .post-share-panel {
     width: fit-content;
     max-width: 100%;
     margin: 0 auto;
     padding-top: 0.55rem;
 }
-.post-meta-stack .post-share-panel:not([hidden]) {
+.post-share-wrap .post-share-panel:not([hidden]) {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.post-meta-stack .post-share-panel:not([hidden])::after {
+.post-share-wrap.share-divider-before .post-share-panel:not([hidden])::before {
+    content: "";
+    width: 100%;
+    border-top: 3px solid var(--border);
+    margin-bottom: 0.7rem;
+}
+.post-share-wrap.share-divider-after .post-share-panel:not([hidden])::after {
     content: "";
     width: 100%;
     border-top: 3px solid var(--border);
     margin-top: 0.7rem;
 }
-.post-meta-stack .share-buttons {
+.post-share-wrap .share-buttons {
     width: fit-content;
     max-width: 100%;
     margin: 0;

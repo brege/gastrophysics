@@ -145,7 +145,12 @@
     {{- $summaryCompact := $heroSummaryCompact }}
     {{- $summaryExpanded := $heroSummaryExpanded }}
     {{- $renderSummary := and (ne (.Param "hideSummary") true) (or $summaryCompact $summaryExpanded) }}
-    {{- $heroClass := printf "post-entry post-card home-lead hero-view-%s summary-compact-%t summary-expanded-%t" $heroView $summaryCompact $summaryExpanded }}
+    {{- $heroClass := printf "post-entry post-card home-lead summary-compact-%t summary-expanded-%t" $summaryCompact $summaryExpanded }}
+    {{- if eq $heroView "compact" }}
+      {{- $heroClass = printf "%s compact-card" $heroClass }}
+    {{- else }}
+      {{- $heroClass = printf "%s featured-card" $heroClass }}
+    {{- end }}
 <div class="hero-list post-list {{ if eq $heroView "compact" }}view-minimal hero-list-compact{{ else }}view-horizontal hero-list-expanded{{ end }}">
 <article class="{{ $heroClass }}">
   {{- if $hasCover }}
@@ -187,9 +192,9 @@
     {{- with (.GetTerms $tags) }}
     <div class="entry-tags">
       <span class="tag-line" aria-hidden="true"></span>
-      <ul class="entry-tags-preview" aria-label="tags">
+      <ul class="entry-tags-preview tag-links" aria-label="tags">
         {{- range . }}
-        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>
@@ -228,7 +233,7 @@
   {{- $renderSummary := and (ne (.Param "hideSummary") true) (or $summaryCompact $summaryExpanded) }}
   {{- $cardClass := "post-entry post-card" }}
   {{- if not $hasCover }}
-    {{- $cardClass = printf "%s no-cover" $cardClass }}
+    {{- $cardClass = printf "%s no-cover compact-card" $cardClass }}
   {{- end }}
   {{- $cardClass = printf "%s summary-compact-%t summary-expanded-%t" $cardClass $summaryCompact $summaryExpanded }}
 <article class="{{ $cardClass }}" data-summary-compact="{{ if $summaryCompact }}true{{ else }}false{{ end }}" data-summary-expanded="{{ if $summaryExpanded }}true{{ else }}false{{ end }}">
@@ -271,9 +276,9 @@
     {{- with ($page.GetTerms $tags) }}
     <div class="entry-tags">
       <span class="tag-line" aria-hidden="true"></span>
-      <ul class="entry-tags-preview" aria-label="tags">
+      <ul class="entry-tags-preview tag-links" aria-label="tags">
         {{- range . }}
-        <li><a class="secondary-action" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}
       </ul>
     </div>

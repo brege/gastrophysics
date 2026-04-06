@@ -55,6 +55,9 @@
     letter-spacing: 0.04em;
 }
 .post-card .entry-tags {
+    --tag-gap: 0.2rem 0.8rem;
+    --tag-margin: 0 0 0 0.6rem;
+    --tag-line-height: 1.6;
     display: flex;
     align-items: flex-start;
     gap: 0;
@@ -79,41 +82,8 @@
     transform: translateY(-50%);
 }
 .post-card .entry-tags-preview {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem 0.8rem;
-    margin: 0 0 0 0.6rem;
-    padding: 0;
-    list-style: none;
     max-height: 2.9rem;
     overflow: hidden;
-    min-width: 0;
-    line-height: 1.6;
-}
-.post-card .entry-tags-preview li {
-    flex: 0 0 auto;
-}
-.post-card .entry-tags-preview a {
-    font-variant: small-caps;
-    font-size: 0.82em;
-    color: var(--secondary);
-    white-space: nowrap;
-    letter-spacing: 0.04em;
-    display: inline-block;
-    position: relative;
-}
-.post-card .entry-tags-preview a:hover {
-    color: var(--primary);
-}
-.post-card .entry-tags-preview a::before {
-    content: "";
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    margin-right: 0.3em;
-    vertical-align: middle;
 }
 .post-card .entry-date-col {
     display: flex;
@@ -149,60 +119,71 @@
 .view-horizontal .post-card .entry-date-col {
     display: none;
 }
-.view-horizontal .post-card.no-cover {
+.view-minimal .post-card,
+.post-card.compact-card {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: start;
     gap: 1rem;
     padding: 1.2rem 0;
 }
-.view-horizontal .post-card.no-cover .entry-meta {
+.view-minimal .post-card,
+.post-card.compact-card {
+    --tag-font-size: 0.76em;
+}
+.view-minimal .post-card .entry-media,
+.view-minimal .post-card .entry-meta,
+.post-card.compact-card .entry-media,
+.post-card.compact-card .entry-meta {
     display: none;
 }
-.view-horizontal .post-card.no-cover .entry-summary {
+.view-minimal .post-card .entry-summary,
+.post-card.compact-card .entry-summary {
+    display: block;
     margin-top: 0.35rem;
     max-width: 48ch;
 }
-.view-horizontal .post-card.no-cover .entry-header h2 {
+.view-minimal .post-card .entry-header h2,
+.post-card.compact-card .entry-header h2 {
     font-size: 1.3em;
     margin-top: 0;
 }
-.view-horizontal .post-card.no-cover .entry-body {
+.view-minimal .post-card .entry-body,
+.post-card.compact-card .entry-body {
     display: block;
     min-width: 0;
 }
-.view-horizontal .post-card.no-cover .entry-category {
+.view-minimal .post-card .entry-category,
+.post-card.compact-card .entry-category {
     margin: 0 0 0.15rem;
     font-size: 0.7em;
     line-height: 1.4;
 }
-.view-horizontal .post-card.no-cover .entry-tags {
+.view-minimal .post-card .entry-tags,
+.post-card.compact-card .entry-tags {
     display: flex;
     align-items: flex-start;
     margin-top: 0.4rem;
     max-width: 100%;
 }
-.view-horizontal .post-card.no-cover .entry-tags .tag-line {
+.view-minimal .post-card .entry-tags .tag-line,
+.post-card.compact-card .entry-tags .tag-line {
     min-width: 1.25rem;
     flex: 0 0 1.25rem;
 }
-.post-list:not(.tags-expanded).view-horizontal .post-card.no-cover .entry-tags-preview,
+.post-list:not(.tags-expanded) .post-card.compact-card .entry-tags-preview,
 .post-list:not(.tags-expanded).view-minimal .post-card .entry-tags-preview,
 .hero-list-compact .post-card.home-lead .entry-tags-preview {
     flex-wrap: nowrap;
     max-height: none;
     margin-left: 0.45rem;
 }
-.view-horizontal .post-card.no-cover .entry-tags-preview a {
-    font-size: 0.76em;
-}
-.view-horizontal .post-card.no-cover .entry-date-col {
+.view-minimal .post-card .entry-date-col,
+.post-card.compact-card .entry-date-col {
     display: flex;
     align-self: start;
 }
-.view-horizontal .post-card.home-lead,
-.view-minimal .post-card.home-lead,
-.hero-list-expanded .post-card.home-lead {
+.post-card.featured-card {
     grid-template-columns: minmax(260px, 320px) 1fr;
     gap: 1.35rem;
     padding: 1rem;
@@ -211,63 +192,43 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
 }
-.view-horizontal .post-card.home-lead .entry-body,
-.view-minimal .post-card.home-lead .entry-body,
-.hero-list-expanded .post-card.home-lead .entry-body {
+.post-card.featured-card .entry-body {
     min-width: 0;
     padding-right: 0.15rem;
 }
-.view-horizontal .post-card.home-lead .entry-header h2,
-.view-minimal .post-card.home-lead .entry-header h2,
-.hero-list-expanded .post-card.home-lead .entry-header h2 {
+.post-card.featured-card .entry-header h2 {
     margin-top: 0;
     font-size: 1.6em;
 }
-.view-horizontal .post-card.home-lead .entry-summary,
-.view-minimal .post-card.home-lead .entry-summary,
-.hero-list-expanded .post-card.home-lead .entry-summary {
+.post-card.featured-card .entry-summary {
     font-size: 0.98em;
 }
-.view-horizontal .post-card.home-lead .entry-summary p,
-.view-minimal .post-card.home-lead .entry-summary p,
-.hero-list-expanded .post-card.home-lead .entry-summary p {
+.post-card.featured-card .entry-summary p {
     max-width: 42ch;
 }
-.view-horizontal .post-card.home-lead .entry-meta,
-.view-minimal .post-card.home-lead .entry-meta,
-.hero-list-expanded .post-card.home-lead .entry-meta {
+.post-card.featured-card .entry-meta {
     margin-top: 0.8rem;
 }
-.view-horizontal .post-card.home-lead .entry-tags,
-.view-minimal .post-card.home-lead .entry-tags,
-.hero-list-expanded .post-card.home-lead .entry-tags {
+.post-card.featured-card .entry-tags {
     margin-top: 0.85rem;
 }
-.view-horizontal .post-card.home-lead .entry-cover,
-.view-minimal .post-card.home-lead .entry-cover,
-.hero-list-expanded .post-card.home-lead .entry-cover {
+.post-card.featured-card .entry-cover {
     border-radius: var(--radius);
     overflow: hidden;
 }
-.view-horizontal .post-card.home-lead .entry-cover img,
-.view-minimal .post-card.home-lead .entry-cover img,
-.hero-list-expanded .post-card.home-lead .entry-cover img {
+.post-card.featured-card .entry-cover img {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
-.view-minimal .post-card.home-lead .entry-media,
-.view-minimal .post-card.home-lead .entry-summary,
-.hero-list-expanded .post-card.home-lead .entry-media,
-.hero-list-expanded .post-card.home-lead .entry-summary {
+.post-card.featured-card .entry-media,
+.post-card.featured-card .entry-summary {
     display: block;
 }
-.view-minimal .post-card.home-lead .entry-meta,
-.hero-list-expanded .post-card.home-lead .entry-meta {
+.post-card.featured-card .entry-meta {
     display: flex;
 }
-.view-minimal .post-card.home-lead .entry-date-col,
-.hero-list-expanded .post-card.home-lead .entry-date-col {
+.post-card.featured-card .entry-date-col {
     display: none;
 }
 .home-feed-header {
@@ -293,135 +254,18 @@
     color: var(--accent);
 }
 
-.view-minimal .post-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 1rem;
-    padding: 1.2rem 0;
-}
-.view-minimal .post-card .entry-media,
-.view-minimal .post-card .entry-meta {
-    display: none;
-}
-.view-minimal .post-card .entry-summary {
-    display: block;
-    margin-top: 0.35rem;
-    max-width: 48ch;
-}
-.view-minimal .post-card .entry-header h2 {
-    font-size: 1.3em;
-    margin-top: 0;
-}
-.view-minimal .post-card .entry-body {
-    display: block;
-    min-width: 0;
-}
-.view-minimal .post-card .entry-category {
-    margin: 0 0 0.15rem;
-    font-size: 0.7em;
-    line-height: 1.4;
-}
-.view-minimal .post-card .entry-tags {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 0.4rem;
-    max-width: 100%;
-}
-.view-minimal .post-card .entry-tags .tag-line {
-    min-width: 1.25rem;
-    flex: 0 0 1.25rem;
-}
-.view-minimal .post-card .entry-tags-preview a {
-    font-size: 0.76em;
-}
-.view-minimal .post-card .entry-date-col {
-    align-self: start;
-}
 .view-horizontal .post-card:not(.home-lead)[data-summary-expanded="false"] .entry-summary,
 .view-minimal .post-card:not(.home-lead)[data-summary-compact="false"] .entry-summary {
     display: none;
 }
-.view-horizontal .post-card.home-lead.hero-view-compact,
-.view-minimal .post-card.home-lead.hero-view-compact,
-.hero-list-compact .post-card.home-lead.hero-view-compact {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 1rem;
-    padding: 1.2rem 0;
+.post-card.compact-card.home-lead {
     margin: 0;
     background: none;
     border: none;
     border-radius: 0;
 }
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-media,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-media,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-media,
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-meta,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-meta,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-meta {
-    display: none;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-body,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-body,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-body {
-    display: block;
-    min-width: 0;
-    padding-right: 0;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-header h2,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-header h2,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-header h2 {
-    margin-top: 0;
-    font-size: 1.3em;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-summary,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-summary,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-summary {
-    display: block;
-    margin-top: 0.35rem;
-    font-size: 0.92em;
-    max-width: 48ch;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-category,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-category,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-category {
-    margin: 0 0 0.15rem;
-    font-size: 0.7em;
-    line-height: 1.4;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-tags,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 0.4rem;
-    max-width: 100%;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags .tag-line,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-tags .tag-line,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags .tag-line {
-    min-width: 1.25rem;
-    flex: 0 0 1.25rem;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-tags-preview a,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-tags-preview a,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-tags-preview a {
-    font-size: 0.76em;
-}
-.view-horizontal .post-card.home-lead.hero-view-compact .entry-date-col,
-.view-minimal .post-card.home-lead.hero-view-compact .entry-date-col,
-.hero-list-compact .post-card.home-lead.hero-view-compact .entry-date-col {
-    display: flex;
-    align-self: start;
-}
-.hero-list-expanded .post-card.home-lead.hero-view-expanded.summary-expanded-false .entry-summary,
-.hero-list-compact .post-card.home-lead.hero-view-compact.summary-compact-false .entry-summary,
-.view-horizontal .post-card.home-lead.hero-view-expanded[data-summary-expanded="false"] .entry-summary,
-.view-minimal .post-card.home-lead.hero-view-expanded[data-summary-expanded="false"] .entry-summary,
-.view-horizontal .post-card.home-lead.hero-view-compact[data-summary-compact="false"] .entry-summary,
-.view-minimal .post-card.home-lead.hero-view-compact[data-summary-compact="false"] .entry-summary {
+.post-card.featured-card.summary-expanded-false .entry-summary,
+.post-card.compact-card.home-lead.summary-compact-false .entry-summary {
     display: none;
 }
 .post-card.summary-visible .entry-summary {
@@ -452,15 +296,12 @@
 @media (max-width: 700px) {
     .view-horizontal .post-card .entry-tags-preview,
     .view-minimal .post-card .entry-tags-preview,
-    .hero-list-expanded .post-card.home-lead .entry-tags-preview,
-    .hero-list-compact .post-card.home-lead .entry-tags-preview {
+    .post-card.home-lead .entry-tags-preview {
         gap: 0.2rem 0.65rem;
     }
 
     .view-horizontal .post-card.no-cover,
-    .view-horizontal .post-card.home-lead,
-    .hero-list-expanded .post-card.home-lead,
-    .hero-list-compact .post-card.home-lead {
+    .post-card.home-lead {
         grid-template-columns: 1fr;
     }
 
@@ -469,25 +310,18 @@
     }
 
     .view-horizontal .post-card.no-cover .entry-date-col,
-    .view-horizontal .post-card.home-lead .entry-date-col,
-    .hero-list-expanded .post-card.home-lead .entry-date-col,
-    .hero-list-compact .post-card.home-lead .entry-date-col,
+    .post-card.home-lead .entry-date-col,
     .view-horizontal .post-card .entry-date-col {
         display: none;
     }
 
-    .view-horizontal .post-card.home-lead,
-    .hero-list-expanded .post-card.home-lead,
-    .hero-list-compact .post-card.home-lead {
+    .post-card.home-lead {
         gap: 0.85rem;
         padding: 0.8rem;
     }
 
-    .view-minimal .post-card.home-lead,
-    .hero-list-compact .post-card.home-lead {
+    .post-card.compact-card.home-lead {
         grid-template-columns: 1fr;
-        gap: 0.85rem;
-        padding: 0.8rem;
     }
 
     .view-minimal .post-card,

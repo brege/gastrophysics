@@ -119,29 +119,6 @@
 .post-share-footer .post-share-toggle[aria-expanded="true"] {
     border-bottom-color: transparent;
 }
-.post-share-footer .post-share-panel {
-    width: fit-content;
-    max-width: 100%;
-    padding-top: 0.55rem;
-}
-.post-share-footer .post-share-panel:not([hidden]) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.post-share-footer .post-share-panel:not([hidden])::before {
-    content: "";
-    width: 100%;
-    border-top: 3px solid var(--border);
-    margin-bottom: 0.7rem;
-}
-.post-share-footer .share-buttons {
-    width: fit-content;
-    max-width: 100%;
-    margin: 0;
-    padding-top: 0;
-    border-top: none;
-}
 
 .page-footer {
     margin-top: 2rem;

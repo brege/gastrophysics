@@ -33,7 +33,7 @@
     --balanced-item-align: center;
     margin: 0 0 0.85rem;
     color: var(--secondary);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.76rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
