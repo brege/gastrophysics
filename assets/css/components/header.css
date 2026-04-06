@@ -95,6 +95,14 @@
 .nav-actions button {
     display: flex;
     align-items: center;
+    color: inherit;
+}
+
+.nav-actions a:hover,
+.nav-actions a:active,
+.nav-actions button:hover,
+.nav-actions button:active {
+    color: var(--accent);
 }
 
 .nav-actions svg {
@@ -102,10 +110,11 @@
 }
 
 button#theme-toggle {
+    appearance: none;
+    -webkit-appearance: none;
     background: none;
     border: none;
     cursor: pointer;
-    color: inherit;
     padding: 0;
     font-size: inherit;
     margin: 0;
