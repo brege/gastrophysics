@@ -141,6 +141,26 @@
     margin-top: 0.16rem;
 }
 
+.post-single.type-cv .cv-pair-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.35em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.post-single.type-cv .cv-pair-list li {
+    display: inline;
+    margin: 0;
+}
+
+.post-single.type-cv .cv-pair-list li:not(:last-child)::after {
+    content: ",";
+    color: var(--secondary);
+}
+
 .post-single.type-cv .cv-row.compact .cv-main,
 .post-single.type-cv .cv-row.award .cv-main {
     max-width: 68ch;
@@ -447,6 +467,63 @@
 
     .post-single.type-cv .cv-label {
         text-align: left;
+    }
+
+    .post-single.type-cv .cv-pair {
+        gap: 0.28rem;
+    }
+
+    .post-single.type-cv .cv-pair + .cv-pair {
+        margin-top: 0.7rem;
+    }
+
+    .post-single.type-cv .cv-pair .cv-label {
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+    }
+
+    .post-single.type-cv .cv-pair .cv-main {
+        max-width: none;
+    }
+
+    .post-single.type-cv .cv-pair-list {
+        display: grid;
+        grid-template-columns: repeat(var(--cv-pair-cols, 2), minmax(0, 1fr));
+        gap: 0.22rem 0.65rem;
+    }
+
+    .post-single.type-cv .cv-pair-list.is-cols-1 {
+        --cv-pair-cols: 1;
+    }
+
+    .post-single.type-cv .cv-pair-list.is-cols-2 {
+        --cv-pair-cols: 2;
+    }
+
+    .post-single.type-cv .cv-pair-list.is-cols-3 {
+        --cv-pair-cols: 3;
+    }
+
+    .post-single.type-cv .cv-pair-list.is-cols-4 {
+        --cv-pair-cols: 4;
+    }
+
+    .post-single.type-cv .cv-pair-list li {
+        display: block;
+        min-width: 0;
+        margin: 0;
+        color: var(--primary);
+        font-size: 0.84rem;
+        line-height: 1.25;
+    }
+
+    .post-single.type-cv .cv-pair-list li:not(:last-child)::after {
+        content: none;
+    }
+
+    .post-single.type-cv .cv-pair-list a {
+        overflow-wrap: break-word;
     }
 
     .post-single.type-cv .cv-project-links {

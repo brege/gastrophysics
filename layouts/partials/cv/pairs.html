@@ -1,15 +1,38 @@
 {{- range .items -}}
+  {{- $phraseList := false -}}
+  {{- $maxLen := 0 -}}
+  {{- range .entries -}}
+    {{- $nameLen := len .name -}}
+    {{- if gt $nameLen $maxLen }}{{- $maxLen = $nameLen -}}{{- end -}}
+    {{- if gt $nameLen 24 }}{{- $phraseList = true -}}{{- end -}}
+  {{- end -}}
+  {{- $count := len .entries -}}
+  {{- $cols := 1 -}}
+  {{- if not $phraseList -}}
+    {{- if and (le $maxLen 8) (gt $count 12) -}}
+      {{- $cols = 4 -}}
+    {{- else if and (le $maxLen 12) (gt $count 6) -}}
+      {{- $cols = 3 -}}
+    {{- else if and (le $maxLen 16) (gt $count 8) -}}
+      {{- $cols = 3 -}}
+    {{- else if gt $count 3 -}}
+      {{- $cols = 2 -}}
+    {{- end -}}
+  {{- end -}}
   <div class="cv-pair">
     <div class="cv-label">{{ .label }}</div>
     <div class="cv-main">
-      {{- range $i, $e := .entries -}}
-        {{- if gt $i 0 }}, {{ end -}}
-        {{- if .primary }}<strong>{{ end -}}
-        {{- with .url }}<a href="{{ . }}">{{ end -}}
-        {{- .name -}}
-        {{- with .url }}</a>{{ end -}}
-        {{- if .primary }}</strong>{{ end -}}
+      <ul class="cv-pair-list is-cols-{{ $cols }}">
+      {{- range .entries -}}
+        <li>
+          {{- if .primary }}<strong>{{ end -}}
+          {{- with .url }}<a href="{{ . }}">{{ end -}}
+          {{- .name -}}
+          {{- with .url }}</a>{{ end -}}
+          {{- if .primary }}</strong>{{ end -}}
+        </li>
       {{- end -}}
+      </ul>
     </div>
   </div>
 {{- end -}}
