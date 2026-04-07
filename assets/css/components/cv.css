@@ -478,9 +478,9 @@
     }
 
     .post-single.type-cv .cv-pair .cv-label {
-        font-size: 0.76rem;
+        font-size: .93rem;
         font-weight: 600;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
     }
 
     .post-single.type-cv .cv-pair .cv-main {
