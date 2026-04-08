@@ -1,3 +1,7 @@
+{{- $summary := .Summary -}}
+{{- if eq .Type "cv" -}}
+  {{- $summary = partial "cv/plain.html" . | replaceRE `\s+` " " | truncate 320 -}}
+{{- end -}}
 {{- if .Params.cover.image -}}
 <meta name="twitter:card" content="summary_large_image">
 {{- if (ne $.Params.cover.relative true) }}
@@ -19,7 +23,7 @@
   <meta name="twitter:title" content="{{ . }}">
 {{- end }}
 
-{{- with or .Description .Summary site.Params.description | plainify | htmlUnescape }}
+{{- with or .Description $summary site.Params.description | plainify | htmlUnescape }}
   <meta name="twitter:description" content="{{ trim . "\n\r\t " }}">
 {{- end }}
 

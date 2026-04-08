@@ -1,10 +1,9 @@
-{{- $data := dict -}}
-{{- with .Resources.GetMatch "cv.yaml" -}}
-  {{- $data = . | transform.Unmarshal -}}
-{{- else -}}
-  {{- errorf "missing cv.yaml for %s" $.File.Path -}}
-{{- end -}}
+{{- $page := . -}}
+{{- $data := partial "cv/data.html" . -}}
 <div class="cv-sheet" hidden>
+  {{- with $data.intro -}}
+    <div class="cv-intro">{{ $page.RenderString . }}</div>
+  {{- end -}}
   {{- range $data.sections -}}
     {{- partial "cv/section.html" . -}}
   {{- end -}}

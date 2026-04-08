@@ -60,13 +60,19 @@
 }
 </script>
 {{- if .IsPage }}
+{{- $articleBody := .Content | safeJS | htmlUnescape | plainify -}}
+{{- $description := .Summary | plainify -}}
+{{- if eq .Type "cv" -}}
+  {{- $articleBody = partial "cv/plain.html" . -}}
+  {{- $description = $articleBody | replaceRE `\s+` " " | truncate 320 -}}
+{{- end -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": {{ .Title | plainify}},
   "name": "{{ .Title | plainify }}",
-  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify  }}{{ end -}},
+  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ $description }}{{ end -}},
   "keywords": [
     {{- if .Params.keywords }}
     {{ range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
@@ -74,8 +80,8 @@
     {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
     {{- end }}
   ],
-  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
-  "wordCount" : "{{ .WordCount }}",
+  "articleBody": {{ $articleBody }},
+  "wordCount" : "{{ len (split $articleBody " ") }}",
   "inLanguage": {{ .Language.Lang | default "en-us" }},
   {{ if .Params.cover.image -}}
   "image":

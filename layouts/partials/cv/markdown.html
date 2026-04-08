@@ -1,0 +1,99 @@
+{{- $data := partial "cv/data.html" . -}}
+{{- $lines := slice -}}
+
+{{- with $data.intro -}}
+  {{- $lines = $lines | append (strings.TrimSpace .) "" -}}
+{{- end -}}
+
+{{- range $section := $data.sections -}}
+  {{- $lines = $lines | append (printf "## %s" $section.title) "" -}}
+  {{- $handler := $section.handler -}}
+
+  {{- if eq $handler "pairs" -}}
+    {{- range $item := $section.items -}}
+      {{- $lines = $lines | append (printf "- **%s**" $item.label) -}}
+      {{- range $entry := $item.entries -}}
+        {{- $text := $entry.name -}}
+        {{- if $entry.primary -}}
+          {{- $text = printf "**%s**" $text -}}
+        {{- end -}}
+        {{- with $entry.url -}}
+          {{- $text = printf "[%s](%s)" $text . -}}
+        {{- end -}}
+        {{- $lines = $lines | append (printf "  %s" $text) -}}
+      {{- end -}}
+      {{- $lines = $lines | append "" -}}
+    {{- end -}}
+
+  {{- else if eq $handler "projects" -}}
+    {{- range $item := $section.items -}}
+      {{- $lines = $lines | append (printf "[**%s**](%s) %s" $item.name $item.url $item.summary) -}}
+      {{- with $item.stack -}}
+        {{- $lines = $lines | append . -}}
+      {{- end -}}
+      {{- range $link := $item.links -}}
+        {{- $lines = $lines | append (printf "[%s](%s)" $link.label $link.url) -}}
+      {{- end -}}
+      {{- $lines = $lines | append "" -}}
+    {{- end -}}
+    {{- with $section.note -}}
+      {{- $lines = $lines | append . "" -}}
+    {{- end -}}
+
+  {{- else if eq $handler "rows" -}}
+    {{- range $item := $section.items -}}
+      {{- $lines = $lines | append (printf "- %s, %s" $item.date $item.content) -}}
+    {{- end -}}
+    {{- $lines = $lines | append "" -}}
+
+  {{- else if eq $handler "detail" -}}
+    {{- range $item := $section.items -}}
+      {{- $content := replaceRE `\n\s*\n+` "\n" (strings.TrimSpace $item.content) -}}
+      {{- $lines = $lines | append $content "" -}}
+    {{- end -}}
+
+  {{- else if eq $handler "research" -}}
+    {{- range $item := $section.items -}}
+      {{- $lines = $lines | append $item.date (printf "**%s**" $item.title) $item.meta -}}
+      {{- with $item.content -}}
+        {{- if reflect.IsSlice . -}}
+          {{- if gt (len .) 1 -}}
+            {{- range $i, $part := . -}}
+              {{- $lines = $lines | append (printf "%d. %s" (add $i 1) $part) -}}
+            {{- end -}}
+          {{- else -}}
+            {{- $lines = $lines | append (index . 0) -}}
+          {{- end -}}
+        {{- else -}}
+          {{- $lines = $lines | append . -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $lines = $lines | append "" -}}
+    {{- end -}}
+
+  {{- else if eq $handler "teaching" -}}
+    {{- range $item := $section.items -}}
+      {{- $title := $item.name -}}
+      {{- with $item.code -}}
+        {{- $title = printf "**%s** %s, %s" . $item.kind $item.name -}}
+      {{- end -}}
+      {{- with $item.tag -}}
+        {{- $title = printf "%s | %s" $title . -}}
+      {{- end -}}
+      {{- $lines = $lines | append $item.date $title -}}
+      {{- range $detail := $item.detail -}}
+        {{- $text := $detail.name -}}
+        {{- with $detail.url -}}
+          {{- $text = printf "[%s](%s)" $detail.name . -}}
+        {{- end -}}
+        {{- $lines = $lines | append (printf "  %s" $text) -}}
+      {{- end -}}
+      {{- $lines = $lines | append "" -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $lines = $lines | append "" -}}
+{{- end -}}
+
+{{- return (strings.TrimSpace (delimit $lines "\n")) -}}
+

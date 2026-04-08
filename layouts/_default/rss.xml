@@ -54,15 +54,21 @@
     {{- end }}
     {{- range $pages }}
     {{- if and (ne .Layout `search`) (ne .Layout `archives`) }}
+    {{- $summary := .Summary -}}
+    {{- $content := .Content -}}
+    {{- if eq .Type "cv" -}}
+      {{- $content = partial "cv/shadow.html" . -}}
+      {{- $summary = partial "cv/plain.html" . | replaceRE `\s+` " " | truncate 320 -}}
+    {{- end }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
-      <description>{{ with .Description | html }}{{ . }}{{ else }}{{ .Summary | html }}{{ end -}}</description>
-      {{- if and site.Params.ShowFullTextinRSS .Content }}
-      <content:encoded>{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content:encoded>
+      <description>{{ with .Description | html }}{{ . }}{{ else }}{{ $summary | html }}{{ end -}}</description>
+      {{- if and site.Params.ShowFullTextinRSS $content }}
+      <content:encoded>{{ (printf "<![CDATA[%s]]>" $content) | safeHTML }}</content:encoded>
       {{- end }}
     </item>
     {{- end }}

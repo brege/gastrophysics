@@ -2,6 +2,8 @@
 
 {{- $note := site.Params.homeInfoParams.Note | default "data scientist / chef / astrophysicist" -}}
 {{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) -}}
+{{- $cvContent := partial "cv.html" . -}}
+{{- $cvShadow := partial "cv/shadow.html" . -}}
 {{- $noteItems := slice -}}
 {{- range split $note "/" }}
   {{- $part := strings.TrimSpace . -}}
@@ -34,6 +36,7 @@
 
   {{- $showToc := .Param "ShowToc" }}
   {{- if $showToc }}
+  {{- .Scratch.Set "tocContent" $cvShadow -}}
   <div class="toc-anchor">
     <div class="toc-margin-wrap">
       {{- partial "nav/toc.html" . }}
@@ -42,19 +45,32 @@
   <div class="toc-preamble">
     {{- partial "nav/toc.html" . }}
   </div>
+  {{- .Scratch.Delete "tocContent" -}}
   {{- end }}
 
   <div class="post-content cv-content">
     <div class="cv-reader-shadow">
-      {{- .RawContent | markdownify -}}
+      {{- $cvShadow -}}
     </div>
-    {{- with .Resources.GetMatch "preamble.md" -}}
-      <div class="cv-preamble">{{ .Content }}</div>
+    {{- if and (.Param "headerNav") (ne (.Param "hideCvKeyboardTip") true) -}}
+      <div class="cv-keyboard-tip">
+        <div class="kbd-tip">
+          <div class="kbd-tip-head">
+            <span class="kbd-tip-icon" aria-hidden="true">
+              {{- partial "svg.html" (dict "name" "keyboard") -}}
+            </span>
+            <span class="kbd-tip-label">TIP</span>
+          </div>
+          <div class="kbd-tip-body">
+            <p>Use <kbd>Enter</kbd> or <kbd>Space</kbd> to advance sections. <kbd>Shift</kbd>+<kbd>Enter</kbd> or <kbd>Backspace</kbd> to go back.</p>
+          </div>
+        </div>
+      </div>
     {{- end -}}
     {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "post/anchored_headings.html" (partial "cv.html" .) -}}
+    {{- partial "post/anchored_headings.html" $cvContent -}}
     {{- else -}}
-    {{ partial "cv.html" . }}
+    {{ $cvContent }}
     {{- end }}
   </div>
 

@@ -3,8 +3,16 @@
 {{- if and (or .Params.editPost.URL site.Params.editPost.URL) .File -}}
 {{- $sourceUrl = .Params.editPost.URL | default site.Params.editPost.URL -}}
 {{- if .Params.editPost.appendFilePath | default (site.Params.editPost.appendFilePath | default false) -}}
-{{- $sourceUrl = printf "%s/%s" $sourceUrl (path.Join .File.Path) -}}
+{{- $sourcePath := path.Join .File.Path -}}
+{{- if eq .Type "cv" -}}
+{{- $sourcePath = path.Join (path.Dir .File.Path) "cv.yaml" -}}
 {{- end -}}
+{{- $sourceUrl = printf "%s/%s" $sourceUrl $sourcePath -}}
+{{- end -}}
+{{- end -}}
+{{- $wordCount := .WordCount -}}
+{{- if eq .Type "cv" -}}
+{{- $wordCount = len (split (partial "cv/plain.html" .) " ") -}}
 {{- end -}}
 
 <div class="post-meta-stack post-share-wrap share-divider-after">
@@ -17,7 +25,7 @@
     </div>
     <div class="post-meta-tools">
       {{- if (.Param "ShowWordCount") -}}
-      <span>{{ .WordCount }} words</span>
+      <span>{{ $wordCount }} words</span>
       {{- end -}}
       {{- if $showShare -}}
       <button

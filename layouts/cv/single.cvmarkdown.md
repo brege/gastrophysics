@@ -1,0 +1,1 @@
+{{ partial "cv/markdown.html" . }}

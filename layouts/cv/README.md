@@ -4,11 +4,14 @@ The CV page is a Hugo page bundle using the `cv` layout type.
 
 ## Files
 
-While you can use a single Markdown file for the CV page, you should create a YAML file instead.
+Create the CV as a Hugo page bundle. The `index.md` file may contain only
+front matter; `cv.yaml` is the CV source of truth.
 
-- `index.md`: front matter and a markdown expertise summary, rendered as a reader-friendly shadow above the structured CV
+- `index.md`: front matter for the CV page bundle
 - `cv.yaml`: structured CV data, the primary source for the rendered page
-- `preamble.md`: optional introduction rendered between the markdown shadow and the YAML sections
+
+The theme renders the styled CV, reader shadow, table of contents, search text,
+RSS content, schema body, and CV word count from `cv.yaml`.
 
 See [example](https://github.com/brege/brege.org/blob/master/content/cv/cv.yaml) for a full example.
 
@@ -23,11 +26,13 @@ tocStartLevel: 2
 tocEndLevel: 2     # simple non-branching section list
 headerNav: true    # enables sticky section navigation
 navDepth: 3        # heading depth for the nav
+hideCvKeyboardTip: false
 ```
 
 ## cv.yaml Schema
 
-The top-level key is `sections`, a list of objects. Each section has:
+The top-level `intro` key is optional Markdown rendered before the CV sections.
+The top-level `sections` key is a list of objects. Each section has:
 
 | Field     | Required | Description                                    |
 |-----------|----------|------------------------------------------------|

@@ -1,0 +1,7 @@
+{{- $data := dict -}}
+{{- with .Resources.GetMatch "cv.yaml" -}}
+  {{- $data = . | transform.Unmarshal -}}
+{{- else -}}
+  {{- errorf "missing cv.yaml for %s" $.File.Path -}}
+{{- end -}}
+{{- return $data -}}

@@ -1,4 +1,5 @@
-{{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
+{{- $tocContent := .Scratch.Get "tocContent" | default .Content -}}
+{{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" $tocContent -}}
 
 {{- /* Per-page level filtering via front matter.
        tocStartLevel / tocEndLevel default to 1/6 (original behaviour).
