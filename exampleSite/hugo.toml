@@ -48,6 +48,13 @@ enableRobotsTXT = false
   homePageSize = 3
   postPageSize = 6
 
+  [[params.headerActions]]
+    name = "GitHub"
+    icon = "github"
+    url = "https://github.com/brege/gastrophysics"
+    title = "Gastrophysics on GitHub"
+    label = "Gastrophysics on GitHub"
+
 [params.label]
   text = "Gastrophysics"
 

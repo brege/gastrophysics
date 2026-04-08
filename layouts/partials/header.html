@@ -69,6 +69,13 @@
             {{- end }}
         {{- end }}
         <div class="nav-actions">
+            {{- range site.Params.headerActions }}
+            {{- $icon := .icon | default .name }}
+            {{- $is_external := findRE "://" .url }}
+            <a class="header-action" href="{{ .url }}"{{ if $is_external }} rel="noopener" target="_blank"{{ end }} title="{{ .title | default .name }}" aria-label="{{ .label | default (.title | default .name) }}">
+                {{- partial "svg.html" (dict "name" $icon) -}}
+            </a>
+            {{- end }}
             {{- range site.Menus.main }}
             {{- if eq (site.GetPage .KeyName).Layout `search` }}
             <a href="{{ .URL | absLangURL }}" title="search (Alt + /)" accesskey="/" aria-label="Search">
