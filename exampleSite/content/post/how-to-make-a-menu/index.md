@@ -20,6 +20,8 @@ cover:
 A menu page is a dated bundle with `type: menus`. The `menu` shortcode
 wraps a short sequence of courses and uses the page date and site author
 in the menu footer.
+For a full menu page, you can also write plain Markdown in a page with
+`type: menus` and let the layout render the card and footer.
 
 ```go-html-template
 {{%/* menu */%}}

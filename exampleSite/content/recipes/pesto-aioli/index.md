@@ -6,18 +6,16 @@ tags:
   - emulsification
   - mediterranean
   - vegetarian
-date: 2020-01-01 
+date: 2020-01-01
 draft: false
 ShowTOC: false
 ---
-
-{{% recipe %}}
 
 ## Pesto Aioli
 
 **Chef:** Wyatt Brege
 
-**Yield:** 6 Quarts 
+**Yield:** 6 Quarts
 
 ### Ingredients
 
@@ -36,7 +34,3 @@ ShowTOC: false
 
 2.  Whisk the pesto with the mayonnaise in a large mixing bowl until
     thoroughly combined
-
-
-
-{{% /recipe %}}

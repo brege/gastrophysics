@@ -8,8 +8,6 @@ draft: false
 title: August 1, 2019
 ---
 
-{{% menu %}}
-
 ## Farmer’s Market Menu
 
 ### Basil Pesto Pasta
@@ -30,5 +28,3 @@ blueberry whipped cream, pumpkin seed brittle
 
 
 *Fresh produce provided by our friends at Eatwell Farm*
-
-{{% /menu %}}

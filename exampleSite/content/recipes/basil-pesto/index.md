@@ -10,8 +10,6 @@ draft: false
 ShowTOC: false
 ---
 
-{{% recipe %}}
-
 ## Basil Pesto
 
 **Chef:** Wyatt Brege
@@ -28,15 +26,14 @@ ShowTOC: false
 -   1/4 Cup Grated Parmesan
 -   tt Salt and Black Pepper
 
-### Directions 
+### Directions
 
 In a medium sized mixing bowl, combine the ingredients (sans parmesan)
 with the immersion blender.
 Fold in the parmesan.
 Store in 1 Quart deli container.
 
-### Notes 
+### Notes
 
 It is important to use actual extra virgin olive oil and not pomace or
 salad oil. The bite of the olive is a key flavor component of pesto.
-{{% /recipe %}}

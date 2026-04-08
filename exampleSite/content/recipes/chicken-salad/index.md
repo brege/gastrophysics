@@ -3,12 +3,10 @@ title: "Chicken Salad"
 author: Wyatt Brege
 tags:
   - salad
-date: 2020-01-01 
+date: 2020-01-01
 draft: false
 ShowTOC: false
 ---
-
-{{% recipe %}}
 
 ## Chicken Salad
 
@@ -35,7 +33,3 @@ ShowTOC: false
 
 3.  Dice the chicken in ½" sized pieces and combine with the remaining
     ingredients in a large mixing bowl
-
-
-
-{{% /recipe %}}

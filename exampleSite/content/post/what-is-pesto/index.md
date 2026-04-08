@@ -29,6 +29,8 @@ cover:
 The `recipe` shortcode wraps a recipe body in the theme's recipe card.
 Use ordinary Markdown inside the shortcode so the recipe remains readable
 in source form.
+For a full recipe page, you can also write plain Markdown in a page with
+`type: recipes` and let the layout wrap it automatically.
 
 ```go-html-template
 {{%/* recipe */%}}

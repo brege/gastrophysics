@@ -1,0 +1,20 @@
+<div class="menu-card">
+  <div class="menu-items">
+    {{ .content }}
+  </div>
+
+  {{- $page := .page -}}
+  {{- $dateFormatted := $page.Date | time | dateFormat "January 2, 2006" -}}
+  {{- $author := $page.Params.author | default site.Params.author -}}
+
+  <div class="menu-footer">
+    <div class="menu-date">
+      <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $dateFormatted }}</time>
+    </div>
+    {{- with $author }}
+    <div class="menu-author">
+      <span>{{ . }}</span>
+    </div>
+    {{- end }}
+  </div>
+</div>

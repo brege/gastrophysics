@@ -8,8 +8,6 @@ draft: false
 title: October 18, 2018
 ---
 
-{{% menu %}}
-
 ## Farmer’s Market Menu
 
 ### Prickly Pear
@@ -32,5 +30,3 @@ almond cream cheese frosting, blueberry sauce
 
 *we thank all the local farmers for providing us with such amazing*
 *produce this season and for becoming our dear friends*
-
-{{% /menu %}}

@@ -1,6 +1,10 @@
 {{- define "main" }}
 
 {{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) }}
+{{- $isRecipePage := eq .Type "recipes" }}
+{{- $isMenuPage := eq .Type "menus" }}
+{{- $hasRecipeShortcode := and $isRecipePage (gt (len (findRE `\{\{[%<]\s*/?\s*recipe\b` .RawContent)) 0) }}
+{{- $hasMenuShortcode := and $isMenuPage (gt (len (findRE `\{\{[%<]\s*/?\s*menu\b` .RawContent)) 0) }}
 
 <article class="post-single type-{{ default "page" .Type }} section-{{ default "root" .Section }}">
   <header class="post-header">
@@ -39,7 +43,11 @@
 
   {{- if .Content }}
   <div class="post-content">
-    {{- if and (ne .Type "menus") (not (.Param "disableAnchoredHeadings")) }}
+    {{- if and $isRecipePage (not $hasRecipeShortcode) }}
+    {{- partial "recipe/wrap.html" (dict "content" .Content) -}}
+    {{- else if and $isMenuPage (not $hasMenuShortcode) }}
+    {{- partial "menu/card.html" (dict "content" .Content "page" .) -}}
+    {{- else if and (not $isMenuPage) (not $isRecipePage) (not (.Param "disableAnchoredHeadings")) }}
     {{- partial "post/anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
   </div>
