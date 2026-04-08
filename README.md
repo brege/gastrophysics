@@ -1,12 +1,12 @@
-# Gastrophysics
+<h1 align="center">Gastrophysics | <a href="https://gastrophysics.brege.org"><b>Demo</b></a></h1>
 
 A Hugo theme for people with split careers. It is print- and e-reader-friendly, with first-class support for sectional CVs, recipes, and tasting menus.
 
-## ·· [demo: gastrophysics.brege.org](https://gastrophysics.brege.org) ··
+---
 
-My site: [**brege.org**](https://brege.org). Gastrophysics started as a fork of [PaperMod](https://github.com/adityatelange/hugo-PaperMod/), then geared toward a slightly textbook-y portfolio flare mixed with the editorial signatures of [The Atlantic](https://www.theatlantic.com/).
+Gastrophysics started as a fork of [PaperMod](https://github.com/adityatelange/hugo-PaperMod/) for better presenting multiple career trajectories. It then moved toward a slightly textbook-y portfolio flair mixed with the editorial signatures of [The Atlantic](https://www.theatlantic.com/).
 
-Fan of Markdown re-usability? See [Related Projects](#related-projects) below.
+Interested in Markdown reuse? See [Related Projects](#related-projects).
 
 ## Gallery
 
@@ -38,7 +38,7 @@ Fan of Markdown re-usability? See [Related Projects](#related-projects) below.
 - 11 [color palettes](#color-palettes)
 - Palette-aware syntax highlighting
 - Sectional CV layout driven by `cv.yaml`
-- Recipe and tasting menu shortcodes with archive views
+- Recipe and tasting-menu shortcodes with archive views
 - Balanced text wrapping for navigation and footer sequences
 - Anchored headings with configurable depth
 - Compact and expanded post card layouts
@@ -83,7 +83,8 @@ See [layouts/cv/README.md](layouts/cv/README.md).
 ## Related Projects
 
 1. [**oshea**](https://github.com/brege/oshea) for a Node.js plugin framework for Markdown-to-PDF pipelines.
-2. [**ghrm**](https://github.com/brege/ghrm) for an as close to a local GitHub README renderer as possible, with full support for admonitions, header anchors, mermaid diagrams, math and nearly all embeddings, based on [Hugo](https://github.com/gohugoio/hugo) and has a [Neovim](https://neovim.io/) [plugin](https://github.com/brege/ghrm/blob/main/lua/ghrm/init.lua).
+2. [**ghrm**](https://github.com/brege/ghrm) for local GitHub README rendering with admonitions, header anchors, Mermaid diagrams, math, and many more embeddings, based on [Hugo](https://github.com/gohugoio/hugo) with a [Neovim](https://neovim.io/) [plugin](https://github.com/brege/ghrm/blob/main/lua/ghrm/init.lua).
+
 ## License
 
 [MIT](LICENSE)
