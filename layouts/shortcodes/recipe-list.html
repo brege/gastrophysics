@@ -1,5 +1,7 @@
 {{- $sectionName := .Get "section" }}
 {{- $tags := "tags" }}
+{{- $pages := slice }}
+{{- $err := "" }}
 {{- if $sectionName }}
   {{- $targetPath := printf "%s/%s" .Page.Section $sectionName }}
   {{- $subsection := site.GetPage "section" $targetPath }}
@@ -7,54 +9,33 @@
   {{- if $subsection }}
     {{- $subsectionPages := $subsection.Pages }}
     {{- if $subsectionPages }}
-      <div class="recipe-list-shortcode">
-        <ul class="recipe-index-list">
-          {{- range $subsectionPages.ByTitle }}
-          <li class="recipe-index-item">
-            <h3 class="recipe-index-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            {{- with (.GetTerms $tags) }}
-            <div class="recipe-index-tags tag-row">
-              <span class="tag-line tag-rule" aria-hidden="true"></span>
-              <ul class="recipe-index-tag-list tag-links" aria-label="recipe tags">
-                {{- range . }}
-                <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-                {{- end }}
-              </ul>
-            </div>
-            {{- end }}
-          </li>
-          {{- end }}
-        </ul>
-      </div>
+      {{- $pages = $subsectionPages.ByTitle }}
     {{- else }}
-      <p>No recipes found in "{{ $sectionName }}" subsection.</p>
+      {{- $err = printf "No recipes found in %q subsection." $sectionName }}
     {{- end }}
   {{- else }}
-    <p>Recipe subsection "{{ $sectionName }}" not found at path "{{ $targetPath }}".</p>
+    {{- $err = printf "Recipe subsection %q not found at path %q." $sectionName $targetPath }}
   {{- end }}
 {{- else }}
   {{- $section := site.GetPage "section" .Page.Section }}
   {{- with $section }}
-    <div class="recipe-list-shortcode">
-      <ul class="recipe-index-list">
-        {{- range .RegularPages.ByTitle }}
-        <li class="recipe-index-item">
-          <h3 class="recipe-index-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-          {{- with (.GetTerms $tags) }}
-          <div class="recipe-index-tags tag-row">
-            <span class="tag-line tag-rule" aria-hidden="true"></span>
-            <ul class="recipe-index-tag-list tag-links" aria-label="recipe tags">
-              {{- range . }}
-              <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-              {{- end }}
-            </ul>
-          </div>
-          {{- end }}
-        </li>
-        {{- end }}
-      </ul>
-    </div>
+    {{- $pages = .RegularPages.ByTitle }}
   {{- else }}
-    <p>Recipe section "{{ .Page.Section }}" not found.</p>
+    {{- $err = printf "Recipe section %q not found." .Page.Section }}
   {{- end }}
+{{- end }}
+
+{{- if $pages }}
+<div class="recipe-list-shortcode">
+  <ul class="recipe-index-list">
+    {{- range $pages }}
+    <li class="recipe-index-item">
+      <h3 class="recipe-index-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      {{- partial "tags/rail.html" (dict "terms" (.GetTerms $tags) "class" "recipe-index-tags" "listClass" "recipe-index-tag-list" "label" "recipe tags") }}
+    </li>
+    {{- end }}
+  </ul>
+</div>
+{{- else if $err }}
+<p>{{ $err }}</p>
 {{- end }}

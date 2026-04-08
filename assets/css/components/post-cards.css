@@ -56,11 +56,11 @@
 }
 .post-card .entry-tags {
     --tag-gap: 0.2rem 0.8rem;
-    --tag-margin: 0 0 0 0.6rem;
+    --tag-margin: 0 0 0 0.45rem;
     --tag-line-height: 1.6;
-    --tag-rule-min: 2rem;
     --tag-rule-height: 1.6em;
-    margin-top: 0.75rem;
+    grid-column: 1 / -1;
+    width: 100%;
     position: relative;
     z-index: 1;
 }
@@ -84,11 +84,11 @@
 .view-horizontal .post-card {
     display: grid;
     grid-template-columns: 240px 1fr;
-    gap: 1.5rem;
+    gap: 0.75rem 1.5rem;
     align-items: start;
 }
 .view-horizontal .post-card .entry-media {
-    grid-row: 1 / -1;
+    grid-row: 1;
 }
 .view-horizontal .post-card .entry-cover {
     border-radius: var(--radius);
@@ -107,13 +107,12 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: start;
-    gap: 1rem;
+    gap: 0.45rem 1rem;
     padding: 1.2rem 0;
 }
 .post-card.no-cover,
 .post-card.compact-card {
     --tag-font-size: 0.76em;
-    --tag-rule-min: 1.25rem;
 }
 .post-card.no-cover .entry-media,
 .post-card.no-cover .entry-meta,
@@ -145,19 +144,17 @@
 }
 .post-card.no-cover .entry-tags,
 .post-card.compact-card .entry-tags {
-    margin-top: 0.4rem;
     max-width: 100%;
 }
-.post-card.no-cover .entry-tags,
-.post-card.compact-card .entry-tags {
-    --tag-rule-min: 1.25rem;
+.post-list .post-card.has-tags:not(.featured-card) {
+    border-bottom: none;
+    padding-bottom: 0.65rem;
 }
 .post-list:not(.tags-expanded) .post-card.compact-card .entry-tags-preview,
 .post-list:not(.tags-expanded).view-horizontal .post-card.no-cover .entry-tags-preview,
 .hero-list-compact .post-card.home-lead .entry-tags-preview {
     flex-wrap: nowrap;
     max-height: none;
-    margin-left: 0.45rem;
 }
 .post-card.no-cover .entry-date-col,
 .post-card.compact-card .entry-date-col {
@@ -166,7 +163,7 @@
 }
 .post-card.featured-card {
     grid-template-columns: minmax(260px, 320px) 1fr;
-    gap: 1.35rem;
+    gap: 0.65rem 1.35rem;
     padding: 1rem;
     margin: 0.25rem 0 1.1rem;
     background: var(--entry);
@@ -189,9 +186,6 @@
 }
 .post-card.featured-card .entry-meta {
     margin-top: 0.8rem;
-}
-.post-card.featured-card .entry-tags {
-    margin-top: 0.85rem;
 }
 .post-card.featured-card .entry-cover {
     border-radius: var(--radius);

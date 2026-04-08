@@ -107,16 +107,7 @@
 
   <footer class="post-footer">
     {{- $tags := "tags" }}
-    {{- with ($.GetTerms $tags) }}
-    <div class="post-tags tag-row">
-      <span class="tag-line tag-rule" aria-hidden="true"></span>
-      <ul class="tag-list tag-links">
-        {{- range . }}
-        <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-        {{- end }}
-      </ul>
-    </div>
-    {{- end }}
+    {{- partial "tags/rail.html" (dict "terms" ($.GetTerms $tags) "class" "post-tags" "listClass" "tag-list" "label" "tags") }}
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post/nav_links.html" . }}
     {{- end }}

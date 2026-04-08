@@ -1,0 +1,20 @@
+{{- $terms := .terms -}}
+{{- with $terms }}
+  {{- $rowClass := "tag-row" -}}
+  {{- with $.class -}}
+    {{- $rowClass = printf "%s %s" . $rowClass -}}
+  {{- end -}}
+  {{- $listClass := "tag-links" -}}
+  {{- with $.listClass -}}
+    {{- $listClass = printf "%s %s" . $listClass -}}
+  {{- end -}}
+  {{- $label := $.label | default "tags" -}}
+<div class="{{ $rowClass }}">
+  <span class="tag-line tag-rule" aria-hidden="true"></span>
+  <ul class="{{ $listClass }}" aria-label="{{ $label }}">
+    {{- range . }}
+    <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+    {{- end }}
+  </ul>
+</div>
+{{- end }}
