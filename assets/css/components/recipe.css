@@ -119,6 +119,14 @@
     max-width: 760px;
     padding: 0;
 }
+
+.post-content .recipe.is-embedded {
+    max-width: none;
+    margin: 1.6rem 0 1.9rem;
+    padding-inline-start: 1.1rem;
+    border-inline-start: 4px solid var(--secondary);
+}
+
 .recipe .content > h2:first-child {
     display: none;
 }
@@ -205,6 +213,12 @@
     .recipe {
         margin-top: 1.5rem;
     }
+
+    .post-content .recipe.is-embedded {
+        margin: 1.35rem 0 1.6rem;
+        padding-inline-start: 0.9rem;
+    }
+
     .recipe .content > p:has(strong) {
         margin-right: 0;
     }

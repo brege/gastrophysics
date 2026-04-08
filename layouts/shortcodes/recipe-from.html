@@ -1,0 +1,9 @@
+{{- $path := .Get "path" -}}
+{{- $page := site.GetPage $path -}}
+{{- if not $page -}}
+  {{- errorf "recipe-from shortcode could not find page %q at %s" $path .Position -}}
+{{- end -}}
+{{- if ne $page.Type "recipes" -}}
+  {{- errorf "recipe-from shortcode requires a recipes page, got %q for %q at %s" $page.Type $path .Position -}}
+{{- end -}}
+{{- partial "recipe/wrap.html" (dict "content" $page.Content "class" "is-embedded") -}}

@@ -8,6 +8,16 @@ Gastrophysics started as a fork of [PaperMod](https://github.com/adityatelange/h
 
 Interested in Markdown reuse? See [Related Projects](#related-projects).
 
+## Quickstart
+
+Assuming you've [installed Hugo](https://gohugo.io/getting-started/installing/):
+
+```bash
+git clone https://github.com/brege/gastrophysics.git
+cd gastrophysics/exampleSite
+hugo server
+```
+
 ## Gallery
 
 <table>

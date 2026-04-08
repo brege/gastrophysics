@@ -1,4 +1,4 @@
-<div class="recipe border rounded">
+<div class="recipe border rounded{{ with .class }} {{ . }}{{ end }}">
   <div class="content">
     {{ .content }}
   </div>
