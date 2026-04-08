@@ -1,0 +1,48 @@
+<div class="palette-picker" aria-label="Palette picker">
+    <div class="palette-picker-title">Palette</div>
+    <div class="palette-picker-options">
+        <button type="button" data-palette-choice="linen">linen</button>
+        <button type="button" data-palette-choice="nordic-linen">nordic linen</button>
+        <button type="button" data-palette-choice="nord">nord</button>
+        <button type="button" data-palette-choice="gruvbox">gruvbox</button>
+        <button type="button" data-palette-choice="everforest">everforest</button>
+        <button type="button" data-palette-choice="rose-pine">rose pine</button>
+        <button type="button" data-palette-choice="rose-pine-moon">rose pine moon</button>
+        <button type="button" data-palette-choice="catppuccin-frappe">catppuccin frappe</button>
+        <button type="button" data-palette-choice="catppuccin-macchiato">catppuccin macchiato</button>
+        <button type="button" data-palette-choice="catppuccin-mocha">catppuccin mocha</button>
+        <button type="button" data-palette-choice="sepia">sepia</button>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var root = document.documentElement;
+        var key = "gastrophysics-example-palette";
+        var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-palette-choice]"));
+
+        function applyPalette(palette) {
+            root.dataset.themePalette = palette;
+            root.dataset.themePaletteLight = palette;
+            root.dataset.themePaletteDark = palette;
+            localStorage.setItem(key, palette);
+
+            buttons.forEach(function (button) {
+                var active = button.dataset.paletteChoice === palette;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+        }
+
+        var stored = localStorage.getItem(key);
+        if (stored) {
+            applyPalette(stored);
+        }
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                applyPalette(button.dataset.paletteChoice);
+            });
+        });
+    })();
+</script>

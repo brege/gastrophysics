@@ -40,10 +40,16 @@
 {{- end }}
 
 {{- if .Params.cover.image -}}
-  {{- if (ne .Params.cover.relative true) }}
-    <meta property="og:image" content="{{ .Params.cover.image | absURL }}">
-  {{- else}}
+  {{- $pageCover := (.Resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
+  {{- $globalCover := (resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
+  {{- with or $pageCover $globalCover }}
+    <meta property="og:image" content="{{ .Permalink }}">
+  {{- else }}
+  {{- if eq .Params.cover.relative true }}
     <meta property="og:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}">
+  {{- else }}
+    <meta property="og:image" content="{{ .Params.cover.image | absURL }}">
+  {{- end }}
   {{- end}}
 {{- else }}
   {{- with partial "_funcs/get-page-images" . }}

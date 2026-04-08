@@ -84,11 +84,17 @@
   "wordCount" : "{{ len (split $articleBody " ") }}",
   "inLanguage": {{ .Language.Lang | default "en-us" }},
   {{ if .Params.cover.image -}}
+  {{- $pageCover := (.Resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
+  {{- $globalCover := (resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
   "image":
-    {{- if (ne .Params.cover.relative true) -}}
-    {{ .Params.cover.image | absURL }},
+    {{- with or $pageCover $globalCover -}}
+    {{ .Permalink }},
     {{- else -}}
+    {{- if eq .Params.cover.relative true -}}
     {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }},
+    {{- else -}}
+    {{ .Params.cover.image | absURL }},
+    {{- end -}}
     {{- end}}
   {{- else }}
     {{- $images := partial "templates/_funcs/get-page-images" . -}}

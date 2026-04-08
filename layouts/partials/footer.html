@@ -1,3 +1,5 @@
+{{- partial "extend_footer.html" . }}
+
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
     {{- if not site.Params.footer.hideCopyright }}
@@ -17,7 +19,7 @@
     <span>
         Powered by
         <a class="secondary-action" href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a class="secondary-action" href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <a class="secondary-action" href="https://github.com/brege/gastrophysics/" rel="noopener" target="_blank">Gastrophysics</a>
     </span>
 </footer>
 {{- end }}
@@ -27,8 +29,6 @@
     {{- partial "svg.html" (dict "name" "scroll-top") -}}
 </a>
 {{- end }}
-
-{{- partial "extend_footer.html" . }}
 
 <script>
     let menu = document.getElementById('menu');

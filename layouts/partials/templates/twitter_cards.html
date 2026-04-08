@@ -4,10 +4,16 @@
 {{- end -}}
 {{- if .Params.cover.image -}}
 <meta name="twitter:card" content="summary_large_image">
-{{- if (ne $.Params.cover.relative true) }}
-<meta name="twitter:image" content="{{ .Params.cover.image | absURL }}">
+{{- $pageCover := (.Resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
+{{- $globalCover := (resources.ByType "image").GetMatch (printf "*%s*" .Params.cover.image) -}}
+{{- with or $pageCover $globalCover }}
+<meta name="twitter:image" content="{{ .Permalink }}">
 {{- else }}
+{{- if eq .Params.cover.relative true }}
 <meta name="twitter:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}">
+{{- else }}
+<meta name="twitter:image" content="{{ .Params.cover.image | absURL }}">
+{{- end }}
 {{- end}}
 {{- else }}
 {{- $images := partial "templates/_funcs/get-page-images" . }}

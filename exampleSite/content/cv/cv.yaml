@@ -1,0 +1,65 @@
+intro: >-
+  Example Person is a student, amateur astronomer, and food writer
+  connecting night-sky notes with kitchen practice.
+
+sections:
+  - title: Expertise
+    handler: pairs
+    items:
+      - label: studies
+        entries:
+          - name: observation journals
+            primary: true
+          - name: field notes
+          - name: public writing
+      - label: amateur astronomy
+        entries:
+          - name: star charts
+          - name: telescope sessions
+          - name: lunar logs
+      - label: food
+        entries:
+          - name: pesto
+            url: /post/what-is-pesto/
+            primary: true
+          - name: batch-kitchen recipes
+            url: /recipes/
+          - name: seasonal menus
+            url: /menus/
+  - title: Selected Work
+    handler: projects
+    items:
+      - name: Night Kitchen Notebook
+        url: /post/
+        summary: >-
+          is a small writing practice for study notes, backyard observing,
+          and recipe experiments.
+        stack: student notes, amateur astronomy, food writing
+        links:
+          - label: Pesto Note
+            url: /post/what-is-pesto/
+          - label: Menu Note
+            url: /post/how-to-make-a-menu/
+
+      - name: Farmer's Market Menus
+        url: /menus/
+        summary: >-
+          is a compact archive of seasonal menus for learning how dishes
+          cluster around a small set of sauces and produce.
+        stack: menus, farmer's market, pesto, seasonal cooking
+        links:
+          - label: 2018 Menu
+            url: /menus/2018-10-18-farmers-market-menu/
+          - label: 2019 Menu
+            url: /menus/2019-08-01-farmers-market-menu/
+
+  - title: Timeline
+    handler: rows
+    class: compact
+    items:
+      - date: "2024-present"
+        content: "**Student**, *Gastrophysics Demo*"
+      - date: "2023-present"
+        content: "**Amateur Astronomer**, *Backyard Observing Log*"
+      - date: "2022-present"
+        content: "**Food Writer**, *Night Kitchen Notebook*"

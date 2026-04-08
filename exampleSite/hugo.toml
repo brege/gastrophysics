@@ -1,0 +1,101 @@
+baseURL = "https://example.org/"
+languageCode = "en"
+title = "Gastrophysics"
+copyright = "Copyright (c) 2026 Wyatt Brege"
+
+enableInlineShortcodes = true
+enableRobotsTXT = false
+
+[module]
+  [[module.imports]]
+    path = "github.com/brege/gastrophysics"
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON" ]
+
+[mediaTypes."text/markdown"]
+  suffixes = [ "md" ]
+
+[outputFormats.CVMarkdown]
+  mediaType = "text/markdown"
+  baseName = "index"
+  isPlainText = true
+  notAlternative = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+[params]
+  env = "development"
+  author = "Gastrophysics Demo"
+  name = "Gastrophysics"
+  description = "Food writing, recipes, menus, and a CV."
+  colorLight = "linen"
+  colorDark = "nord"
+  defaultTheme = "auto"
+  ShowToc = true
+  TocOpen = false
+  ShowBreadCrumbs = true
+  ShowWordCount = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  disableScrollToTop = true
+  mainSections = [ "post" ]
+  homePageSize = 3
+  postPageSize = 6
+
+[params.label]
+  text = "Gastrophysics"
+
+[params.homeInfoParams]
+  Title = "Gastrophysics"
+  FeedTitle = "Posts"
+  Content = "Food notes, working recipes, and seasonal menus for a cook with more than one practice."
+  Note = "student / amateur astronomer / foodie"
+
+  [[params.homeInfoParams.markers]]
+    name = "recipes"
+    url = "/recipes/"
+
+  [[params.homeInfoParams.markers]]
+    name = "menus"
+    url = "/menus/"
+
+  [[params.homeInfoParams.markers]]
+    name = "posts"
+    url = "/post/"
+
+[menu]
+  [[menu.main]]
+    identifier = "recipes"
+    name = "Recipes"
+    url = "/recipes/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "menus"
+    name = "Menus"
+    url = "/menus/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/post/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/cv/"
+    weight = 40
+
+  [[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 50

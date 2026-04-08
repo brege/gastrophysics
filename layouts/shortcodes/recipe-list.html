@@ -33,5 +33,28 @@
     <p>Recipe subsection "{{ $sectionName }}" not found at path "{{ $targetPath }}".</p>
   {{- end }}
 {{- else }}
-<p>Error: No section specified. Usage example: &lt;recipe-list section="subsection_name"&gt;</p>
+  {{- $section := site.GetPage "section" .Page.Section }}
+  {{- with $section }}
+    <div class="recipe-list-shortcode">
+      <ul class="recipe-index-list">
+        {{- range .RegularPages.ByTitle }}
+        <li class="recipe-index-item">
+          <h3 class="recipe-index-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+          {{- with (.GetTerms $tags) }}
+          <div class="recipe-index-tags tag-row">
+            <span class="tag-line tag-rule" aria-hidden="true"></span>
+            <ul class="recipe-index-tag-list tag-links" aria-label="recipe tags">
+              {{- range . }}
+              <li><a class="secondary-action tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  {{- else }}
+    <p>Recipe section "{{ .Page.Section }}" not found.</p>
+  {{- end }}
 {{- end }}

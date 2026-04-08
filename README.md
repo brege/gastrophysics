@@ -2,9 +2,35 @@
 
 A Hugo theme for people with split careers. It is print- and e-reader-friendly, with first-class support for sectional CVs, recipes, and tasting menus.
 
-Demo: [brege.org](https://brege.org)
+## ·· [demo: gastrophysics.brege.org](https://gastrophysics.brege.org) ··
 
-Started as a fork of [PaperMod](https://github.com/adityatelange/hugo-PaperMod/).
+My site: [**brege.org**](https://brege.org). Gastrophysics started as a fork of [PaperMod](https://github.com/adityatelange/hugo-PaperMod/), then geared toward a slightly textbook-y portfolio flare mixed with the editorial signatures of [The Atlantic](https://www.theatlantic.com/).
+
+Fan of Markdown re-usability? See [Related Projects](#related-projects) below.
+
+## Gallery
+
+<table>
+  <tr>
+    <td colspan="2">
+      <img src="docs/img/home.png" width="100%">
+      <br><strong>Example Home</strong>
+      <br>Header navigation, cover-led post card, tags, and palette picker.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="docs/img/menu.png" width="100%">
+      <br><strong>Menu Layout</strong>
+      <br>Dated farmer's market menu with the centered menu-card treatment.
+    </td>
+    <td>
+      <img src="docs/img/cv.png" width="100%">
+      <br><strong>CV Layout</strong>
+      <br>CV page rendered from <code>cv.yaml</code> with TOC and keyboard navigation.
+    </td>
+  </tr>
+</table>
 
 ## Features
 
@@ -54,6 +80,10 @@ See [layouts/cv/README.md](layouts/cv/README.md).
 - `menu`: renders a tasting menu card and pulls the author from page or site params
 - `menu-list`: renders a menu archive with optional H3 preview extraction
 
+## Related Projects
+
+1. [**oshea**](https://github.com/brege/oshea) for a Node.js plugin framework for Markdown-to-PDF pipelines.
+2. [**ghrm**](https://github.com/brege/ghrm) for an as close to a local GitHub README renderer as possible, with full support for admonitions, header anchors, mermaid diagrams, math and nearly all embeddings, based on [Hugo](https://github.com/gohugoio/hugo) and has a [Neovim](https://neovim.io/) [plugin](https://github.com/brege/ghrm/blob/main/lua/ghrm/init.lua).
 ## License
 
 [MIT](LICENSE)

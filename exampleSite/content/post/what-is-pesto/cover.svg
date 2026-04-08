@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    :root {
+      --bg: #f1ece2;
+      --ink: #1f2933;
+      --dim: #6b7280;
+      --rule: #b8c0ad;
+      --green: #3f7f4f;
+      --green-fill: #dbead1;
+      --oil: #c99a2e;
+      --oil-fill: #f0dfad;
+      --garlic: #8a5a44;
+      --garlic-fill: #ead8c9;
+      --nut: #9b6b37;
+      --nut-fill: #ecd2a8;
+      --dairy: #496c9f;
+      --dairy-fill: #d7e0f3;
+      --accent: #b65f58;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #242933;
+        --ink: #d8dee9;
+        --dim: #a7b0c0;
+        --rule: #4c566a;
+        --green: #a3be8c;
+        --green-fill: #304335;
+        --oil: #ebcb8b;
+        --oil-fill: #4a412f;
+        --garlic: #d08770;
+        --garlic-fill: #4a352e;
+        --nut: #e5b678;
+        --nut-fill: #4b3a29;
+        --dairy: #88c0d0;
+        --dairy-fill: #30444c;
+        --accent: #bf616a;
+      }
+    }
+
+    text {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      fill: var(--ink);
+    }
+
+    .mono {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .node {
+      stroke-width: 3;
+      rx: 10;
+    }
+
+    .small {
+      font-size: 26px;
+      fill: var(--dim);
+    }
+
+    .label {
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .title {
+      font-size: 58px;
+      font-weight: 750;
+    }
+
+    .arrow {
+      stroke: var(--rule);
+      stroke-width: 4;
+      stroke-linecap: round;
+      marker-end: url(#arrow);
+    }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--rule)"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="var(--bg)"/>
+  <rect x="28" y="28" width="1144" height="619" rx="14" fill="none" stroke="var(--rule)" stroke-width="3"/>
+
+  <text x="600" y="105" text-anchor="middle" class="title">pesto grammar</text>
+  <text x="600" y="146" text-anchor="middle" class="small mono">herbs + oil + allium + texture + salt</text>
+
+  <line x1="260" y1="235" x2="500" y2="335" class="arrow"/>
+  <line x1="600" y1="235" x2="600" y2="320" class="arrow"/>
+  <line x1="940" y1="235" x2="700" y2="335" class="arrow"/>
+  <line x1="345" y1="500" x2="505" y2="400" class="arrow"/>
+  <line x1="855" y1="500" x2="695" y2="400" class="arrow"/>
+
+  <rect x="120" y="178" width="280" height="110" class="node" fill="var(--green-fill)" stroke="var(--green)"/>
+  <text x="260" y="225" text-anchor="middle" class="label" fill="var(--green)">basil</text>
+  <text x="260" y="258" text-anchor="middle" class="small mono">mint-family green</text>
+
+  <rect x="460" y="178" width="280" height="110" class="node" fill="var(--oil-fill)" stroke="var(--oil)"/>
+  <text x="600" y="225" text-anchor="middle" class="label" fill="var(--oil)">olive oil</text>
+  <text x="600" y="258" text-anchor="middle" class="small mono">fat suspension</text>
+
+  <rect x="800" y="178" width="280" height="110" class="node" fill="var(--garlic-fill)" stroke="var(--garlic)"/>
+  <text x="940" y="225" text-anchor="middle" class="label" fill="var(--garlic)">garlic</text>
+  <text x="940" y="258" text-anchor="middle" class="small mono">allium bite</text>
+
+  <rect x="205" y="452" width="280" height="110" class="node" fill="var(--nut-fill)" stroke="var(--nut)"/>
+  <text x="345" y="499" text-anchor="middle" class="label" fill="var(--nut)">tree nuts</text>
+  <text x="345" y="532" text-anchor="middle" class="small mono">body + texture</text>
+
+  <rect x="715" y="452" width="280" height="110" class="node" fill="var(--dairy-fill)" stroke="var(--dairy)"/>
+  <text x="855" y="499" text-anchor="middle" class="label" fill="var(--dairy)">parmesan</text>
+  <text x="855" y="532" text-anchor="middle" class="small mono">salt + grate</text>
+
+  <circle cx="600" cy="368" r="112" fill="var(--green-fill)" stroke="var(--accent)" stroke-width="5"/>
+  <circle cx="600" cy="368" r="78" fill="none" stroke="var(--green)" stroke-width="3" stroke-dasharray="10 12"/>
+  <text x="600" y="358" text-anchor="middle" class="label" fill="var(--accent)">pesto</text>
+  <text x="600" y="396" text-anchor="middle" class="small mono">cold green sauce</text>
+</svg>

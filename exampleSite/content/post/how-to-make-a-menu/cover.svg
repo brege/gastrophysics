@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    :root {
+      --bg: #efe8dc;
+      --ink: #27313f;
+      --dim: #69707d;
+      --rule: #b9b19e;
+      --produce: #3f7f4f;
+      --produce-fill: #dbe8cd;
+      --sauce: #b65f58;
+      --sauce-fill: #efd1c9;
+      --course: #4e6f9e;
+      --course-fill: #d7e0f3;
+      --sweet: #8a6aa7;
+      --sweet-fill: #e4d9ee;
+      --gold: #c19533;
+      --gold-fill: #f0dfa9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #222832;
+        --ink: #d8dee9;
+        --dim: #a7b0c0;
+        --rule: #4c566a;
+        --produce: #a3be8c;
+        --produce-fill: #304335;
+        --sauce: #bf616a;
+        --sauce-fill: #4b3032;
+        --course: #88c0d0;
+        --course-fill: #30444c;
+        --sweet: #b48ead;
+        --sweet-fill: #40354a;
+        --gold: #ebcb8b;
+        --gold-fill: #4a412f;
+      }
+    }
+
+    text {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      fill: var(--ink);
+    }
+
+    .mono {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .title {
+      font-size: 56px;
+      font-weight: 760;
+    }
+
+    .caption {
+      font-size: 24px;
+      fill: var(--dim);
+    }
+
+    .box {
+      rx: 10;
+      stroke-width: 3;
+    }
+
+    .cap {
+      font-size: 32px;
+      font-weight: 720;
+    }
+
+    .sub {
+      font-size: 21px;
+      fill: var(--dim);
+    }
+
+    .arrow {
+      stroke: var(--rule);
+      stroke-width: 4;
+      stroke-linecap: round;
+      marker-end: url(#arrow);
+    }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--rule)"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="var(--bg)"/>
+  <rect x="28" y="28" width="1144" height="619" rx="14" fill="none" stroke="var(--rule)" stroke-width="3"/>
+
+  <text x="600" y="92" text-anchor="middle" class="title">menu flow</text>
+  <text x="600" y="128" text-anchor="middle" class="caption mono">market produce / pesto sauce / course rhythm</text>
+
+  <rect x="80" y="225" width="230" height="150" class="box" fill="var(--produce-fill)" stroke="var(--produce)"/>
+  <text x="195" y="278" text-anchor="middle" class="cap" fill="var(--produce)">market</text>
+  <text x="195" y="318" text-anchor="middle" class="sub mono">tomato</text>
+  <text x="195" y="348" text-anchor="middle" class="sub mono">squash</text>
+
+  <line x1="320" y1="300" x2="410" y2="300" class="arrow"/>
+
+  <rect x="430" y="205" width="260" height="190" class="box" fill="var(--sauce-fill)" stroke="var(--sauce)"/>
+  <text x="560" y="264" text-anchor="middle" class="cap" fill="var(--sauce)">pesto</text>
+  <text x="560" y="304" text-anchor="middle" class="sub mono">basil</text>
+  <text x="560" y="334" text-anchor="middle" class="sub mono">olive oil</text>
+  <text x="560" y="364" text-anchor="middle" class="sub mono">garlic</text>
+
+  <line x1="700" y1="300" x2="790" y2="300" class="arrow"/>
+
+  <rect x="815" y="145" width="300" height="110" class="box" fill="var(--course-fill)" stroke="var(--course)"/>
+  <text x="965" y="191" text-anchor="middle" class="cap" fill="var(--course)">pasta</text>
+  <text x="965" y="224" text-anchor="middle" class="sub mono">pesto cream</text>
+
+  <rect x="815" y="285" width="300" height="110" class="box" fill="var(--gold-fill)" stroke="var(--gold)"/>
+  <text x="965" y="331" text-anchor="middle" class="cap" fill="var(--gold)">protein</text>
+  <text x="965" y="364" text-anchor="middle" class="sub mono">vegetable plate</text>
+
+  <rect x="815" y="425" width="300" height="110" class="box" fill="var(--sweet-fill)" stroke="var(--sweet)"/>
+  <text x="965" y="471" text-anchor="middle" class="cap" fill="var(--sweet)">dessert</text>
+  <text x="965" y="504" text-anchor="middle" class="sub mono">fruit + cream</text>
+
+  <line x1="690" y1="300" x2="805" y2="195" class="arrow"/>
+  <line x1="690" y1="300" x2="805" y2="340" class="arrow"/>
+  <line x1="690" y1="300" x2="805" y2="480" class="arrow"/>
+
+  <text x="600" y="585" text-anchor="middle" class="caption">a menu is a compact graph of season, sauce, and service</text>
+</svg>
