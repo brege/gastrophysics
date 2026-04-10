@@ -206,7 +206,7 @@
 }
 
 .post-content img {
-    border-radius: 4px;
+    border-radius: var(--media-radius);
     margin: 1rem 0;
 }
 
@@ -229,6 +229,18 @@
     color: var(--secondary);
     font-size: 14px;
     font-weight: normal;
+}
+
+.post-single .entry-cover {
+    margin-bottom: var(--content-gap);
+}
+
+@media (max-width: 767px) {
+    .post-single .entry-cover img {
+        width: calc(100% + (var(--gap) * 2));
+        max-width: none;
+        margin-inline: calc(var(--gap) * -1);
+    }
 }
 
 .toc {

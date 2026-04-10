@@ -32,6 +32,19 @@
     color: var(--secondary);
     opacity: 0.75;
 }
+
+.post-single .entry-cover figcaption {
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .post-single .entry-cover figcaption {
+        display: block;
+        width: calc(100% / 0.82);
+        transform: scale(0.82);
+        transform-origin: top left;
+    }
+}
 .post-card .entry-body {
     min-width: 0;
 }
@@ -91,7 +104,7 @@
     grid-row: 1;
 }
 .view-horizontal .post-card .entry-cover {
-    border-radius: var(--radius);
+    border-radius: var(--media-radius);
     overflow: hidden;
 }
 .view-horizontal .post-card .entry-cover img {
@@ -167,8 +180,11 @@
     padding: 1rem;
     margin: 0.25rem 0 1.1rem;
     background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    align-items: start;
 }
 .post-card.featured-card .entry-body {
     min-width: 0;
@@ -188,7 +204,7 @@
     margin-top: 0.8rem;
 }
 .post-card.featured-card .entry-cover {
-    border-radius: var(--radius);
+    border-radius: var(--media-radius);
     overflow: hidden;
 }
 .post-card.featured-card .entry-cover img {
@@ -294,6 +310,13 @@
     .post-card.home-lead {
         gap: 0.85rem;
         padding: 0.8rem;
+    }
+
+    .post-card.featured-card,
+    .post-card.featured-card.home-lead {
+        gap: 0.75rem;
+        padding: 0.8rem var(--gap);
+        margin-bottom: 1rem;
     }
 
     .post-card.compact-card.home-lead {

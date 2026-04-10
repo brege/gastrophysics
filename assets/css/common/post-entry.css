@@ -92,7 +92,7 @@
 }
 
 .entry-cover img {
-    border-radius: var(--radius);
+    border-radius: var(--media-radius);
     width: 100%;
     height: auto;
 }
