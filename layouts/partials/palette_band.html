@@ -37,6 +37,7 @@
 
 <script>
     (function () {
+        function init() {
         var root = document.documentElement;
         var picker = document.getElementById("palette-band");
         var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-palette-choice]"));
@@ -118,6 +119,14 @@
                     }, 0);
                 }
             });
+        }
+
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", init, { once: true });
+        } else {
+            init();
         }
     })();
 </script>

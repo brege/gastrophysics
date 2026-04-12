@@ -48,6 +48,26 @@
     background: var(--tertiary);
 }
 
+.footer-palette-toggle-row {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.palette-band-text-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.palette-band-text-toggle strong {
+    font-weight: 700;
+}
+
 .site-footer-content {
     display: grid;
     justify-items: center;

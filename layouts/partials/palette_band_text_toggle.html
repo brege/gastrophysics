@@ -1,0 +1,13 @@
+{{- $class := .class | default "" -}}
+{{- $label := .label | default "Palettes" -}}
+<button
+    type="button"
+    data-palette-band-toggle
+    aria-controls="palette-band"
+    aria-expanded="false"
+    aria-pressed="false"
+    class="palette-band-text-toggle secondary-action{{ if $class }} {{ $class }}{{ end }}"
+    title="Toggle palette band"
+    aria-label="Toggle palette band">
+    <strong>{{ $label }}</strong>
+</button>
