@@ -106,7 +106,17 @@
 
         toggles.forEach(function (toggle) {
             toggle.addEventListener("click", function () {
+                var initialTop = toggle.getBoundingClientRect().top;
                 applyVisibility(root.dataset.paletteBandVisible !== "true");
+
+                if (toggle.closest(".site-footer")) {
+                    window.requestAnimationFrame(function () {
+                        var topDelta = toggle.getBoundingClientRect().top - initialTop;
+                        if (topDelta !== 0) {
+                            window.scrollBy(0, topDelta);
+                        }
+                    });
+                }
             });
         });
 

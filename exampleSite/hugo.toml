@@ -52,6 +52,7 @@ enableRobotsTXT = false
     enabled = true
     defaultVisible = true
     showToggle = true
+    position = "belowHeader"
 
   [[params.headerActions]]
     name = "GitHub"

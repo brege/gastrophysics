@@ -1,4 +1,12 @@
+{{- $paletteBandPosition := "abovefooter" -}}
+{{- with site.Params.paletteBand -}}
+    {{- with index . "position" -}}
+        {{- $paletteBandPosition = lower . -}}
+    {{- end -}}
+{{- end -}}
+{{- if not (or (eq $paletteBandPosition "belowheader") (eq $paletteBandPosition "below-header")) }}
 {{- partial "palette_band.html" . }}
+{{- end }}
 {{- partial "extend_footer.html" . }}
 
 {{- if not (.Param "hideFooter") }}

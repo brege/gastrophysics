@@ -1,8 +1,12 @@
 <header class="header">
     {{- $showPaletteBandToggle := false -}}
+    {{- $paletteBandPosition := "abovefooter" -}}
     {{- with site.Params.paletteBand -}}
         {{- if and (isset . "enabled") (index . "enabled") (isset . "showtoggle") (index . "showtoggle") -}}
             {{- $showPaletteBandToggle = true -}}
+        {{- end -}}
+        {{- with index . "position" -}}
+            {{- $paletteBandPosition = lower . -}}
         {{- end -}}
     {{- end -}}
     <nav class="nav">
@@ -97,8 +101,8 @@
                 aria-controls="palette-band"
                 aria-expanded="false"
                 aria-pressed="false"
-                title="Toggle palette band"
-                aria-label="Toggle palette band">
+                title="Choose palette"
+                aria-label="Choose palette">
                 {{- partial "svg.html" (dict "name" "palette") -}}
             </button>
             {{- end }}
@@ -167,3 +171,6 @@
         </ul>
     </nav>
 </header>
+{{- if or (eq $paletteBandPosition "belowheader") (eq $paletteBandPosition "below-header") }}
+{{- partial "palette_band.html" . }}
+{{- end }}

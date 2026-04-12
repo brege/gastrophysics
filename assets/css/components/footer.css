@@ -65,6 +65,10 @@
 }
 
 .palette-band-text-toggle strong {
+    font-weight: 400;
+}
+
+.palette-band-text-toggle[aria-expanded="true"] strong {
     font-weight: 700;
 }
 
