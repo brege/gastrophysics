@@ -1,0 +1,124 @@
+{{- $paletteBandEnabled := false -}}
+{{- $paletteBandDefaultVisible := true -}}
+{{- with site.Params.paletteBand -}}
+    {{- if isset . "enabled" -}}
+        {{- $paletteBandEnabled = index . "enabled" -}}
+    {{- end -}}
+    {{- if isset . "defaultvisible" -}}
+        {{- $paletteBandDefaultVisible = index . "defaultvisible" -}}
+    {{- end -}}
+{{- end -}}
+{{- if $paletteBandEnabled -}}
+{{- $palettes := slice
+    (dict "name" "linen" "label" "linen")
+    (dict "name" "nordic-linen" "label" "nordic linen")
+    (dict "name" "nord" "label" "nord")
+    (dict "name" "gruvbox" "label" "gruvbox")
+    (dict "name" "everforest" "label" "everforest")
+    (dict "name" "rose-pine" "label" "rose pine")
+    (dict "name" "rose-pine-moon" "label" "rose pine moon")
+    (dict "name" "catppuccin-frappe" "label" "catppuccin frappe")
+    (dict "name" "catppuccin-macchiato" "label" "catppuccin macchiato")
+    (dict "name" "catppuccin-mocha" "label" "catppuccin mocha")
+    (dict "name" "sepia" "label" "sepia")
+-}}
+<div
+    id="palette-band"
+    class="palette-band"
+    aria-label="Palette picker"
+    data-default-visible="{{ if $paletteBandDefaultVisible }}true{{ else }}false{{ end }}">
+    <div class="palette-band-title">Palette</div>
+    <div class="palette-band-options">
+        {{- range $palettes }}
+        <button type="button" data-palette-choice="{{ .name }}">{{ .label }}</button>
+        {{- end }}
+    </div>
+</div>
+
+<script>
+    (function () {
+        var root = document.documentElement;
+        var picker = document.getElementById("palette-band");
+        var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-palette-choice]"));
+        var toggles = Array.prototype.slice.call(document.querySelectorAll("[data-palette-band-toggle]"));
+        var themeToggle = document.getElementById("theme-toggle");
+        var paletteKey = "gastrophysics-palette-choice";
+        var visibilityKey = "gastrophysics-palette-band-visible";
+        var defaultVisible = picker.dataset.defaultVisible === "true";
+        var followsTheme = true;
+
+        function currentPalette() {
+            if (followsTheme) {
+                return root.dataset.theme === "dark"
+                    ? root.dataset.themePaletteDark
+                    : root.dataset.themePaletteLight;
+            }
+
+            return root.dataset.themePalette;
+        }
+
+        function updateButtons(palette) {
+            buttons.forEach(function (button) {
+                var active = button.dataset.paletteChoice === palette;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+        }
+
+        function applyPalette(palette) {
+            root.dataset.themePalette = palette;
+            root.dataset.themePaletteLight = palette;
+            root.dataset.themePaletteDark = palette;
+            localStorage.setItem(paletteKey, palette);
+            updateButtons(palette);
+        }
+
+        function applyVisibility(isVisible) {
+            var state = isVisible ? "true" : "false";
+            root.dataset.paletteBandVisible = state;
+            localStorage.setItem(visibilityKey, state);
+
+            toggles.forEach(function (toggle) {
+                toggle.setAttribute("aria-expanded", state);
+                toggle.setAttribute("aria-pressed", state);
+            });
+        }
+
+        var storedPalette = localStorage.getItem(paletteKey);
+        if (storedPalette) {
+            followsTheme = false;
+            applyPalette(storedPalette);
+        } else {
+            root.dataset.themePalette = currentPalette();
+            updateButtons(root.dataset.themePalette);
+        }
+
+        var storedVisibility = localStorage.getItem(visibilityKey);
+        applyVisibility(storedVisibility ? storedVisibility === "true" : defaultVisible);
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                followsTheme = false;
+                applyPalette(button.dataset.paletteChoice);
+            });
+        });
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener("click", function () {
+                applyVisibility(root.dataset.paletteBandVisible !== "true");
+            });
+        });
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", function () {
+                if (followsTheme) {
+                    window.setTimeout(function () {
+                        root.dataset.themePalette = currentPalette();
+                        updateButtons(root.dataset.themePalette);
+                    }, 0);
+                }
+            });
+        }
+    })();
+</script>
+{{- end -}}

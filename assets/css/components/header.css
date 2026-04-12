@@ -111,6 +111,7 @@
     height: 15px;
 }
 
+button#palette-band-toggle,
 button#theme-toggle {
     appearance: none;
     -webkit-appearance: none;

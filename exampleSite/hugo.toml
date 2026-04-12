@@ -48,6 +48,11 @@ enableRobotsTXT = false
   homePageSize = 3
   postPageSize = 6
 
+  [params.paletteBand]
+    enabled = true
+    defaultVisible = true
+    showToggle = true
+
   [[params.headerActions]]
     name = "GitHub"
     icon = "github"

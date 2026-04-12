@@ -24,20 +24,17 @@ hugo server
   <tr>
     <td colspan="2">
       <img src="docs/img/home.png" width="100%">
-      <br><strong>Example Home</strong>
-      <br>Header navigation, cover-led post card, tags, and palette picker.
+      <br><strong>Hero Page</strong>
     </td>
   </tr>
   <tr>
     <td>
       <img src="docs/img/menu.png" width="100%">
-      <br><strong>Menu Layout</strong>
-      <br>Dated farmer's market menu with the centered menu-card treatment.
+      <br><strong>Restaurant Menu</strong>
     </td>
     <td>
       <img src="docs/img/cv.png" width="100%">
-      <br><strong>CV Layout</strong>
-      <br>CV page rendered from <code>cv.yaml</code> with TOC and keyboard navigation.
+      <br><strong>CV Layout</strong> (via <a href="https://github.com/brege/gastrophysics/tree/main/layouts/cv)">cv.yaml</a>)
     </td>
   </tr>
 </table>

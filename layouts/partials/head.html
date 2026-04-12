@@ -113,6 +113,7 @@
 
 <noscript>
     <style>
+        #palette-band-toggle,
         #theme-toggle,
         .top-link {
             display: none;
@@ -205,15 +206,31 @@
 {{- $palette := site.Params.color | default "linen" -}}
 {{- $lightPalette := site.Params.colorLight | default $palette -}}
 {{- $darkPalette := site.Params.colorDark | default $palette -}}
+{{- $paletteBandEnabled := false -}}
+{{- $paletteBandDefaultVisible := true -}}
+{{- with site.Params.paletteBand -}}
+    {{- if isset . "enabled" -}}
+        {{- $paletteBandEnabled = index . "enabled" -}}
+    {{- end -}}
+    {{- if isset . "defaultvisible" -}}
+        {{- $paletteBandDefaultVisible = index . "defaultvisible" -}}
+    {{- end -}}
+{{- end -}}
 <script>
   (function() {
     var root = document.documentElement;
-    var palette = "{{ $palette }}";
-    var lightPalette = "{{ $lightPalette }}";
-    var darkPalette = "{{ $darkPalette }}";
+    var paletteKey = "gastrophysics-palette-choice";
+    var visibilityKey = "gastrophysics-palette-band-visible";
+    var storedPalette = localStorage.getItem(paletteKey);
+    var lightPalette = storedPalette || "{{ $lightPalette }}";
+    var darkPalette = storedPalette || "{{ $darkPalette }}";
+    var palette = storedPalette || (root.dataset.theme === "dark" ? darkPalette : lightPalette);
     root.dataset.themePalette = palette;
     root.dataset.themePaletteLight = lightPalette;
     root.dataset.themePaletteDark = darkPalette;
+    {{- if $paletteBandEnabled }}
+    root.dataset.paletteBandVisible = localStorage.getItem(visibilityKey) || "{{ if $paletteBandDefaultVisible }}true{{ else }}false{{ end }}";
+    {{- end }}
   })();
 </script>
 

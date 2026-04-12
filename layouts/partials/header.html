@@ -1,4 +1,10 @@
 <header class="header">
+    {{- $showPaletteBandToggle := false -}}
+    {{- with site.Params.paletteBand -}}
+        {{- if and (isset . "enabled") (index . "enabled") (isset . "showtoggle") (index . "showtoggle") -}}
+            {{- $showPaletteBandToggle = true -}}
+        {{- end -}}
+    {{- end -}}
     <nav class="nav">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
@@ -82,6 +88,19 @@
                 {{- partial "svg.html" (dict "name" "search") -}}
             </a>
             {{- end }}
+            {{- end }}
+            {{- if $showPaletteBandToggle }}
+            <button
+                id="palette-band-toggle"
+                type="button"
+                data-palette-band-toggle
+                aria-controls="palette-band"
+                aria-expanded="false"
+                aria-pressed="false"
+                title="Toggle palette band"
+                aria-label="Toggle palette band">
+                {{- partial "svg.html" (dict "name" "palette") -}}
+            </button>
             {{- end }}
             {{- if (not site.Params.disableThemeToggle) }}
             <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
