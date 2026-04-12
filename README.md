@@ -1,6 +1,6 @@
 <h1 align="center">Gastrophysics | <a href="https://gastrophysics.brege.org"><b>Demo</b></a></h1>
 
-A Hugo theme for people with split careers. It is print- and e-reader-friendly, with first-class support for sectional CVs, recipes, and tasting menus.
+A Hugo theme for people with split careers. It is print- and e-reader-friendly, with sectional CVs, recipes, and tasting menus.
 
 ---
 
@@ -34,7 +34,7 @@ hugo server
     </td>
     <td>
       <img src="docs/img/cv.png" width="100%">
-      <br><strong>CV Layout</strong> (via <a href="https://github.com/brege/gastrophysics/tree/main/layouts/cv)">cv.yaml</a>)
+      <br><strong>CV Layout</strong> (via <a href="https://github.com/brege/gastrophysics/tree/main/layouts/cv">cv.yaml</a>)
     </td>
   </tr>
 </table>
@@ -42,11 +42,11 @@ hugo server
 ## Features
 
 - Light/dark mode with automatic system detection
-- 11 [color palettes](#color-palettes)
+- 11 [color palettes](#color-palettes) and palette picker widget
 - Palette-aware syntax highlighting
 - Sectional CV layout driven by `cv.yaml`
-- Recipe and tasting-menu shortcodes with archive views
-- Balanced text wrapping for navigation and footer sequences
+- Recipe and tasting-menu shortcodes and types
+- Balanced text wrapping for navigation and hero titles
 - Anchored headings with configurable depth
 - Compact and expanded post card layouts
 - Centralized SVG icon registry
