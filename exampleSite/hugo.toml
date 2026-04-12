@@ -68,7 +68,7 @@ enableRobotsTXT = false
   Title = "Gastrophysics"
   FeedTitle = "Posts"
   Content = "Food notes, working recipes, and seasonal menus for a cook with more than one practice."
-  Note = "student / amateur astronomer / foodie"
+  Note = "foodie / student / amateur astronomer"
 
   [[params.homeInfoParams.markers]]
     name = "recipes"
