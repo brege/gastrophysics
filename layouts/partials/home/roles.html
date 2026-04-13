@@ -1,0 +1,10 @@
+{{- $roles := .roles | default (slice) -}}
+{{- if eq (len $roles) 0 -}}
+  {{- errorf "params.homeInfoParams.roles must contain at least one item" -}}
+{{- end -}}
+{{- partial "util/balanced_sequence.html" (dict
+  "class" (.class | default "")
+  "tag" "p"
+  "align" (.align | default "center")
+  "items" $roles
+) }}

@@ -67,8 +67,16 @@ enableRobotsTXT = false
 [params.homeInfoParams]
   Title = "Gastrophysics"
   FeedTitle = "Posts"
-  Content = "Food notes, working recipes, and seasonal menus for a cook with more than one practice."
-  Note = "foodie / student / amateur astronomer"
+  Content = "/hero"
+
+  [[params.homeInfoParams.roles]]
+    name = "foodie"
+
+  [[params.homeInfoParams.roles]]
+    name = "student"
+
+  [[params.homeInfoParams.roles]]
+    name = "amateur astronomer"
 
   [[params.homeInfoParams.markers]]
     name = "recipes"

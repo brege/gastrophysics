@@ -1,24 +1,19 @@
 {{- with site.Params.homeInfoParams }}
-{{- $note := .Note | default "data scientist / chef / astrophysicist" -}}
-{{- $noteItems := slice -}}
-{{- range split $note "/" }}
-  {{- $part := strings.TrimSpace . -}}
-  {{- if ne $part "" -}}
-    {{- $noteItems = $noteItems | append (dict "name" $part) -}}
-  {{- end -}}
+{{- $hero := site.GetPage .Content -}}
+{{- if not $hero -}}
+  {{- errorf "params.homeInfoParams.Content must reference an existing page, got %q" .Content -}}
 {{- end -}}
 <article class="first-entry home-info home-signal">
     <header class="entry-header">
-        {{- partial "util/balanced_sequence.html" (dict
-          "class" "home-signal-note"
-          "tag" "p"
+        {{- partial "home/roles.html" (dict
+          "roles" .roles
           "align" "center"
-          "items" $noteItems
+          "class" "home-signal-note"
         ) }}
         <h1 class="home-signal-title">{{ .Title | markdownify }}</h1>
     </header>
     <div class="entry-content">
-        {{ .Content | markdownify }}
+        {{ $hero.Content }}
     </div>
     {{ partial "home/markers.html" . }}
     <footer class="entry-footer home-info-footer">

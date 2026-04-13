@@ -1,26 +1,17 @@
 {{- define "main" }}
 
-{{- $note := site.Params.homeInfoParams.Note | default "data scientist / chef / astrophysicist" -}}
 {{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) -}}
 {{- $cvContent := partial "cv.html" . -}}
 {{- $cvShadow := partial "cv/shadow.html" . -}}
-{{- $noteItems := slice -}}
-{{- range split $note "/" }}
-  {{- $part := strings.TrimSpace . -}}
-  {{- if ne $part "" -}}
-    {{- $noteItems = $noteItems | append (dict "name" $part) -}}
-  {{- end -}}
-{{- end -}}
 
 <article class="post-single type-cv section-{{ default "root" .Section }}">
   <header class="post-header">
     {{ partial "nav/breadcrumbs.html" . }}
     <div class="cv-hero entry-header">
-      {{- partial "util/balanced_sequence.html" (dict
-        "class" "home-signal-note"
-        "tag" "p"
+      {{- partial "home/roles.html" (dict
+        "roles" site.Params.homeInfoParams.roles
         "align" "left"
-        "items" $noteItems
+        "class" "home-signal-note"
       ) }}
       <h1>{{ .Title }}</h1>
     </div>
