@@ -11,6 +11,9 @@ categories:
 date: 2022-12-18T11:00:00-05:00
 draft: false
 ShowToc: true
+series:
+  - pesto notes
+series_order: 2
 cover:
   image: cover.svg
   alt: "Diagram of farmer's market produce moving through menu courses"

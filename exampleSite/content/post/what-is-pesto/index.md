@@ -14,6 +14,9 @@ categories:
 date: 2022-12-11T16:56:56-05:00
 draft: false
 ShowToc: true
+series:
+  - pesto notes
+series_order: 1
 math: true
 homeLead: true
 cover:

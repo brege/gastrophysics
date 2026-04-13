@@ -30,14 +30,25 @@
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
 
   {{- $showToc := .Param "ShowToc" }}
-  {{- if $showToc }}
+  {{- $showSeries := gt (len (.GetTerms "series")) 0 }}
+  {{- if or $showToc $showSeries }}
   <div class="toc-anchor">
     <div class="toc-margin-wrap">
+      {{- if $showToc }}
       {{- partial "nav/toc.html" . }}
+      {{- end }}
+      {{- if $showSeries }}
+      {{- partial "nav/series.html" . }}
+      {{- end }}
     </div>
   </div>
   <div class="toc-preamble">
+    {{- if $showToc }}
     {{- partial "nav/toc.html" . }}
+    {{- end }}
+    {{- if $showSeries }}
+    {{- partial "nav/series.html" . }}
+    {{- end }}
   </div>
   {{- end }}
 

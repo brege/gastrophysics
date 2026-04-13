@@ -7,6 +7,11 @@
     margin-bottom: 0.22rem;
 }
 
+.toc-preamble .toc + .toc,
+.toc-margin-wrap .toc + .toc {
+    margin-top: 1rem;
+}
+
 .post-single .toc {
     border: none;
     background: none;
@@ -59,6 +64,11 @@
     fill: none;
     stroke-width: 1.5;
     stroke-linecap: round;
+}
+.post-single .series-nav .toc-mark svg {
+    stroke: none;
+    fill: currentColor;
+    stroke-width: 0;
 }
 .post-single .toc .toc-mark-open {
     display: none;
@@ -113,6 +123,12 @@
 .post-single .toc .inner a.active {
     color: var(--primary);
     box-shadow: none;
+}
+
+.post-single .toc .inner .series-current {
+    color: var(--primary);
+    display: block;
+    padding: 0.1em 0;
 }
 
 @media (min-width: 1200px) {

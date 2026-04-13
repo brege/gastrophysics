@@ -43,6 +43,7 @@ enableRobotsTXT = false
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true
+  seriesOpened = false
   disableScrollToTop = true
   mainSections = [ "post" ]
   homePageSize = 3
@@ -120,3 +121,8 @@ enableRobotsTXT = false
     name = "Search"
     url = "/search/"
     weight = 50
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"

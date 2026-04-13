@@ -1,0 +1,41 @@
+{{- $terms := .GetTerms "series" -}}
+{{- if gt (len $terms) 0 -}}
+{{- $term := index $terms 0 -}}
+{{- range $term.Pages -}}
+  {{- if not (isset .Params "series_order") -}}
+    {{- errorf "series page %q is missing series_order" .File.Path -}}
+  {{- end -}}
+{{- end -}}
+{{- $pages := sort $term.Pages "Params.series_order" -}}
+<div class="toc series-nav">
+    <details {{ if (.Param "seriesOpened") }} open{{ end }}>
+        <summary class="secondary-action">
+            <span class="toc-mark" aria-hidden="true">
+                <svg class="toc-mark-closed" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="M3 10h11v2H3zM3 6h11v2H3zM3 14h7v2H3zM16 13v8l6-4z"></path>
+                </svg>
+                <svg class="toc-mark-open" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="M3 10h11v2H3zM3 6h11v2H3zM3 14h7v2H3zM16 13v8l6-4z"></path>
+                </svg>
+            </span>
+            <span class="details">{{ i18n "series" | default "Series" }}: {{ $term.LinkTitle }}</span>
+        </summary>
+
+        <div class="inner">
+            <ul aria-label="{{ $term.LinkTitle }}">
+                {{- range $pages }}
+                <li>
+                    {{- if eq .Permalink $.Permalink -}}
+                    <span class="series-current" aria-current="page">{{ i18n "series_part" | default "Part" }} {{ .Params.series_order }}: {{ i18n "series_this_article" | default "This article" }}</span>
+                    {{- else -}}
+                    <a class="secondary-action" href="{{ .RelPermalink }}">{{ i18n "series_part" | default "Part" }} {{ .Params.series_order }}: {{ .LinkTitle }}</a>
+                    {{- end -}}
+                </li>
+                {{- end }}
+            </ul>
+        </div>
+    </details>
+</div>
+{{- end -}}

@@ -17,6 +17,15 @@
 - id: toc
   translation: "Table of Contents"
 
+- id: series
+  translation: "Series"
+
+- id: series_part
+  translation: "Part"
+
+- id: series_this_article
+  translation: "This article"
+
 - id: home
   translation: "Home"
 
