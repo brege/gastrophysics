@@ -6,5 +6,4 @@ build:
   publishResources: false
 ---
 
-Food notes, working recipes, and seasonal menus for a cook with more
-than one practice.
+A Hugo theme for people with split careers. It is print- and e-reader-friendly, with sectional CVs, recipe pages, and a tasting menu template and index.
