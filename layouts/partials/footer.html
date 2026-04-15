@@ -111,46 +111,84 @@
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {
         const container = codeblock.parentNode.parentNode;
+        const copyLabel = '{{- i18n "code_copy" | default "copy" }}';
+        const copiedLabel = '{{- i18n "code_copied" | default "copied!" }}';
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
-
-        function copyingDone() {
-            copybutton.innerHTML = '{{- i18n "code_copied" | default "copied!" }}';
-            setTimeout(() => {
-                copybutton.innerHTML = '{{- i18n "code_copy" | default "copy" }}';
-            }, 2000);
+        function copyIcon() {
+            return `
+                <svg aria-hidden="true" viewBox="0 0 16 16" class="copy-code-copy">
+                    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+                    <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+                </svg>
+            `;
         }
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
+        function checkIcon() {
+            return `
+                <svg aria-hidden="true" viewBox="0 0 16 16" class="copy-code-check">
+                    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+                </svg>
+            `;
+        }
+
+        async function writeClipboard(text) {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(text);
                 return;
             }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
+            const input = document.createElement('textarea');
+            input.value = text;
+            input.setAttribute('readonly', '');
+            input.style.position = 'absolute';
+            input.style.left = '-9999px';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+        }
+
+        const copybutton = document.createElement('button');
+        copybutton.type = 'button';
+        copybutton.classList.add('copy-code');
+        copybutton.setAttribute('aria-label', copyLabel);
+        copybutton.dataset.copyLabel = copyLabel;
+        copybutton.dataset.copyFeedback = copiedLabel;
+        copybutton.innerHTML = `${copyIcon()}${checkIcon()}`;
+
+        function copyingDone() {
+            if (copybutton._copyReset) {
+                window.clearTimeout(copybutton._copyReset);
+            }
+
+            copybutton.classList.add('is-copied');
+            copybutton.setAttribute('aria-label', copiedLabel);
+            copybutton._copyReset = window.setTimeout(() => {
+                copybutton.classList.remove('is-copied');
+                copybutton.setAttribute('aria-label', copyLabel);
+                copybutton._copyReset = null;
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', async () => {
+            await writeClipboard(codeblock.textContent);
+            copyingDone();
         });
 
         if (container.classList.contains("highlight")) {
+            container.classList.add('copy-code-host');
+            codeblock.parentNode.classList.add('copy-code-target');
             container.appendChild(copybutton);
         } else if (container.parentNode.firstChild == container) {
             // td containing LineNos
         } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
             // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add('copy-code-host');
+            codeblock.parentNode.classList.add('copy-code-target');
             codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
         } else {
             // code blocks not having highlight as parent class
+            codeblock.parentNode.classList.add('copy-code-host', 'copy-code-target');
             codeblock.parentNode.appendChild(copybutton);
         }
     });
