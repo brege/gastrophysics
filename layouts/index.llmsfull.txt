@@ -1,0 +1,20 @@
+# {{ site.Title }} full text
+
+> {{ site.Params.llms.summary | default site.Params.description | default site.Title }}
+
+This file contains plain text from the curated pages listed in /llms.txt.
+
+{{- range site.Params.llms.sections }}
+{{- range .links }}
+{{- with .pageRef }}
+{{- with site.GetPage . }}
+
+## {{ .Title }}
+
+URL: {{ .Permalink }}
+
+{{ .Plain }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

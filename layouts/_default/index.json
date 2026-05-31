@@ -1,5 +1,5 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- range site.RegularPages -}}
+{{- range where site.RegularPages "Sitemap.Disable" "ne" true -}}
     {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
     {{- $content := .Plain -}}
     {{- $summary := .Summary -}}

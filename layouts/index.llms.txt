@@ -1,0 +1,24 @@
+# {{ site.Title }}
+
+> {{ site.Params.llms.summary | default site.Params.description | default site.Title }}
+
+This file is a curated index for agents. Use the listed canonical URLs and machine-readable endpoints before broad crawling.
+
+{{- range site.Params.llms.sections }}
+
+## {{ .title }}
+
+{{- range .links }}
+{{- $page := "" -}}
+{{- with .pageRef }}{{ $page = site.GetPage . }}{{ end -}}
+{{- $title := .title -}}
+{{- $url := .url | absURL -}}
+{{- $description := .description -}}
+{{- with $page -}}
+  {{- $title = $title | default .Title -}}
+  {{- $url = .Permalink -}}
+  {{- $description = $description | default (.Description | default (.Summary | plainify | truncate 180)) -}}
+{{- end }}
+- [{{ $title }}]({{ $url }}): {{ $description }}
+{{- end }}
+{{- end }}
