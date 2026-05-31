@@ -13,7 +13,7 @@ This file contains plain text from the curated pages listed in /llms.txt.
 
 URL: {{ .Permalink }}
 
-{{ .Plain }}
+{{ .Plain | htmlUnescape }}
 {{- end }}
 {{- end }}
 {{- end }}

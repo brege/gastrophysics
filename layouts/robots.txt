@@ -6,4 +6,7 @@ Disallow: /
 {{- end }}
 Sitemap: {{ "sitemap.xml" | absURL }}
 
-# Agent index: {{ "llms.txt" | absURL }}
+# LLM agent index
+# See https://specification.website/llms.txt
+Allow: /llms.txt
+Allow: /llms-full.txt
