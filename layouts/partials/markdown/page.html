@@ -1,0 +1,27 @@
+{{- $title := .Title | htmlUnescape -}}
+{{- $lines := slice (printf "# %s" $title) "" (printf "URL: %s" .Permalink) -}}
+{{- with .Date -}}
+  {{- if not .IsZero -}}
+    {{- $lines = $lines | append (printf "Published: %s" (.Format "2006-01-02")) -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Lastmod -}}
+  {{- if not .IsZero -}}
+    {{- $lines = $lines | append (printf "Updated: %s" (.Format "2006-01-02")) -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Params.tags -}}
+  {{- $lines = $lines | append (printf "Tags: %s" (delimit . ", ")) -}}
+{{- end -}}
+{{- with .Params.categories -}}
+  {{- $lines = $lines | append (printf "Categories: %s" (delimit . ", ")) -}}
+{{- end -}}
+{{- $summary := .Description | default .Params.summary | plainify | htmlUnescape | strings.TrimSpace -}}
+{{- with $summary -}}
+  {{- $lines = $lines | append "" . -}}
+{{- end -}}
+{{- $body := .RawContent | htmlUnescape | strings.TrimSpace -}}
+{{- with $body -}}
+  {{- $lines = $lines | append "" . -}}
+{{- end -}}
+{{- return (delimit $lines "\n") -}}
