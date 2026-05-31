@@ -1,17 +1,37 @@
-baseURL = "https://example.org/"
-languageCode = "en"
+baseURL = "https://gastrophysics.brege.org/"
+locale = "en"
 title = "Gastrophysics"
 copyright = "Copyright (c) 2026 Wyatt Brege"
 
 enableInlineShortcodes = true
-enableRobotsTXT = false
+enableRobotsTXT = true
 
 [module]
   [[module.imports]]
     path = "github.com/brege/gastrophysics"
 
 [outputs]
-  home = [ "HTML", "RSS", "JSON" ]
+  home = [ "HTML", "RSS", "JSON", "LLMS", "LLMSFull" ]
+  page = [ "HTML", "PageMarkdown" ]
+
+[outputFormats.LLMS]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  rel = "alternate"
+
+[outputFormats.LLMSFull]
+  mediaType = "text/plain"
+  baseName = "llms-full"
+  isPlainText = true
+  rel = "alternate"
+
+[outputFormats.PageMarkdown]
+  mediaType = "text/markdown"
+  baseName = "index"
+  isPlainText = true
+  rel = "alternate"
+  ugly = true
 
 [mediaTypes."text/markdown"]
   suffixes = [ "md" ]
@@ -126,3 +146,40 @@ enableRobotsTXT = false
   category = "categories"
   tag = "tags"
   series = "series"
+
+[params.llms]
+  summary = "Hugo theme for multi-career portfolios with recipes, menus, and CV layouts."
+
+[[params.llms.sections]]
+  title = "Content"
+  [[params.llms.sections.links]]
+    title = "Recipes"
+    url = "/recipes/"
+    pageRef = "recipes"
+    description = "Recipe collection with structured markup."
+  [[params.llms.sections.links]]
+    title = "Menus"
+    url = "/menus/"
+    pageRef = "menus"
+    description = "Tasting menu archive."
+  [[params.llms.sections.links]]
+    title = "Posts"
+    url = "/post/"
+    pageRef = "post"
+    description = "Blog posts and articles."
+  [[params.llms.sections.links]]
+    title = "CV"
+    url = "/cv/"
+    pageRef = "cv"
+    description = "YAML-driven CV layout."
+
+[[params.llms.sections]]
+  title = "Machine-readable"
+  [[params.llms.sections.links]]
+    title = "Sitemap"
+    url = "/sitemap.xml"
+    description = "XML sitemap."
+  [[params.llms.sections.links]]
+    title = "RSS"
+    url = "/index.xml"
+    description = "RSS feed."
